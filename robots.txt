@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Synaera — Private preview. No indexing permitted.
