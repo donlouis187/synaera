@@ -393,7 +393,7 @@
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.4rem; margin-bottom: 1.25rem;
-      flex-shrink: 0;
+      flex-shrink: 0; align-self: center;
     }
     .product-cat {
       font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
@@ -970,7 +970,7 @@
 
       <!-- Louis Clément -->
       <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#1b5864)">LC</div>
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#1b5864)"><img src="images/team/louis.jpg" alt="Louis Clément" onerror="this.parentElement.innerHTML='LC'"></div>
         <div class="leader-name">Louis Clément</div>
         <div class="leader-title" data-i18n="ltitle_lc">Portfolio Leader</div>
         <div class="leader-bio" data-i18n="lbio_lc">Leads the Synaera portfolio across legal tech and LATAM markets. BBA Finance from ESG UQAM; previously Portfolio Leader at Harris Computer overseeing legal and Latin American subsidiaries.</div>
@@ -982,7 +982,7 @@
 
       <!-- Pierre Bilodeau -->
       <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a7a8c,#2a7a8c)">PB</div>
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a7a8c,#2a7a8c)"><img src="images/team/pierre.jpg" alt="Pierre Bilodeau" onerror="this.parentElement.innerHTML='PB'"></div>
         <div class="leader-name">Pierre Bilodeau</div>
         <div class="leader-title" data-i18n="ltitle_pb">EVP Legal</div>
         <div class="leader-bio" data-i18n="lbio_pb">Executive Vice President overseeing the legal practice management vertical. DESS Management from HEC Montréal. Drives strategy for Juris Concept, JurisPro, and AliForm across 6,000+ legal professionals.</div>
@@ -1016,21 +1016,9 @@
         </a>
       </div>
 
-      <!-- Xenia Mihalachi -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a1a0a,#7a4a10)">XM</div>
-        <div class="leader-name">Xenia Mihalachi</div>
-        <div class="leader-title" data-i18n="ltitle_xm">Financial Analyst</div>
-        <div class="leader-bio" data-i18n="lbio_xm">CFA. M&A Manager with deep expertise in financial modelling, deal evaluation, and portfolio company integration. Brings rigorous buy-side discipline to Synaera's acquisition pipeline.</div>
-        <a class="leader-linkedin" href="https://ca.linkedin.com/in/xenia-mihalachi-cfa-152635181" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
       <!-- Anne-Frédérique Boulet -->
       <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#1a0a2a,#5a1a8a)">AB</div>
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#1a0a2a,#5a1a8a)"><img src="images/team/anne.jpg" alt="Anne-Frédérique Boulet" onerror="this.parentElement.innerHTML='AB'"></div>
         <div class="leader-name">Anne-Frédérique Boulet</div>
         <div class="leader-title" data-i18n="ltitle_ab">Director, Operations</div>
         <div class="leader-bio" data-i18n="lbio_ab">Oversees operational delivery across the legal software portfolio. Progressed from project management to service leadership at Juris Concept, bringing deep process and client success expertise.</div>
@@ -1059,6 +1047,30 @@
         <div class="leader-title" data-i18n="ltitle_cb">Director, IT & Technology</div>
         <div class="leader-bio" data-i18n="lbio_cb">AWS Certified Cloud Practitioner. Leads cloud infrastructure strategy, security, and IT architecture across the portfolio. Brings deep expertise in network engineering and cloud migration from Juris Concept.</div>
         <a class="leader-linkedin" href="https://ca.linkedin.com/in/carl-bellavance" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <!-- Xenia Mihalachi -->
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a1a0a,#7a4a10)"><img src="images/team/xenia.jpg" alt="Xenia Mihalachi" onerror="this.parentElement.innerHTML='XM'"></div>
+        <div class="leader-name">Xenia Mihalachi</div>
+        <div class="leader-title" data-i18n="ltitle_xm">Financial Analyst</div>
+        <div class="leader-bio" data-i18n="lbio_xm">CFA. M&A Manager with deep expertise in financial modelling, deal evaluation, and portfolio company integration. Brings rigorous buy-side discipline to Synaera's acquisition pipeline.</div>
+        <a class="leader-linkedin" href="https://ca.linkedin.com/in/xenia-mihalachi-cfa-152635181" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <!-- Darren Cox -->
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#2a7a8c)"><img src="images/team/darren.jpg" alt="Darren Cox" onerror="this.parentElement.innerHTML='DC'"></div>
+        <div class="leader-name">Darren Cox</div>
+        <div class="leader-title" data-i18n="ltitle_dc">Director, Corporate Development</div>
+        <div class="leader-bio" data-i18n="lbio_dc">Veteran M&A operator in legal technology software. Brings extensive experience identifying, evaluating, and closing software acquisitions — with a track record spanning North American legal tech transactions across the Constellation Software ecosystem.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/darren-cox-a44273a7/" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           <span data-i18n="linkedin_label">LinkedIn</span>
         </a>
@@ -1122,6 +1134,54 @@
       </div>
 
       <div class="product-card reveal">
+        <div class="product-icon">🗄️</div>
+        <div class="product-cat" data-i18n="pcat_8">Enterprise Content Management</div>
+        <div class="product-name">Constellio</div>
+        <div class="product-desc" data-i18n="pdesc_8">Enterprise-grade document and content management powered by intelligent search and AI classification. Centralize, find, and govern every document across your organization — at any scale.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_co_1">ECM</span>
+          <span class="product-tag" data-i18n="ptag_co_2">AI Search</span>
+          <span class="product-tag" data-i18n="ptag_co_3">Governance</span>
+        </div>
+        <a href="https://www.constellio.com/en/" target="_blank" class="product-link">
+          <span data-i18n="plink_8">Visit constellio.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">🏦</div>
+        <div class="product-cat" data-i18n="pcat_9">Digital Experience Platform</div>
+        <div class="product-name">Modyo</div>
+        <div class="product-desc" data-i18n="pdesc_9">A composable frontend platform powering digital transformation for banks and regulated industries. Build omnichannel client portals, self-service tools, and digital origination workflows with microfrontend architecture — trusted by leading financial institutions across Latin America.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_mo_1">Banking</span>
+          <span class="product-tag" data-i18n="ptag_mo_2">Client Portal</span>
+          <span class="product-tag" data-i18n="ptag_mo_3">Microfrontend</span>
+        </div>
+        <a href="https://www.modyo.com/" target="_blank" class="product-link">
+          <span data-i18n="plink_9">Visit modyo.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">🏢</div>
+        <div class="product-cat" data-i18n="pcat_4">Legal Practice Management</div>
+        <div class="product-name">Dexco</div>
+        <div class="product-desc" data-i18n="pdesc_4">Canadian legal practice management pioneer since 1974. Dexco's AcuminEvolution platform unifies matter management, time tracking, billing, trust accounting, and document management in a single cloud workspace built for Canadian law firms.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_ae_1">Matter Management</span>
+          <span class="product-tag" data-i18n="ptag_ae_2">Trust Accounting</span>
+          <span class="product-tag" data-i18n="ptag_ae_3">Cloud</span>
+        </div>
+        <a href="https://dexco.com/" target="_blank" class="product-link">
+          <span data-i18n="plink_4">Visit dexco.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
         <div class="product-icon">📜</div>
         <div class="product-cat" data-i18n="pcat_2">Notarial Practice</div>
         <div class="product-name">JurisPro</div>
@@ -1149,22 +1209,6 @@
         </div>
         <a href="https://jurisconcept.ca/" target="_blank" class="product-link">
           <span data-i18n="plink_3">Visit jurisconcept.ca</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="product-card reveal">
-        <div class="product-icon">🏢</div>
-        <div class="product-cat" data-i18n="pcat_4">Practice Management</div>
-        <div class="product-name">Acumin Evolution</div>
-        <div class="product-desc" data-i18n="pdesc_4">The evolution of law firm management. A unified workspace combining matter management, time tracking, billing, document management, and client communication — built to grow with your firm.</div>
-        <div class="product-tags">
-          <span class="product-tag" data-i18n="ptag_ae_1">Matter Management</span>
-          <span class="product-tag" data-i18n="ptag_ae_2">Time Tracking</span>
-          <span class="product-tag" data-i18n="ptag_ae_3">Billing</span>
-        </div>
-        <a href="https://acuminevolution.ca/" target="_blank" class="product-link">
-          <span data-i18n="plink_4">Visit acuminevolution.ca</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1213,38 +1257,6 @@
         </div>
         <a href="https://siunik.ca/en/" target="_blank" class="product-link">
           <span data-i18n="plink_7">Visit siunik.ca</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="product-card reveal">
-        <div class="product-icon">🗄️</div>
-        <div class="product-cat" data-i18n="pcat_8">Enterprise Content Management</div>
-        <div class="product-name">Constellio</div>
-        <div class="product-desc" data-i18n="pdesc_8">Enterprise-grade document and content management powered by intelligent search and AI classification. Centralize, find, and govern every document across your organization — at any scale.</div>
-        <div class="product-tags">
-          <span class="product-tag" data-i18n="ptag_co_1">ECM</span>
-          <span class="product-tag" data-i18n="ptag_co_2">AI Search</span>
-          <span class="product-tag" data-i18n="ptag_co_3">Governance</span>
-        </div>
-        <a href="https://www.constellio.com/en/" target="_blank" class="product-link">
-          <span data-i18n="plink_8">Visit constellio.com</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="product-card reveal">
-        <div class="product-icon">💻</div>
-        <div class="product-cat" data-i18n="pcat_9">Digital Experience Platform</div>
-        <div class="product-name">Modyo</div>
-        <div class="product-desc" data-i18n="pdesc_9">A composable frontend platform for building omnichannel digital experiences. Power client portals, self-service tools, and digital origination with microfrontend architecture designed for regulated industries.</div>
-        <div class="product-tags">
-          <span class="product-tag" data-i18n="ptag_mo_1">Client Portal</span>
-          <span class="product-tag" data-i18n="ptag_mo_2">Microfrontend</span>
-          <span class="product-tag" data-i18n="ptag_mo_3">Omnichannel</span>
-        </div>
-        <a href="https://www.modyo.com/" target="_blank" class="product-link">
-          <span data-i18n="plink_9">Visit modyo.com</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1855,8 +1867,10 @@
       ltitle_ab: 'Director, Operations',
       ltitle_jag: 'Director, Sales',
       ltitle_cb: 'Director, IT & Technology',
+      ltitle_dc: 'Director, Corporate Development',
       ltitle_rs: 'Corporate Development',
       ltitle_sb: 'Corporate Development',
+      lbio_dc: 'Veteran M&A operator in legal technology software. Brings extensive experience identifying, evaluating, and closing software acquisitions — with a track record spanning North American legal tech transactions across the Constellation Software ecosystem.',
       lbio_lc: 'Leads the Synaera portfolio across legal tech and LATAM markets. BBA Finance from ESG UQAM; previously Portfolio Leader at Harris Computer overseeing legal and Latin American subsidiaries.',
       lbio_pb: 'Executive Vice President overseeing the legal practice management vertical. DESS Management from HEC Montréal. Drives strategy for Juris Concept, JurisPro, and AliForm across 6,000+ legal professionals.',
       lbio_mb: 'MBA, PMP. Leads the enterprise content and document management vertical. 17+ years in ECM and compliance technology. Oversees Constellio\'s product operations and intelligence roadmap.',
@@ -1873,7 +1887,7 @@
       pcat_1: 'Law Firm Management',
       pcat_2: 'Notarial Practice',
       pcat_3: 'Legal Forms',
-      pcat_4: 'Practice Management',
+      pcat_4: 'Legal Practice Management',
       pcat_5: 'Notary Software',
       pcat_6: 'Notarial Operations',
       pcat_7: 'Bailiff Software',
@@ -1882,16 +1896,16 @@
       pdesc_1: 'Comprehensive practice management software for law firms. Streamline case management, client files, billing, and compliance — all from a single intuitive platform built for Quebec legal professionals.',
       pdesc_2: 'Web-based, fully centralized study management for notaries. Manage deeds, client records, and workflows from anywhere — designed for the modern notarial office with full regulatory compliance.',
       pdesc_3: 'Intelligent legal forms management for law firms and legal departments. Automate document generation, standardize precedents, and reduce manual drafting errors with a smart forms engine.',
-      pdesc_4: 'The evolution of law firm management. A unified workspace combining matter management, time tracking, billing, document management, and client communication — built to grow with your firm.',
+      pdesc_4: 'Canadian legal practice management pioneer since 1974. Dexco\'s AcuminEvolution platform unifies matter management, time tracking, billing, trust accounting, and document management in a single cloud workspace built for Canadian law firms.',
       pdesc_5: 'The definitive practice management solution for notaries. Trust accounting, payroll, invoicing, SURF integration, and cloud-based access — fully compliant with the Quebec Chamber of Notaries.',
       pdesc_6: 'All-in-one office management for high-volume notarial practices. Deed management, client database, customizable invoicing, remote signing, and SURF integration — built for productivity at scale.',
       pdesc_7: 'The complete software suite for Quebec bailiffs (huissiers de justice). JuriSoft, JuriWeb, JuriEDI, and JuriCloud modules cover every aspect of bailiff practice — from study management to web portals.',
       pdesc_8: 'Enterprise-grade document and content management powered by intelligent search and AI classification. Centralize, find, and govern every document across your organization — at any scale.',
-      pdesc_9: 'A composable frontend platform for building omnichannel digital experiences. Power client portals, self-service tools, and digital origination with microfrontend architecture designed for regulated industries.',
+      pdesc_9: 'A composable frontend platform powering digital transformation for banks and regulated industries. Build omnichannel client portals, self-service tools, and digital origination workflows with microfrontend architecture — trusted by leading financial institutions across Latin America.',
       plink_1: 'Visit jurisconcept.ca',
       plink_2: 'Visit JurisPro',
       plink_3: 'Visit jurisconcept.ca',
-      plink_4: 'Visit acuminevolution.ca',
+      plink_4: 'Visit dexco.com',
       plink_5: 'Visit procardex.com',
       plink_6: 'Visit pronotaire.com',
       plink_7: 'Visit siunik.ca',
@@ -1900,12 +1914,12 @@
       ptag_jc_1: 'Case Management', ptag_jc_2: 'Billing', ptag_jc_3: 'Compliance',
       ptag_jp_1: 'Deed Management', ptag_jp_2: 'Web-Based', ptag_jp_3: 'Notaries',
       ptag_af_1: 'Form Automation', ptag_af_2: 'Precedents', ptag_af_3: 'Document Generation',
-      ptag_ae_1: 'Matter Management', ptag_ae_2: 'Time Tracking', ptag_ae_3: 'Billing',
+      ptag_ae_1: 'Matter Management', ptag_ae_2: 'Trust Accounting', ptag_ae_3: 'Cloud',
       ptag_pc_1: 'Trust Accounting', ptag_pc_2: 'SURF Integration', ptag_pc_3: 'Cloud',
       ptag_pn_1: 'Remote Signing', ptag_pn_2: 'Deed Workflow', ptag_pn_3: 'Office Management',
       ptag_si_1: 'Bailiff Practice', ptag_si_2: 'JuriCloud', ptag_si_3: 'Web Portal',
       ptag_co_1: 'ECM', ptag_co_2: 'AI Search', ptag_co_3: 'Governance',
-      ptag_mo_1: 'Client Portal', ptag_mo_2: 'Microfrontend', ptag_mo_3: 'Omnichannel',
+      ptag_mo_1: 'Banking', ptag_mo_2: 'Client Portal', ptag_mo_3: 'Microfrontend',
       acq_label: 'Growth Through Acquisition',
       acq_title: 'Being Acquired by Synaera',
       acq_desc: 'We acquire, operate, and grow exceptional legal tech and document management software businesses — permanently. If you\'ve built something great for the legal ecosystem, we want to talk.',
@@ -2111,8 +2125,10 @@
       ltitle_ab: 'Directrice, Op\u00e9rations',
       ltitle_jag: 'Directeur, Ventes',
       ltitle_cb: 'Directeur, TI et Technologie',
+      ltitle_dc: 'Directeur, D\u00e9veloppement corporatif',
       ltitle_rs: 'D\u00e9veloppement corporatif',
       ltitle_sb: 'D\u00e9veloppement corporatif',
+      lbio_dc: 'Op\u00e9rateur F&A chevronn\u00e9 dans les logiciels de technologie juridique. Apporte une vaste exp\u00e9rience dans l\'identification, l\'\u00e9valuation et la cl\u00f4ture d\'acquisitions logicielles \u2014 avec un bilan couvrant des transactions en technologie juridique nord-am\u00e9ricaine au sein de l\'\u00e9cosyst\u00e8me Constellation Software.',
       lbio_lc: 'Dirige le portefeuille Synaera en technologie juridique et sur les march\u00e9s LATAM. BBA Finance de l\'ESG UQAM\u00a0; anciennement Chef de portefeuille chez Harris Computer, supervisant les filiales juridiques et latino-am\u00e9ricaines.',
       lbio_pb: 'Vice-pr\u00e9sident ex\u00e9cutif supervisant le secteur de la gestion de cabinet juridique. DESS Management de HEC Montr\u00e9al. Pilote la strat\u00e9gie pour Juris Concept, JurisPro et AliForm aupr\u00e8s de plus de 6\u00a0000 professionnels du droit.',
       lbio_mb: 'MBA, PMP. Dirige le secteur de la gestion de contenu d\'entreprise et documentaire. Plus de 17 ans en ECM et en technologie de conformit\u00e9. Supervise les op\u00e9rations produit et la feuille de route de Constellio.',
@@ -2129,7 +2145,7 @@
       pcat_1: 'Gestion de cabinet juridique',
       pcat_2: 'Pratique notariale',
       pcat_3: 'Formulaires juridiques',
-      pcat_4: 'Gestion de cabinet',
+      pcat_4: 'Gestion de cabinet juridique',
       pcat_5: 'Logiciel notarial',
       pcat_6: 'Op\u00e9rations notariales',
       pcat_7: 'Logiciel pour huissiers',
@@ -2138,16 +2154,16 @@
       pdesc_1: 'Logiciel complet de gestion de cabinet pour les firmes d\'avocats. Simplifiez la gestion des dossiers, des clients, de la facturation et de la conformit\u00e9 \u2014 le tout depuis une plateforme intuitive con\u00e7ue pour les juristes qu\u00e9b\u00e9cois.',
       pdesc_2: 'Gestion d\'\u00e9tude enti\u00e8rement centralis\u00e9e et accessible sur le web pour les notaires. G\u00e9rez actes, dossiers clients et flux de travail de partout \u2014 con\u00e7u pour l\'\u00e9tude notariale moderne avec conformit\u00e9 r\u00e9glementaire compl\u00e8te.',
       pdesc_3: 'Gestion intelligente des formulaires juridiques pour cabinets d\'avocats et services juridiques. Automatisez la production de documents, standardisez les pr\u00e9c\u00e9dents et r\u00e9duisez les erreurs de r\u00e9daction avec un moteur de formulaires intelligent.',
-      pdesc_4: 'L\'\u00e9volution de la gestion de cabinet. Un espace de travail unifi\u00e9 combinant gestion des dossiers, suivi du temps, facturation, gestion documentaire et communication client \u2014 con\u00e7u pour \u00e9voluer avec votre cabinet.',
+      pdesc_4: 'Pionnier de la gestion de cabinets juridiques au Canada depuis 1974. La plateforme AcuminEvolution de Dexco regroupe la gestion des dossiers, le suivi du temps, la facturation, la comptabilit\u00e9 en fid\u00e9icommis et la gestion documentaire dans un espace infonuagique unifi\u00e9 pour les cabinets d\'avocats canadiens.',
       pdesc_5: 'La solution de gestion de pratique incontournable pour les notaires. Comptabilit\u00e9 en fid\u00e9icommis, paie, facturation, int\u00e9gration SURF et acc\u00e8s infonuagique \u2014 enti\u00e8rement conforme aux exigences de la Chambre des notaires du Qu\u00e9bec.',
       pdesc_6: 'Gestion de bureau tout-en-un pour les \u00e9tudes notariales \u00e0 fort volume. Gestion des actes, base de donn\u00e9es clients, facturation personnalisable, signature \u00e0 distance et int\u00e9gration SURF \u2014 con\u00e7u pour la productivit\u00e9 \u00e0 grande \u00e9chelle.',
       pdesc_7: 'La suite logicielle compl\u00e8te pour les huissiers de justice qu\u00e9b\u00e9cois. Les modules JuriSoft, JuriWeb, JuriEDI et JuriCloud couvrent chaque aspect de la pratique \u2014 de la gestion d\'\u00e9tude aux portails web.',
       pdesc_8: 'Gestion documentaire et de contenu de niveau entreprise, propuls\u00e9e par la recherche intelligente et la classification par IA. Centralisez, retrouvez et gouvernez chaque document dans votre organisation \u2014 \u00e0 toute \u00e9chelle.',
-      pdesc_9: 'Une plateforme frontend composable pour cr\u00e9er des exp\u00e9riences num\u00e9riques omnicanales. Alimentez les portails clients, les outils en libre-service et la souscription num\u00e9rique avec une architecture microfrontend con\u00e7ue pour les secteurs r\u00e9glement\u00e9s.',
+      pdesc_9: 'Une plateforme frontend composable au c\u0153ur de la transformation num\u00e9rique des banques et des industries r\u00e9glement\u00e9es. Cr\u00e9ez des portails clients omnicanaux, des outils en libre-service et des flux de souscription num\u00e9rique avec une architecture microfrontend \u2014 approuv\u00e9e par les principales institutions financi\u00e8res d\'Am\u00e9rique latine.',
       plink_1: 'Visiter jurisconcept.ca',
       plink_2: 'Visiter JurisPro',
       plink_3: 'Visiter jurisconcept.ca',
-      plink_4: 'Visiter acuminevolution.ca',
+      plink_4: 'Visiter dexco.com',
       plink_5: 'Visiter procardex.com',
       plink_6: 'Visiter pronotaire.com',
       plink_7: 'Visiter siunik.ca',
@@ -2156,12 +2172,12 @@
       ptag_jc_1: 'Gestion des dossiers', ptag_jc_2: 'Facturation', ptag_jc_3: 'Conformit\u00e9',
       ptag_jp_1: 'Gestion des actes', ptag_jp_2: 'Web', ptag_jp_3: 'Notaires',
       ptag_af_1: 'Automatisation', ptag_af_2: 'Pr\u00e9c\u00e9dents', ptag_af_3: 'G\u00e9n\u00e9ration de documents',
-      ptag_ae_1: 'Gestion des dossiers', ptag_ae_2: 'Suivi du temps', ptag_ae_3: 'Facturation',
+      ptag_ae_1: 'Gestion des dossiers', ptag_ae_2: 'Comptabilit\u00e9 en fid\u00e9icommis', ptag_ae_3: 'Infonuagique',
       ptag_pc_1: 'Comptabilit\u00e9 en fid\u00e9icommis', ptag_pc_2: 'Int\u00e9gration SURF', ptag_pc_3: 'Infonuagique',
       ptag_pn_1: 'Signature \u00e0 distance', ptag_pn_2: 'Flux des actes', ptag_pn_3: 'Gestion de bureau',
       ptag_si_1: 'Pratique d\'huissier', ptag_si_2: 'JuriCloud', ptag_si_3: 'Portail web',
       ptag_co_1: 'ECM', ptag_co_2: 'Recherche IA', ptag_co_3: 'Gouvernance',
-      ptag_mo_1: 'Portail client', ptag_mo_2: 'Microfrontend', ptag_mo_3: 'Omnicanal',
+      ptag_mo_1: 'Banques', ptag_mo_2: 'Portail client', ptag_mo_3: 'Microfrontend',
       acq_label: 'Croissance par acquisition',
       acq_title: '\u00catre acquis par Synaera',
       acq_desc: 'Nous acqu\u00e9rons, op\u00e9rons et d\u00e9veloppons des entreprises logicielles exceptionnelles en technologie juridique et en gestion documentaire \u2014 de fa\u00e7on permanente. Si vous avez b\u00e2ti quelque chose d\'exceptionnel pour l\'\u00e9cosyst\u00e8me juridique, nous voulons vous parler.',
