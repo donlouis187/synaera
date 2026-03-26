@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>About — Synaera</title>
+  <link rel="icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ─── Navigation ────────────────────────────────────────────────── -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo-light.png" alt="Synaera" height="32" id="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-page="index.html" data-i18n="nav_home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" data-page="about.html" class="nav-active" data-i18n="nav_about">About <span class="nav-chevron">&#9660;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html#who">Who We Are</a>
+          <a href="about.html#mission">Our Mission</a>
+          <a href="about.html#values">Our Values</a>
+          <a href="about.html#group">Our Group</a>
+          <a href="about.html#team">Team</a>
+          <div class="divider-line"></div>
+          <a href="https://www.harriscomputer.com/" target="_blank" class="ext-link">Harris Computer</a>
+          <a href="https://www.csisoftware.com/" target="_blank" class="ext-link">Constellation Software</a>
+        </div>
+      </li>
+      <li><a href="acquisition.html" data-page="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+      <li><a href="portfolio.html" data-page="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+      <li><a href="contact.html" data-page="contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li class="lang-switcher">
+        <button class="lang-select-btn" onclick="toggleLangMenu(this)">EN <span class="lang-chevron">&#9660;</span></button>
+        <div class="lang-select-menu">
+          <button data-lang="en" onclick="setLang('en')"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+          <button data-lang="fr" onclick="setLang('fr')"><span class="lang-code">FR</span><span class="lang-name">Fran&#231;ais</span></button>
+          <button data-lang="es" onclick="setLang('es')"><span class="lang-code">ES</span><span class="lang-name">Espa&#241;ol</span></button>
+          <button data-lang="pt" onclick="setLang('pt')"><span class="lang-code">PT</span><span class="lang-name">Portugu&#234;s BR</span></button>
+        </div>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── Page Hero ─────────────────────────────────────────────────── -->
+<div class="page-hero" style="padding-top:7rem;">
+  <div class="container">
+    <h1>About Synaera</h1>
+    <p>Empowering the legal sector through long-term growth and strategic acquisitions</p>
+  </div>
+</div>
+
+<!-- ─── Who We Are ───────────────────────────────────────────────── -->
+<section id="who" class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-diagram">
+          <div class="about-diag-item">
+            <div class="icon">🏛️</div>
+            <div class="lbl" data-i18n="diag_1_lbl">Founded</div>
+            <div class="val" data-i18n="diag_1_val">Quebec, Canada</div>
+          </div>
+          <div class="about-diag-item">
+            <div class="icon">🌐</div>
+            <div class="lbl" data-i18n="diag_2_lbl">Coverage</div>
+            <div class="val" data-i18n="diag_2_val">National &amp; Global</div>
+          </div>
+          <div class="about-diag-item">
+            <div class="icon">💼</div>
+            <div class="lbl" data-i18n="diag_3_lbl">Verticals</div>
+            <div class="val" data-i18n="diag_3_val">Legal, Enterprise</div>
+          </div>
+          <div class="about-diag-item">
+            <div class="icon">🚀</div>
+            <div class="lbl" data-i18n="diag_4_lbl">Delivery</div>
+            <div class="val" data-i18n="diag_4_val">Cloud &amp; On-Premise</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-label" data-i18n="about_label">Who We Are</div>
+        <h2 class="section-title" data-i18n-html="about_title">A Group Built for the<br />Legal Ecosystem</h2>
+        <div class="divider"></div>
+        <p class="section-desc" style="margin-bottom:1.5rem;" data-i18n="about_desc">
+          Synaera is the holding group behind nine specialized software platforms serving the full spectrum of the legal and document management landscape. From solo notary practices to large law firms and enterprise document repositories, our portfolio delivers tailored solutions at every scale.
+        </p>
+        <p class="section-desc" style="margin-bottom:1.5rem;">
+          We are a business unit of <strong>Harris Computer</strong>, itself a subsidiary of <strong>Constellation Software Inc.</strong> (TSX: CSU) — one of the world's foremost acquirers of vertical market software businesses with over 800 companies across 40+ years of operations in 100+ countries.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🎯</div>
+            <div class="about-feature-text">
+              <h4 data-i18n="feat_1_title">Deep Domain Expertise</h4>
+              <p data-i18n="feat_1_desc">Decades of experience building software specifically for Quebec and Canadian legal professionals, with an intimate understanding of regulatory requirements.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🔗</div>
+            <div class="about-feature-text">
+              <h4 data-i18n="feat_2_title">Integrated Ecosystem</h4>
+              <p data-i18n="feat_2_desc">Our products are designed to work together — sharing data, workflows, and infrastructure across practice management, document management, and client portals.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">📈</div>
+            <div class="about-feature-text">
+              <h4 data-i18n="feat_3_title">Long-Term Partnership</h4>
+              <p data-i18n="feat_3_desc">We don't just sell software — we commit to the long-term success of our clients with continuous product investment, training, and responsive support.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Our Mission ───────────────────────────────────────────────── -->
+<section id="mission" class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="mission-statement reveal">
+      <div class="section-label" style="text-align:center;display:block;margin-bottom:.9rem" data-i18n="mission_label">Our Mission</div>
+      <blockquote data-i18n-html="mission_quote">
+        We <em>buy, build, and operate</em> vertical market software companies in legal tech, document management, and financial management — with an ownership horizon measured in <em>decades, not quarters.</em>
+      </blockquote>
+    </div>
+    <div class="mission-pillars">
+      <div class="mission-pillar reveal">
+        <div class="mission-pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5" fill="rgba(27,88,100,0.08)"/>
+            <path d="M8 14h12M14 8v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="pillar_buy">Buy</h3>
+        <p data-i18n="pillar_buy_desc">We acquire profitable, well-loved vertical software businesses with loyal user bases and strong domain fit. We move decisively, close with certainty, and hold permanently — no flipping, no fund cycles.</p>
+      </div>
+      <div class="mission-pillar reveal">
+        <div class="mission-pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="5" y="15" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="rgba(27,88,100,0.08)"/>
+            <rect x="15" y="15" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="rgba(27,88,100,0.08)"/>
+            <rect x="10" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="rgba(27,88,100,0.12)"/>
+          </svg>
+        </div>
+        <h3 data-i18n="pillar_build">Build</h3>
+        <p data-i18n="pillar_build_desc">We invest continuously in product, people, and infrastructure. Our portfolio companies benefit from shared R&amp;D, a common compliance framework, and the operational depth of a growing group — not just capital.</p>
+      </div>
+      <div class="mission-pillar reveal">
+        <div class="mission-pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="4" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M14 4v4M14 20v4M4 14h4M20 14h4M7 7l3 3M18 18l3 3M21 7l-3 3M10 18l-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="pillar_operate">Operate</h3>
+        <p data-i18n="pillar_operate_desc">We are operators first. With deep domain expertise in legal tech and document management, we coach leadership, optimize go-to-market, and unlock cross-portfolio synergies that independents simply can't access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Our Values ────────────────────────────────────────────────── -->
+<section id="values" class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="values_label">Harris Core Values</div>
+      <h2 class="section-title" data-i18n="values_title">Our Values</h2>
+      <div class="divider"></div>
+      <p class="section-desc" data-i18n="values_desc">The principles that guide how we operate, invest, and serve our portfolio companies and customers.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal"><p data-i18n="value_1">Respect of the Individual</p></div>
+      <div class="value-card reveal"><p data-i18n="value_2">Discipline — Unwavering &amp; Relentless Focus</p></div>
+      <div class="value-card reveal"><p data-i18n="value_3">Solution, Not Problem / Common Sense</p></div>
+      <div class="value-card reveal"><p data-i18n="value_4">Dream Realization</p></div>
+      <div class="value-card reveal"><p data-i18n="value_5">Bad News Does Not Get Better With Time</p></div>
+      <div class="value-card reveal"><p data-i18n="value_6">Communicate &amp; Share Knowledge</p></div>
+      <div class="value-card reveal"><p data-i18n="value_7">Understanding / Learning</p></div>
+      <div class="value-card reveal"><p data-i18n="value_8">Empowerment at the Point of Contact</p></div>
+      <div class="value-card reveal"><p data-i18n="value_9">Accountability / Responsibility / Ownership</p></div>
+      <div class="value-card reveal"><p data-i18n="value_10">Understand Reality / Making Difficult Decisions</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Our Group ─────────────────────────────────────────────────── -->
+<section id="group" class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="group_label">Our Corporate Family</div>
+      <h2 class="section-title" data-i18n="group_title">Our Group</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="group-card reveal">
+      <div>
+        <div style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.5rem;font-weight:700;" data-i18n="group_eyebrow">Constellation Software Inc. (TSX: CSU)</div>
+        <h3 style="font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:.75rem;" data-i18n="group_h3">The World's Premier Vertical Software Acquirer</h3>
+      </div>
+      <p data-i18n="group_desc_1">Constellation Software Inc. is one of the largest and most respected acquirers of vertical market software businesses in the world. Founded in 1995 and headquartered in Toronto, CSI has built a decentralized portfolio of hundreds of software businesses serving niche markets across six continents — with a philosophy of permanent ownership, operational autonomy, and long-term value creation.</p>
+      <p data-i18n="group_desc_2">Harris Computer is one of CSI's six operating groups, specializing in software for legal, government, healthcare, and public sector markets. Synaera operates as a business unit within Harris, focusing exclusively on legal technology and document management.</p>
+      <div class="group-stats">
+        <div class="group-stat">
+          <div class="num">800+</div>
+          <div class="lbl" data-i18n="group_stat_1_lbl">Businesses Globally</div>
+        </div>
+        <div class="group-stat">
+          <div class="num">40+</div>
+          <div class="lbl" data-i18n="group_stat_2_lbl">Years of Operations</div>
+        </div>
+        <div class="group-stat">
+          <div class="num">100+</div>
+          <div class="lbl" data-i18n="group_stat_3_lbl">Countries Served</div>
+        </div>
+      </div>
+      <div class="group-links">
+        <a href="https://www.harriscomputer.com/" target="_blank">&#127968; Harris Computer</a>
+        <a href="https://www.csisoftware.com/" target="_blank">&#127758; Constellation Software</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Team ──────────────────────────────────────────────────────── -->
+<section id="team" class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="leadership_label">The Team</div>
+      <h2 class="section-title" data-i18n="leadership_title">Leadership</h2>
+      <div class="divider"></div>
+      <p class="section-desc" data-i18n="leadership_desc">Operators, investors, and domain experts united by a single mission — building the defining platform for legal technology and document management.</p>
+    </div>
+    <div class="leadership-grid">
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#1b5864)"><img src="images/team/louis.jpg" alt="Louis Clément" onerror="this.parentElement.innerHTML='LC'"></div>
+        <div class="leader-name">Louis Clément</div>
+        <div class="leader-title" data-i18n="ltitle_lc">Portfolio Leader</div>
+        <div class="leader-bio" data-i18n="lbio_lc">Leads the Synaera portfolio across legal tech and LATAM markets. BBA Finance from ESG UQAM; previously Portfolio Leader at Harris Computer overseeing legal and Latin American subsidiaries.</div>
+        <a class="leader-linkedin" href="https://ca.linkedin.com/in/louis-cl%C3%A9ment-571a9857/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a7a8c,#2a7a8c)"><img src="images/team/pierre.jpg" alt="Pierre Bilodeau" onerror="this.parentElement.innerHTML='PB'"></div>
+        <div class="leader-name">Pierre Bilodeau</div>
+        <div class="leader-title" data-i18n="ltitle_pb">EVP Legal</div>
+        <div class="leader-bio" data-i18n="lbio_pb">Executive Vice President overseeing the legal practice management vertical. DESS Management from HEC Montréal. Drives strategy for Juris Concept, JurisPro, and AliForm across 6,000+ legal professionals.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/pierre-bilodeau-21730083/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#1b5864,#2a7a8c)">MB</div>
+        <div class="leader-name">Mhamed Braham</div>
+        <div class="leader-title" data-i18n="ltitle_mb">EVP Documents</div>
+        <div class="leader-bio" data-i18n="lbio_mb">MBA, PMP. Leads the enterprise content and document management vertical. 17+ years in ECM and compliance technology. Oversees Constellio's product operations and intelligence roadmap.</div>
+        <a class="leader-linkedin" href="https://ca.linkedin.com/in/mhamed-braham" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#0a2a1e,#145c3a)"><img src="images/team/mark.jpg" alt="Mark Bonnell" onerror="this.parentElement.innerHTML='MB'"></div>
+        <div class="leader-name">Mark Bonnell</div>
+        <div class="leader-title" data-i18n="ltitle_mbu">EVP Banking Solutions</div>
+        <div class="leader-bio" data-i18n="lbio_mbu">Leads Synaera's Banking Solutions vertical in Latin America. Oversees the Modyo platform's strategy, product growth, partnerships, and distribution across financial institutions throughout the LATAM region.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/markbonnell/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#1a0a2a,#5a1a8a)"><img src="images/team/anne.jpg" alt="Anne-Frédérique Boulet" onerror="this.parentElement.innerHTML='AB'"></div>
+        <div class="leader-name">Anne-Frédérique Boulet</div>
+        <div class="leader-title" data-i18n="ltitle_ab">Director, Operations</div>
+        <div class="leader-bio" data-i18n="lbio_ab">Oversees operational delivery across the legal software portfolio. Progressed from project management to service leadership at Juris Concept, bringing deep process and client success expertise.</div>
+        <a class="leader-linkedin" href="https://ca.linkedin.com/in/afbouletafb" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#0a1a2a,#1a4a6e)"><img src="images/team/jean.jpg" alt="Jean Alexandre Goulet" onerror="this.parentElement.innerHTML='JG'"></div>
+        <div class="leader-name">Jean Alexandre Goulet</div>
+        <div class="leader-title" data-i18n="ltitle_jag">Director, Sales</div>
+        <div class="leader-bio" data-i18n="lbio_jag">Drives revenue growth and go-to-market strategy across the portfolio. Brings hands-on experience in legal software sales cycles, client acquisition, and account development for Quebec's legal market.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/jean-alexandre-goulet/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#1b5864)">CB</div>
+        <div class="leader-name">Carl Bellavance</div>
+        <div class="leader-title" data-i18n="ltitle_cb">Director, IT &amp; Technology</div>
+        <div class="leader-bio" data-i18n="lbio_cb">AWS Certified Cloud Practitioner. Leads cloud infrastructure strategy, security, and IT architecture across the portfolio. Brings deep expertise in network engineering and cloud migration from Juris Concept.</div>
+        <a class="leader-linkedin" href="https://ca.linkedin.com/in/carl-bellavance" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a1a0a,#7a4a10)"><img src="images/team/xenia.jpg" alt="Xenia Mihalachi" onerror="this.parentElement.innerHTML='XM'"></div>
+        <div class="leader-name">Xenia Mihalachi</div>
+        <div class="leader-title" data-i18n="ltitle_xm">Financial Analyst</div>
+        <div class="leader-bio" data-i18n="lbio_xm">CFA. M&amp;A Manager with deep expertise in financial modelling, deal evaluation, and portfolio company integration. Brings rigorous buy-side discipline to Synaera's acquisition pipeline.</div>
+        <a class="leader-linkedin" href="https://ca.linkedin.com/in/xenia-mihalachi-cfa-152635181" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#2a7a8c)"><img src="images/team/darren.jpg" alt="Darren Cox" onerror="this.parentElement.innerHTML='DC'"></div>
+        <div class="leader-name">Darren Cox</div>
+        <div class="leader-title" data-i18n="ltitle_dc">Director, Corporate Development</div>
+        <div class="leader-bio" data-i18n="lbio_dc">Veteran M&amp;A operator in legal technology software. Brings extensive experience identifying, evaluating, and closing software acquisitions — with a track record spanning North American legal tech transactions across the Constellation Software ecosystem.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/darren-cox-a44273a7/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#1a0a0a,#7a2020)"><img src="images/team/rachael.jpg" alt="Rachael Swain" onerror="this.parentElement.innerHTML='RS'"></div>
+        <div class="leader-name">Rachael Swain</div>
+        <div class="leader-title" data-i18n="ltitle_rs">Corporate Development</div>
+        <div class="leader-bio" data-i18n="lbio_rs">Supports Synaera's acquisition pipeline and portfolio growth initiatives. Focuses on sourcing, evaluating, and executing transactions in the legal tech and document management software space.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/rachaelswain/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#1a2a4a,#2a4a8a)">AA</div>
+        <div class="leader-name">André Aguilar</div>
+        <div class="leader-title" data-i18n="ltitle_aa">Corporate Development</div>
+        <div class="leader-bio" data-i18n="lbio_aa">Supports Synaera's corporate development initiatives with a focus on Latin American markets. Brings expertise in business development, partnerships, and strategic growth across legal tech and financial technology.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/andr%C3%A9s-aguilar-leiton-864413124/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a1a4a,#5a3a8a)">LE</div>
+        <div class="leader-name">Lélis Espartel</div>
+        <div class="leader-title" data-i18n="ltitle_le">Corporate Development</div>
+        <div class="leader-bio" data-i18n="lbio_le">Drives corporate development strategy and deal execution for Synaera's LATAM expansion. Contributes to sourcing, evaluating, and closing acquisitions across Latin American software markets.</div>
+        <a class="leader-linkedin" href="https://www.linkedin.com/in/lelisespartel/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="leader-card reveal">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,#0a1a0a,#1a5c2a)"><img src="images/team/santiago.jpg" alt="Santiago Berríos Vigneaux" onerror="this.parentElement.innerHTML='SB'"></div>
+        <div class="leader-name">Santiago Berríos Vigneaux</div>
+        <div class="leader-title" data-i18n="ltitle_sb">Corporate Development</div>
+        <div class="leader-bio" data-i18n="lbio_sb">Drives Synaera's LATAM-focused corporate development strategy. Identifies acquisition targets, manages regional partnerships, and supports cross-border deal execution across Latin American markets.</div>
+        <a class="leader-linkedin" href="https://cl.linkedin.com/in/santiago-ignacio-berr%C3%ADos-vigneaux-89405a185" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-i18n="linkedin_label">LinkedIn</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><img src="logo-light.png" alt="Synaera" style="height:40px;display:block;" /></a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Empowering legal software companies to grow for the long term.</p>
+        <p style="margin-top:.75rem;font-size:.8rem;color:rgba(255,255,255,.5)">info@synaera.ca</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_nav_title">Navigation</div>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav_about_simple">About Us</a></li>
+          <li><a href="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+          <li><a href="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_group_title">Our Group</div>
+        <ul>
+          <li><a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a></li>
+          <li><a href="https://www.csisoftware.com/" target="_blank">Constellation Software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_portfolio_title">Portfolio</div>
+        <ul>
+          <li><a href="https://jurisconcept.ca/" target="_blank">JurisConcept</a></li>
+          <li><a href="https://www.constellio.com/" target="_blank">Constellio</a></li>
+          <li><a href="https://www.modyo.com/" target="_blank">Modyo</a></li>
+          <li><a href="https://dexco.com/" target="_blank">Dexco</a></li>
+          <li><a href="https://acuminevolution.ca/" target="_blank">AcuminEvolution</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">&copy; 2025 Synaera. All rights reserved.</span>
+      <span>A <a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a> business unit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

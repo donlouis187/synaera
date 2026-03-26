@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Contact — Synaera</title>
+  <link rel="icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ─── Navigation ────────────────────────────────────────────────── -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo-light.png" alt="Synaera" height="32" id="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-page="index.html" data-i18n="nav_home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" data-page="about.html" data-i18n="nav_about">About <span class="nav-chevron">&#9660;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html#who">Who We Are</a>
+          <a href="about.html#mission">Our Mission</a>
+          <a href="about.html#values">Our Values</a>
+          <a href="about.html#group">Our Group</a>
+          <a href="about.html#team">Team</a>
+          <div class="divider-line"></div>
+          <a href="https://www.harriscomputer.com/" target="_blank" class="ext-link">Harris Computer</a>
+          <a href="https://www.csisoftware.com/" target="_blank" class="ext-link">Constellation Software</a>
+        </div>
+      </li>
+      <li><a href="acquisition.html" data-page="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+      <li><a href="portfolio.html" data-page="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+      <li><a href="contact.html" data-page="contact.html" class="nav-active" data-i18n="nav_contact">Contact</a></li>
+      <li class="lang-switcher">
+        <button class="lang-select-btn" onclick="toggleLangMenu(this)">EN <span class="lang-chevron">&#9660;</span></button>
+        <div class="lang-select-menu">
+          <button data-lang="en" onclick="setLang('en')"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+          <button data-lang="fr" onclick="setLang('fr')"><span class="lang-code">FR</span><span class="lang-name">Fran&#231;ais</span></button>
+          <button data-lang="es" onclick="setLang('es')"><span class="lang-code">ES</span><span class="lang-name">Espa&#241;ol</span></button>
+          <button data-lang="pt" onclick="setLang('pt')"><span class="lang-code">PT</span><span class="lang-name">Portugu&#234;s BR</span></button>
+        </div>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── Page Hero ─────────────────────────────────────────────────── -->
+<div class="page-hero" style="padding-top:7rem;">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>Let's start the conversation</p>
+  </div>
+</div>
+
+<!-- ─── Contact Layout ────────────────────────────────────────────── -->
+<section class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Form -->
+      <div class="contact-form-wrap reveal">
+        <div class="section-label" data-i18n="contact_label">Get in Touch</div>
+        <h2 style="font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:1.5rem;" data-i18n-html="contact_title">Let's Talk About<br />Your Needs</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
+          <div class="form-group">
+            <label data-i18n="form_fname">Full Name</label>
+            <input type="text" name="name" placeholder="Marie Tremblay" required data-i18n-placeholder="ph_fname" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_org">Company Name</label>
+            <input type="text" name="company" placeholder="Your firm or company" data-i18n-placeholder="ph_org" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_email">Email Address</label>
+            <input type="email" name="email" placeholder="marie@lawfirm.ca" required data-i18n-placeholder="ph_email" />
+          </div>
+          <div class="form-group">
+            <label>Phone (optional)</label>
+            <input type="tel" name="phone" placeholder="+1 (514) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_msg">Message</label>
+            <textarea name="message" placeholder="Tell us how we can help…" required data-i18n-placeholder="ph_msg"></textarea>
+          </div>
+          <button type="submit" class="form-submit" data-i18n="form_submit">Send Message</button>
+        </form>
+        <div class="form-success">&#10003; Thank you! We'll be in touch shortly.</div>
+      </div>
+
+      <!-- Info -->
+      <div class="contact-info-block reveal">
+
+        <div class="contact-info-item">
+          <h4 data-i18n="citem_2">General Inquiries</h4>
+          <a href="mailto:info@synaera.ca">info@synaera.ca</a>
+        </div>
+
+        <div class="contact-info-item">
+          <h4 data-i18n="citem_3">Acquisitions</h4>
+          <a href="mailto:acquisitions@synaera.ca">acquisitions@synaera.ca</a>
+        </div>
+
+        <div class="contact-info-item">
+          <h4 data-i18n="citem_1">Headquarters</h4>
+          <p style="font-size:1rem;color:var(--text);font-weight:600;">Quebec, Canada</p>
+        </div>
+
+        <div class="contact-info-item">
+          <h4>Our Team</h4>
+          <div class="contact-team-cards">
+
+            <div class="contact-team-card">
+              <div class="ct-avatar">
+                <img src="images/team/louis.jpg" alt="Louis Clément" onerror="this.parentElement.innerHTML='LC'">
+              </div>
+              <div class="ct-info">
+                <div class="ct-name">Louis Clément</div>
+                <div class="ct-title" data-i18n="ltitle_lc">Portfolio Leader</div>
+                <a href="mailto:lclement@harriscomputer.com" class="ct-email">lclement@harriscomputer.com</a>
+              </div>
+            </div>
+
+            <div class="contact-team-card">
+              <div class="ct-avatar">
+                <img src="images/team/rachael.jpg" alt="Rachael Swain" onerror="this.parentElement.innerHTML='RS'">
+              </div>
+              <div class="ct-info">
+                <div class="ct-name">Rachael Swain</div>
+                <div class="ct-title" data-i18n="ltitle_rs">Corporate Development</div>
+                <a href="mailto:rachael.swain@harriscomputer.com" class="ct-email">rachael.swain@harriscomputer.com</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="contact-info-item" style="background:var(--navy);border-radius:16px;padding:1.75rem;">
+          <h4 style="color:rgba(255,255,255,.5);margin-bottom:.75rem;">Part of the Harris Family</h4>
+          <p style="color:rgba(255,255,255,.75);font-size:.875rem;line-height:1.7;margin-bottom:1rem;">Synaera is a business unit of Harris Computer, a subsidiary of Constellation Software Inc. (TSX: CSU).</p>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+            <a href="https://www.harriscomputer.com/" target="_blank" style="font-size:.8rem;font-weight:700;color:var(--slate);text-decoration:underline;text-underline-offset:3px;">harriscomputer.com ↗</a>
+            <a href="https://www.csisoftware.com/" target="_blank" style="font-size:.8rem;font-weight:700;color:var(--slate);text-decoration:underline;text-underline-offset:3px;">csisoftware.com ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><img src="logo-light.png" alt="Synaera" style="height:40px;display:block;" /></a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Empowering legal software companies to grow for the long term.</p>
+        <p style="margin-top:.75rem;font-size:.8rem;color:rgba(255,255,255,.5)">info@synaera.ca</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_nav_title">Navigation</div>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav_about_simple">About Us</a></li>
+          <li><a href="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+          <li><a href="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_group_title">Our Group</div>
+        <ul>
+          <li><a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a></li>
+          <li><a href="https://www.csisoftware.com/" target="_blank">Constellation Software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_portfolio_title">Portfolio</div>
+        <ul>
+          <li><a href="https://jurisconcept.ca/" target="_blank">JurisConcept</a></li>
+          <li><a href="https://www.constellio.com/" target="_blank">Constellio</a></li>
+          <li><a href="https://www.modyo.com/" target="_blank">Modyo</a></li>
+          <li><a href="https://dexco.com/" target="_blank">Dexco</a></li>
+          <li><a href="https://acuminevolution.ca/" target="_blank">AcuminEvolution</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">&copy; 2025 Synaera. All rights reserved.</span>
+      <span>A <a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a> business unit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

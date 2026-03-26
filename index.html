@@ -4,740 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Synaera — Legal Tech & Document Management Group</title>
+  <title>Synaera — Legal Tech &amp; Document Management Group</title>
+  <link rel="icon" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    /* ── Reset & Tokens ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:    #012c36;
-      --navy2:   #1b5864;
-      --navy3:   #2a7a8c;
-      --gold:    #1b5864;
-      --gold2:   #2a7a8c;
-      --slate:   #7ab8c8;
-      --light:   #f0f8fc;
-      --white:   #FFFFFF;
-      --text:    #012c36;
-      --muted:   #3d7a8a;
-      --border:  rgba(27,88,100,.18);
-      --radius:  12px;
-      --shadow:  0 4px 32px rgba(1,44,54,.12);
-      --trans:   .3s cubic-bezier(.4,0,.2,1);
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-
-    /* ── Password Gate ──────────────────────────────────────────────── */
-    #gate {
-      position: fixed; inset: 0; z-index: 9999;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column;
-      transition: opacity .6s ease, visibility .6s ease;
-    }
-    #gate.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    #gate .gate-logo {
-      margin-bottom: 2.5rem;
-      display: flex; flex-direction: column; align-items: center; gap: .5rem;
-    }
-    #gate .gate-logo .wordmark {
-      font-size: 2.2rem; font-weight: 800; letter-spacing: -.02em; color: var(--white);
-    }
-    #gate .gate-logo .wordmark span { color: var(--gold); }
-    #gate .gate-logo .sub { font-size: .75rem; letter-spacing: .25em; text-transform: uppercase; color: var(--slate); }
-    #gate-box {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(27,88,100,.2);
-      backdrop-filter: blur(24px);
-      border-radius: 20px;
-      padding: 2.5rem 3rem;
-      width: min(420px, 90vw);
-      text-align: center;
-    }
-    #gate-box h2 { color: var(--white); font-size: 1.15rem; font-weight: 600; margin-bottom: .4rem; }
-    #gate-box p { color: var(--slate); font-size: .875rem; margin-bottom: 1.75rem; }
-    #gate-input {
-      width: 100%;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(27,88,100,.25);
-      border-radius: 10px;
-      padding: .875rem 1.1rem;
-      color: var(--white);
-      font-size: 1rem; font-family: inherit; letter-spacing: .15em;
-      outline: none;
-      text-align: center;
-      transition: border-color var(--trans);
-    }
-    #gate-input::placeholder { letter-spacing: .08em; color: rgba(255,255,255,.25); }
-    #gate-input:focus { border-color: var(--gold); }
-    #gate-btn {
-      margin-top: 1rem; width: 100%;
-      background: #1b5864; border: none; border-radius: 10px;
-      padding: .875rem; color: var(--white); font-size: .95rem; font-weight: 700;
-      font-family: inherit; cursor: pointer; letter-spacing: .03em;
-      transition: background var(--trans), transform var(--trans);
-    }
-    #gate-btn:hover { background: #2a7a8c; transform: translateY(-1px); }
-    #gate-error { color: #F87171; font-size: .8rem; margin-top: .75rem; min-height: 1.2em; }
-
-    /* ── Nav ────────────────────────────────────────────────────────── */
-    #nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 5%;
-      transition: background var(--trans), box-shadow var(--trans);
-    }
-    #nav.scrolled {
-      background: rgba(1,44,54,.95);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 2px 24px rgba(0,0,0,.3);
-    }
-    .nav-logo {
-
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a {
-      color: rgba(255,255,255,.75); font-size: .875rem; font-weight: 500;
-      letter-spacing: .02em; transition: color var(--trans);
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      background: #1b5864; color: var(--white) !important;
-      padding: .55rem 1.35rem; border-radius: 8px; font-weight: 700 !important;
-      transition: background var(--trans), transform var(--trans) !important;
-    }
-    .nav-cta:hover { background: #2a7a8c !important; transform: translateY(-1px); }
-    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--trans); }
-
-    /* ── Hero ───────────────────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 55%, #0F2D55 100%);
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding: 7rem 5% 5rem;
-    }
-    #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 65% 40%, rgba(27,88,100,.08) 0%, transparent 70%);
-    }
-    .hero-grid-lines {
-      position: absolute; inset: 0; opacity: .04;
-      background-image:
-        linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(27,88,100,.12); border: 1px solid rgba(27,88,100,.3);
-      border-radius: 50px; padding: .4rem 1rem;
-      font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--gold); font-weight: 600; margin-bottom: 1.5rem;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: block; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--gold);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
-    .hero-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      line-height: 1.15; color: var(--white); margin-bottom: 1.5rem;
-      font-weight: 800;
-    }
-    .hero-title .accent { color: var(--gold); }
-    .hero-desc {
-      color: rgba(255,255,255,.65); font-size: 1.05rem; line-height: 1.8;
-      margin-bottom: 2.5rem; max-width: 520px;
-    }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: #1b5864; color: var(--white);
-      padding: .85rem 2rem; border-radius: 10px; font-weight: 700; font-size: .95rem;
-      transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
-      box-shadow: 0 4px 20px rgba(1,44,54,.35);
-    }
-    .btn-primary:hover { background: #2a7a8c; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(1,44,54,.45); }
-    .btn-outline {
-      border: 1.5px solid rgba(255,255,255,.3); color: var(--white);
-      padding: .85rem 2rem; border-radius: 10px; font-weight: 600; font-size: .95rem;
-      transition: border-color var(--trans), background var(--trans), transform var(--trans);
-    }
-    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.06); transform: translateY(-2px); }
-    .hero-stats {
-      display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-    .hero-stat .num { font-size: 2rem; font-weight: 800; color: var(--gold); }
-    .hero-stat .lbl { font-size: .78rem; color: rgba(255,255,255,.5); letter-spacing: .06em; text-transform: uppercase; margin-top: .1rem; }
-    .hero-visual {
-      display: flex; flex-direction: column; gap: 1.2rem; position: relative;
-    }
-    .hero-card {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(27,88,100,.15);
-      backdrop-filter: blur(12px);
-      border-radius: 16px; padding: 1.4rem 1.6rem;
-      transition: transform var(--trans), border-color var(--trans);
-    }
-    .hero-card:hover { transform: translateX(-6px); border-color: rgba(27,88,100,.4); }
-    .hero-card-label { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; font-weight: 600; }
-    .hero-card-text { color: rgba(255,255,255,.8); font-size: .9rem; font-weight: 500; }
-    .hero-card-icon { font-size: 1.5rem; margin-bottom: .6rem; }
-
-    /* ── Section Shared ─────────────────────────────────────────────── */
-    .section { padding: 6rem 5%; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700; margin-bottom: .8rem;
-    }
-    .section-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      line-height: 1.2; color: var(--text); margin-bottom: 1.2rem; font-weight: 800;
-    }
-    .section-title.light { color: var(--white); }
-    .section-desc { color: var(--muted); font-size: 1.05rem; line-height: 1.8; max-width: 600px; }
-    .section-desc.light { color: rgba(255,255,255,.6); }
-    .divider { width: 48px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1.25rem 0 2rem; }
-
-    /* ── Mission ────────────────────────────────────────────────────── */
-    #mission {
-      background: var(--white);
-      border-bottom: 1px solid rgba(0,0,0,.06);
-    }
-    .mission-statement {
-      max-width: 860px; margin: 0 auto 5rem;
-      text-align: center;
-    }
-    .mission-statement blockquote {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-      font-weight: 700; line-height: 1.5;
-      color: var(--text);
-      position: relative; padding: 0 1rem;
-    }
-    .mission-statement blockquote::before {
-      content: '\201C';
-      position: absolute; top: -.5rem; left: -1rem;
-      font-size: 5rem; line-height: 1; color: rgba(27,88,100,.2);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .mission-statement blockquote em { color: var(--gold); font-style: normal; }
-    .mission-pillars {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem;
-    }
-    .mission-pillar {
-      border-radius: 16px; padding: 2.25rem 2rem;
-      border: 1px solid rgba(0,0,0,.07);
-      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans);
-      position: relative; overflow: hidden;
-    }
-    .mission-pillar::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold2));
-      transform: scaleX(0); transform-origin: left; transition: transform var(--trans);
-    }
-    .mission-pillar:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(1,44,54,.08); border-color: rgba(27,88,100,.25); }
-    .mission-pillar:hover::after { transform: scaleX(1); }
-    .mission-pillar-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .mission-pillar h3 { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: .6rem; }
-    .mission-pillar p { font-size: .875rem; color: var(--muted); line-height: 1.75; }
-    .mission-expansion {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
-      border-radius: 20px; padding: 3rem;
-      display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center;
-    }
-    .mission-expansion-label { color: rgba(255,255,255,.45); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; margin-bottom: .75rem; }
-    .mission-expansion h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--white); line-height: 1.3; }
-    .mission-markets {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
-    }
-    .mission-market {
-      background: rgba(255,255,255,.05); border: 1px solid rgba(27,88,100,.15);
-      border-radius: 12px; padding: 1.25rem 1.5rem;
-      transition: background var(--trans), border-color var(--trans);
-    }
-    .mission-market:hover { background: rgba(255,255,255,.08); border-color: rgba(27,88,100,.35); }
-    .mission-market-flag { font-size: 1.4rem; margin-bottom: .5rem; }
-    .mission-market h4 { font-size: .875rem; font-weight: 700; color: var(--white); margin-bottom: .25rem; }
-    .mission-market p { font-size: .78rem; color: rgba(255,255,255,.5); line-height: 1.6; }
-    @media (max-width: 900px) {
-      .mission-pillars { grid-template-columns: 1fr; }
-      .mission-expansion { grid-template-columns: 1fr; gap: 2rem; }
-      .mission-markets { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) { .mission-markets { grid-template-columns: 1fr; } }
-
-    /* ── About ──────────────────────────────────────────────────────── */
-    #about { background: var(--white); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-    }
-    .about-img-wrap {
-      position: relative; border-radius: 20px; overflow: hidden;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .about-diagram {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 2rem; width: 100%;
-    }
-    .about-diag-item {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(27,88,100,.2);
-      border-radius: 12px; padding: 1.2rem;
-      display: flex; flex-direction: column; align-items: flex-start; gap: .4rem;
-    }
-    .about-diag-item .icon { font-size: 1.4rem; }
-    .about-diag-item .lbl { font-size: .75rem; color: rgba(255,255,255,.6); font-weight: 500; }
-    .about-diag-item .val { font-size: .85rem; color: var(--gold); font-weight: 700; }
-    .about-features { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.75rem; }
-    .about-feature {
-      display: flex; gap: 1rem; align-items: flex-start;
-    }
-    .about-feature-icon {
-      flex-shrink: 0; width: 44px; height: 44px;
-      background: rgba(27,88,100,.1); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-    }
-    .about-feature-text h4 { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: .2rem; }
-    .about-feature-text p { font-size: .875rem; color: var(--muted); line-height: 1.6; }
-
-    /* ── Leadership ─────────────────────────────────────────────────── */
-    #leadership { background: var(--light); }
-    .leadership-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 3rem;
-    }
-    .leader-card {
-      background: var(--white); border-radius: 16px;
-      border: 1px solid rgba(0,0,0,.07); padding: 1.75rem 1.5rem;
-      box-shadow: 0 2px 12px rgba(1,44,54,.06);
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans);
-      position: relative;
-    }
-    .leader-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(1,44,54,.1); border-color: rgba(27,88,100,.3); }
-    .leader-avatar {
-      width: 80px; height: 80px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; font-weight: 800; color: var(--white);
-      margin-bottom: 1rem; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
-      border: 3px solid rgba(27,88,100,.25);
-      overflow: hidden;
-    }
-    .leader-avatar img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-    }
-    .leader-name { font-size: .95rem; font-weight: 800; color: var(--text); margin-bottom: .2rem; line-height: 1.3; }
-    .leader-title {
-      font-size: .67rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--navy); font-weight: 700; margin-bottom: .75rem;
-      background: rgba(27,88,100,.13); border: 1px solid rgba(27,88,100,.3);
-      padding: .2rem .6rem; border-radius: 50px; display: inline-block;
-    }
-    .leader-bio { font-size: .775rem; color: var(--muted); line-height: 1.65; flex: 1; }
-    .leader-linkedin {
-      display: inline-flex; align-items: center; gap: .35rem;
-      margin-top: 1.1rem; font-size: .75rem; font-weight: 700;
-      color: #0A66C2; transition: opacity var(--trans);
-    }
-    .leader-linkedin:hover { opacity: .75; }
-    .leader-linkedin svg { flex-shrink: 0; }
-    @media (max-width: 1100px) { .leadership-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 768px)  { .leadership-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px)  { .leadership-grid { grid-template-columns: 1fr; } }
-
-    /* ── Products ───────────────────────────────────────────────────── */
-    #products { background: var(--white); }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 3rem;
-    }
-    .product-card {
-      background: var(--white); border-radius: 16px;
-      border: 1px solid rgba(0,0,0,.07);
-      padding: 2rem; position: relative; overflow: hidden;
-      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans);
-      display: flex; flex-direction: column;
-    }
-    .product-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold2));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform var(--trans);
-    }
-    .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(1,44,54,.1); border-color: rgba(27,88,100,.3); }
-    .product-card:hover::before { transform: scaleX(1); }
-    .product-icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; margin-bottom: 1.25rem;
-      flex-shrink: 0; align-self: center;
-    }
-    .product-cat {
-      font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700; margin-bottom: .4rem;
-    }
-    .product-name { font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: .6rem; }
-    .product-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; flex: 1; }
-    .product-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.2rem; }
-    .product-tag {
-      font-size: .7rem; font-weight: 600; letter-spacing: .04em;
-      background: var(--light); color: var(--muted);
-      padding: .25rem .65rem; border-radius: 50px; border: 1px solid rgba(0,0,0,.08);
-    }
-    .product-link {
-      display: inline-flex; align-items: center; gap: .35rem;
-      margin-top: 1.25rem; font-size: .8rem; font-weight: 700;
-      color: var(--navy); letter-spacing: .03em;
-      transition: gap var(--trans), color var(--trans);
-    }
-    .product-link:hover { color: var(--gold); gap: .6rem; }
-    .product-link svg { transition: transform var(--trans); }
-    .product-link:hover svg { transform: translateX(2px); }
-
-    /* ── Being Acquired ─────────────────────────────────────────────── */
-    #acquired {
-      background: linear-gradient(160deg, var(--navy) 0%, #012c36 60%, #1b5864 100%);
-      position: relative; overflow: hidden;
-    }
-    #acquired::before {
-      content: '';
-      position: absolute; top: -40%; right: -20%;
-      width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(27,88,100,.06) 0%, transparent 70%);
-    }
-    #acquired::after {
-      content: '';
-      position: absolute; bottom: -30%; left: -10%;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(1,44,54,.4) 0%, transparent 70%);
-    }
-    .acquired-inner { position: relative; z-index: 1; }
-    .acquired-header { text-align: center; max-width: 720px; margin: 0 auto 4rem; }
-    .acquired-header .section-label { justify-content: center; display: flex; }
-    .acquired-pillars {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem;
-    }
-    .pillar {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(27,88,100,.15);
-      border-radius: 16px; padding: 2rem;
-      transition: background var(--trans), border-color var(--trans), transform var(--trans);
-    }
-    .pillar:hover { background: rgba(255,255,255,.07); border-color: rgba(27,88,100,.35); transform: translateY(-4px); }
-    .pillar-num {
-      font-size: 2.5rem; font-weight: 900; color: rgba(27,88,100,.2);
-      font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: .5rem;
-      line-height: 1;
-    }
-    .pillar h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: .75rem; }
-    .pillar p { font-size: .875rem; color: rgba(255,255,255,.55); line-height: 1.75; }
-    .acquired-stats {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: rgba(255,255,255,.06);
-      border-radius: 16px; overflow: hidden; margin-bottom: 4rem;
-    }
-    .acq-stat {
-      background: rgba(255,255,255,.03);
-      padding: 2rem; text-align: center;
-    }
-    .acq-stat .num {
-      font-size: 2.4rem; font-weight: 900; color: var(--gold);
-      font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1;
-    }
-    .acq-stat .lbl { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: .5rem; letter-spacing: .06em; text-transform: uppercase; }
-    .acquired-reasons {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;
-    }
-    .reasons-col h3 {
-      font-size: 1.1rem; font-weight: 700; color: var(--white);
-      margin-bottom: 1.5rem; padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(27,88,100,.2);
-      display: flex; align-items: center; gap: .6rem;
-    }
-    .reasons-col h3 span { font-size: .75rem; background: rgba(27,88,100,.15); color: var(--gold); padding: .2rem .6rem; border-radius: 50px; font-weight: 600; }
-    .reason-item {
-      display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.25rem;
-    }
-    .reason-check {
-      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
-      background: rgba(27,88,100,.15); border: 1px solid rgba(27,88,100,.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .75rem; color: var(--gold); margin-top: 2px;
-    }
-    .reason-item h4 { font-size: .9rem; font-weight: 700; color: rgba(255,255,255,.9); margin-bottom: .2rem; }
-    .reason-item p { font-size: .825rem; color: rgba(255,255,255,.45); line-height: 1.65; }
-    .acquired-process {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-      background: rgba(255,255,255,.06); border-radius: 16px; overflow: hidden;
-      margin-bottom: 4rem;
-    }
-    .process-step {
-      background: rgba(255,255,255,.03); padding: 2.5rem 2rem; text-align: center;
-    }
-    .process-step .step-num {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(27,88,100,.1); border: 1px solid rgba(27,88,100,.3);
-      color: var(--gold); font-weight: 800; font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.25rem;
-    }
-    .process-step h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: .6rem; }
-    .process-step p { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.7; }
-    .acquired-cta {
-      text-align: center;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(27,88,100,.2);
-      border-radius: 20px; padding: 3rem;
-    }
-    .acquired-cta h3 { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: .75rem; }
-    .acquired-cta p { color: rgba(255,255,255,.55); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
-    .acquired-cta .cta-flex { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* ── Industries ─────────────────────────────────────────────────── */
-    #industries { background: var(--white); }
-    .industries-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem;
-    }
-    .industry-card {
-      border-radius: 14px; padding: 1.75rem 1.5rem;
-      border: 1px solid rgba(0,0,0,.07);
-      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans);
-      background: var(--white);
-    }
-    .industry-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--gold); }
-    .industry-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .industry-card h3 { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: .4rem; }
-    .industry-card p { font-size: .825rem; color: var(--muted); line-height: 1.65; }
-
-    /* ── Technology ─────────────────────────────────────────────────── */
-    #technology { background: var(--light); }
-    .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .tech-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .tech-item {
-      display: flex; gap: 1rem; align-items: center;
-      background: var(--white); border-radius: 12px; padding: 1.25rem 1.5rem;
-      border: 1px solid rgba(0,0,0,.06);
-      transition: border-color var(--trans), box-shadow var(--trans);
-    }
-    .tech-item:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(27,88,100,.1); }
-    .tech-item-icon { font-size: 1.5rem; flex-shrink: 0; width: 40px; text-align: center; }
-    .tech-item h4 { font-size: .9rem; font-weight: 700; color: var(--text); }
-    .tech-item p { font-size: .8rem; color: var(--muted); }
-    .tech-visual {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
-      border-radius: 20px; padding: 2.5rem;
-      display: flex; flex-direction: column; gap: 1rem;
-    }
-    .tech-bar-label { font-size: .75rem; color: rgba(255,255,255,.5); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .25rem; font-weight: 600; }
-    .tech-bar-row { display: flex; align-items: center; gap: 1rem; }
-    .tech-bar-name { width: 130px; flex-shrink: 0; font-size: .8rem; color: rgba(255,255,255,.7); font-weight: 500; }
-    .tech-bar-track { flex: 1; background: rgba(255,255,255,.08); border-radius: 4px; height: 8px; overflow: hidden; }
-    .tech-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
-    .tech-bar-pct { width: 36px; font-size: .75rem; color: var(--gold); font-weight: 700; text-align: right; }
-
-    /* ── Contact ────────────────────────────────────────────────────── */
-    #contact { background: var(--white); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
-    .contact-info { padding-top: .5rem; }
-    .contact-info .section-desc { margin-bottom: 2.5rem; }
-    .contact-detail { display: flex; flex-direction: column; gap: 1.25rem; }
-    .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
-    .contact-item-icon {
-      flex-shrink: 0; width: 44px; height: 44px; border-radius: 10px;
-      background: rgba(27,88,100,.1); display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-    .contact-item h4 { font-size: .875rem; font-weight: 700; color: var(--text); margin-bottom: .15rem; }
-    .contact-item p { font-size: .875rem; color: var(--muted); }
-    .contact-form-box {
-      background: var(--light); border-radius: 20px; padding: 2.5rem;
-      border: 1px solid rgba(0,0,0,.07);
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
-    .form-group label { font-size: .8rem; font-weight: 600; color: var(--text); letter-spacing: .02em; }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--white);
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 10px; padding: .75rem 1rem;
-      font-size: .875rem; font-family: inherit; color: var(--text);
-      outline: none; transition: border-color var(--trans), box-shadow var(--trans);
-      width: 100%;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(27,88,100,.12); }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-submit {
-      width: 100%; background: var(--navy); color: var(--white);
-      border: none; border-radius: 10px; padding: .9rem;
-      font-size: .95rem; font-weight: 700; font-family: inherit; cursor: pointer;
-      transition: background var(--trans), transform var(--trans);
-      letter-spacing: .02em;
-    }
-    .form-submit:hover { background: var(--navy2); transform: translateY(-1px); }
-
-    /* ── Footer ─────────────────────────────────────────────────────── */
-    footer {
-      background: var(--navy);
-      padding: 4rem 5% 2rem;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
-      padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08);
-      margin-bottom: 2rem;
-    }
-    .footer-brand .wordmark { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: .75rem; }
-    .footer-brand .wordmark span { color: var(--gold); }
-    .footer-brand p { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.75; max-width: 280px; }
-    .footer-col h4 { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 1.25rem; }
-    .footer-col ul { display: flex; flex-direction: column; gap: .7rem; }
-    .footer-col ul li a { font-size: .85rem; color: rgba(255,255,255,.5); transition: color var(--trans); }
-    .footer-col ul li a:hover { color: var(--gold); }
-    .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: .8rem; color: rgba(255,255,255,.3);
-    }
-    .footer-bottom a { color: rgba(255,255,255,.3); transition: color var(--trans); }
-    .footer-bottom a:hover { color: var(--gold); }
-
-    /* ── Responsive ─────────────────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .products-grid { grid-template-columns: 1fr 1fr; }
-      .acquired-pillars { grid-template-columns: 1fr 1fr; }
-      .acquired-stats { grid-template-columns: 1fr 1fr; }
-      .industries-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    }
-    @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .products-grid { grid-template-columns: 1fr; }
-      .acquired-pillars { grid-template-columns: 1fr; }
-      .acquired-stats { grid-template-columns: 1fr 1fr; }
-      .acquired-reasons { grid-template-columns: 1fr; }
-      .acquired-process { grid-template-columns: 1fr; }
-      .tech-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
-      .industries-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .hero-stats { flex-direction: column; gap: 1.25rem; }
-      .acquired-stats { grid-template-columns: 1fr; }
-      .industries-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; }
-      .btn-primary, .btn-outline { text-align: center; }
-    }
-
-    /* ── News ───────────────────────────────────────────────────────── */
-    #news { background: var(--white); }
-    .news-header { text-align: center; max-width: 640px; margin: 0 auto 3.5rem; }
-    .news-header .section-label { justify-content: center; display: flex; }
-    .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .news-card {
-      border-radius: 16px; padding: 2rem;
-      border: 1px solid rgba(0,0,0,.08);
-      background: var(--white);
-      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans);
-      display: flex; flex-direction: column;
-    }
-    .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--gold); }
-    .news-card-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
-    .news-badge {
-      font-size: .67rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      padding: .25rem .7rem; border-radius: 50px;
-    }
-    .news-badge.press {
-      background: rgba(27,88,100,.12); color: var(--gold);
-      border: 1px solid rgba(27,88,100,.3);
-    }
-    .news-badge.social {
-      background: rgba(10,102,194,.1); color: #0A66C2;
-      border: 1px solid rgba(10,102,194,.25);
-    }
-    .news-date { font-size: .78rem; color: var(--muted); font-weight: 500; }
-    .news-card h3 {
-      font-size: 1.1rem; font-weight: 700; color: var(--text);
-      line-height: 1.4; margin-bottom: .9rem;
-    }
-    .news-card p { font-size: .875rem; color: var(--muted); line-height: 1.75; flex: 1; }
-    .news-card-quote {
-      margin: 1.1rem 0; padding: 1rem 1.25rem;
-      background: var(--light); border-left: 3px solid var(--gold);
-      border-radius: 0 8px 8px 0;
-      font-size: .875rem; color: var(--text); line-height: 1.7; font-style: italic;
-    }
-    .news-card-footer {
-      margin-top: 1.5rem; padding-top: 1.25rem;
-      border-top: 1px solid rgba(0,0,0,.07);
-      display: flex; align-items: center; gap: .5rem;
-      font-size: .8rem; font-weight: 600; color: var(--muted);
-    }
-    .news-card-footer svg { color: var(--gold); }
-    @media (max-width: 768px) { .news-grid { grid-template-columns: 1fr; } }
-
-    /* ── Dark-bg accent overrides ───────────────────────────────────── */
-    .hero-title .accent,
-    .hero-stat .num,
-    .hero-card-label,
-    .mission-pillar h3,
-    .about-diag-item .val,
-    .footer-col ul li a:hover,
-    .footer-bottom a:hover { color: #ffffff; }
-    .mission-pillar > div:first-child { color: #ffffff; }
-    .hero-eyebrow { color: var(--gold2); }
-
-    /* ── Scroll-reveal ──────────────────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* ── Language Switcher ───────────────────────────────────────────── */
-    .lang-switcher {
-      display: flex; align-items: center;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(27,88,100,.2);
-      border-radius: 8px; padding: .15rem .2rem; gap: .1rem; margin-left: .25rem;
-    }
-    .lang-btn {
-      background: none; border: none;
-      color: rgba(255,255,255,.45); font-size: .72rem; font-weight: 700;
-      letter-spacing: .06em; padding: .2rem .5rem; border-radius: 5px;
-      cursor: pointer; font-family: inherit;
-      transition: background .3s, color .3s;
-    }
-    .lang-btn.active { background: var(--gold); color: var(--navy); }
-    .lang-btn:hover:not(.active) { color: rgba(255,255,255,.9); }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -757,24 +29,42 @@
 </div>
 
 <!-- ─── Navigation ────────────────────────────────────────────────── -->
-<nav id="nav">
-  <a href="#hero" class="nav-logo"><img src="logo-light.png" alt="Synaera" style="height:32px;display:block;" /></a>
-  <div class="nav-links">
-    <a href="#mission" data-i18n="nav_mission">Mission</a>
-    <a href="#about" data-i18n="nav_about">About</a>
-    <a href="#leadership" data-i18n="nav_team">Team</a>
-    <a href="#products" data-i18n="nav_products">Products</a>
-    <a href="#acquired" data-i18n="nav_acquired">Being Acquired</a>
-    <a href="#industries" data-i18n="nav_industries">Industries</a>
-    <a href="#news" data-i18n="nav_news">News</a>
-    <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
-  </div>
-  <div class="lang-switcher">
-    <button class="lang-btn active" id="lang-en" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" id="lang-fr" onclick="setLang('fr')">FR</button>
-  </div>
-  <div class="nav-burger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo-light.png" alt="Synaera" height="32" id="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-page="index.html" class="nav-active" data-i18n="nav_home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" data-page="about.html" data-i18n="nav_about">About <span class="nav-chevron">&#9660;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html#who">Who We Are</a>
+          <a href="about.html#mission">Our Mission</a>
+          <a href="about.html#values">Our Values</a>
+          <a href="about.html#group">Our Group</a>
+          <a href="about.html#team">Team</a>
+          <div class="divider-line"></div>
+          <a href="https://www.harriscomputer.com/" target="_blank" class="ext-link">Harris Computer</a>
+          <a href="https://www.csisoftware.com/" target="_blank" class="ext-link">Constellation Software</a>
+        </div>
+      </li>
+      <li><a href="acquisition.html" data-page="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+      <li><a href="portfolio.html" data-page="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+      <li><a href="contact.html" data-page="contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li class="lang-switcher">
+        <button class="lang-select-btn" onclick="toggleLangMenu(this)">EN <span class="lang-chevron">&#9660;</span></button>
+        <div class="lang-select-menu">
+          <button data-lang="en" onclick="setLang('en')"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+          <button data-lang="fr" onclick="setLang('fr')"><span class="lang-code">FR</span><span class="lang-name">Fran&#231;ais</span></button>
+          <button data-lang="es" onclick="setLang('es')"><span class="lang-code">ES</span><span class="lang-name">Espa&#241;ol</span></button>
+          <button data-lang="pt" onclick="setLang('pt')"><span class="lang-code">PT</span><span class="lang-name">Portugu&#234;s BR</span></button>
+        </div>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -785,14 +75,14 @@
     <div class="hero-content">
       <div class="hero-eyebrow" data-i18n="hero_eyebrow">Legal Tech &amp; Document Management</div>
       <h1 class="hero-title" data-i18n-html="hero_title">
-        The Intelligence<br />Behind <span class="accent">Modern Legal</span><br />Practice
+        Empowering Legal Software.<br /><span class="accent">Investing for the Long Term.</span>
       </h1>
       <p class="hero-desc" data-i18n="hero_desc">
         Synaera is a portfolio of industry-leading software solutions purpose-built for legal professionals, notaries, bailiffs, and enterprise organizations. We empower the legal ecosystem with precision technology.
       </p>
       <div class="hero-actions">
-        <a href="#products" class="btn-primary" data-i18n="hero_cta_primary">Explore Our Solutions</a>
-        <a href="#contact" class="btn-outline" data-i18n="hero_cta_outline">Get in Touch</a>
+        <a href="portfolio.html" class="btn-primary" data-i18n="hero_cta_primary">Explore Our Solutions</a>
+        <a href="contact.html" class="btn-outline" data-i18n="hero_cta_outline">Get in Touch</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -815,17 +105,38 @@
     </div>
     <div class="hero-visual">
       <div class="hero-card">
-        <div class="hero-card-icon">⚖️</div>
+        <div class="hero-card-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <path d="M13 2v16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M3 10h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M3 10L6 16h6l-3-6z" stroke="currentColor" stroke-width="1.5" fill="rgba(255,255,255,0.15)" stroke-linejoin="round"/>
+            <path d="M23 10L20 16h-6l3-6z" stroke="currentColor" stroke-width="1.5" fill="rgba(255,255,255,0.15)" stroke-linejoin="round"/>
+            <path d="M8 24h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M13 18v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="hero-card-label" data-i18n="hero_card_1_label">Law Firm Management</div>
         <div class="hero-card-text" data-i18n="hero_card_1_text">End-to-end practice management for lawyers, notaries &amp; bailiffs</div>
       </div>
       <div class="hero-card">
-        <div class="hero-card-icon">📂</div>
+        <div class="hero-card-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <rect x="3" y="2" width="15" height="19" rx="2" stroke="currentColor" stroke-width="1.5" fill="rgba(255,255,255,0.1)"/>
+            <path d="M7 8h8M7 12h6M7 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="4.5" fill="rgba(42,122,140,0.45)" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M18.5 20l1.2 1.2 2.1-2.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div class="hero-card-label" data-i18n="hero_card_2_label">Document Intelligence</div>
         <div class="hero-card-text" data-i18n="hero_card_2_text">AI-powered document search, classification &amp; compliance</div>
       </div>
       <div class="hero-card">
-        <div class="hero-card-icon">🔒</div>
+        <div class="hero-card-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <path d="M13 2L3 6.5v8c0 5 4 9.5 10 11.5 6-2 10-6.5 10-11.5v-8L13 2z" stroke="currentColor" stroke-width="1.5" fill="rgba(255,255,255,0.1)"/>
+            <path d="M9 13l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div class="hero-card-label" data-i18n="hero_card_3_label">Compliance &amp; Security</div>
         <div class="hero-card-text" data-i18n="hero_card_3_text">Built to meet the most demanding regulatory requirements</div>
       </div>
@@ -833,123 +144,39 @@
   </div>
 </section>
 
-<!-- ─── Mission ──────────────────────────────────────────────────── -->
-<section id="mission" class="section">
+<!-- ─── Section 1: Who We Are ─────────────────────────────────────── -->
+<section class="section" style="background:var(--white);">
   <div class="container">
-
-    <div class="mission-statement reveal">
-      <div class="section-label" style="text-align:center;display:block;margin-bottom:.9rem" data-i18n="mission_label">Our Mission</div>
-      <blockquote data-i18n-html="mission_quote">
-        We <em>buy, build, and operate</em> vertical market software companies in legal tech, document management, and financial management — with an ownership horizon measured in <em>decades, not quarters.</em>
-      </blockquote>
-    </div>
-
-    <div class="mission-pillars">
-      <div class="mission-pillar reveal">
-        <div class="mission-pillar-icon">🏗️</div>
-        <h3 data-i18n="pillar_buy">Buy</h3>
-        <p data-i18n="pillar_buy_desc">We acquire profitable, well-loved vertical software businesses with loyal user bases and strong domain fit. We move decisively, close with certainty, and hold permanently — no flipping, no fund cycles.</p>
-      </div>
-      <div class="mission-pillar reveal">
-        <div class="mission-pillar-icon">⚙️</div>
-        <h3 data-i18n="pillar_build">Build</h3>
-        <p data-i18n="pillar_build_desc">We invest continuously in product, people, and infrastructure. Our portfolio companies benefit from shared R&D, a common compliance framework, and the operational depth of a growing group — not just capital.</p>
-      </div>
-      <div class="mission-pillar reveal">
-        <div class="mission-pillar-icon">📈</div>
-        <h3 data-i18n="pillar_operate">Operate</h3>
-        <p data-i18n="pillar_operate_desc">We are operators first. With deep domain expertise in legal tech and document management, we coach leadership, optimize go-to-market, and unlock cross-portfolio synergies that independents simply can't access.</p>
-      </div>
-    </div>
-
-    <div class="mission-expansion reveal">
-      <div>
-        <div class="mission-expansion-label" data-i18n="expansion_label">Strategic Priorities</div>
-        <h3 data-i18n="expansion_title">Where We're Growing Next</h3>
-      </div>
-      <div class="mission-markets">
-        <div class="mission-market">
-          <div class="mission-market-flag">🍁</div>
-          <h4 data-i18n="market_1_title">Canadian Depth</h4>
-          <p data-i18n="market_1_desc">Cementing our position as the definitive software platform for Canadian legal professionals — from solo notaries to national law firms.</p>
-        </div>
-        <div class="mission-market">
-          <div class="mission-market-flag">🇺🇸</div>
-          <h4 data-i18n="market_2_title">US Legal Tech Penetration</h4>
-          <p data-i18n="market_2_desc">Expanding our legal tech portfolio into the US market through targeted acquisitions and partnerships in practice management and document automation.</p>
-        </div>
-        <div class="mission-market">
-          <div class="mission-market-flag">🌎</div>
-          <h4 data-i18n="market_3_title">LATAM Acquisitions</h4>
-          <p data-i18n="market_3_desc">Actively acquiring legal tech and document management businesses across Latin America — building a regional platform with local expertise and global standards.</p>
-        </div>
-        <div class="mission-market">
-          <div class="mission-market-flag">🗄️</div>
-          <h4 data-i18n="market_4_title">Document Management Growth</h4>
-          <p data-i18n="market_4_desc">Scaling our enterprise content and document intelligence capabilities to serve larger organizations, regulated industries, and cross-border document workflows.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── About ─────────────────────────────────────────────────────── -->
-<section id="about" class="section">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-img-wrap">
-        <div class="about-diagram">
-          <div class="about-diag-item">
-            <div class="icon">🏛️</div>
-            <div class="lbl" data-i18n="diag_1_lbl">Founded</div>
-            <div class="val" data-i18n="diag_1_val">Quebec, Canada</div>
-          </div>
-          <div class="about-diag-item">
-            <div class="icon">🌐</div>
-            <div class="lbl" data-i18n="diag_2_lbl">Coverage</div>
-            <div class="val" data-i18n="diag_2_val">National &amp; Global</div>
-          </div>
-          <div class="about-diag-item">
-            <div class="icon">💼</div>
-            <div class="lbl" data-i18n="diag_3_lbl">Verticals</div>
-            <div class="val" data-i18n="diag_3_val">Legal, Enterprise</div>
-          </div>
-          <div class="about-diag-item">
-            <div class="icon">🚀</div>
-            <div class="lbl" data-i18n="diag_4_lbl">Delivery</div>
-            <div class="val" data-i18n="diag_4_val">Cloud &amp; On-Premise</div>
-          </div>
-        </div>
-      </div>
-      <div class="about-text reveal">
+    <div class="home-teaser">
+      <div class="reveal">
         <div class="section-label" data-i18n="about_label">Who We Are</div>
         <h2 class="section-title" data-i18n-html="about_title">A Group Built for the<br />Legal Ecosystem</h2>
         <div class="divider"></div>
-        <p class="section-desc" data-i18n="about_desc">
-          Synaera is the holding group behind nine specialized software platforms serving the full spectrum of the legal and document management landscape. From solo notary practices to large law firms and enterprise document repositories, our portfolio delivers tailored solutions at every scale.
+        <p class="section-desc" style="margin-bottom:1.5rem;">
+          Synaera is a business unit of <strong>Harris Computer</strong>, a subsidiary of <strong>Constellation Software Inc.</strong> (TSX: CSU) — one of the world's premier acquirers of vertical market software businesses. We hold, operate, and grow specialized legal technology and document management companies permanently. No exits. No fund cycles.
         </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-icon">🎯</div>
-            <div class="about-feature-text">
-              <h4 data-i18n="feat_1_title">Deep Domain Expertise</h4>
-              <p data-i18n="feat_1_desc">Decades of experience building software specifically for Quebec and Canadian legal professionals, with an intimate understanding of regulatory requirements.</p>
-            </div>
+        <p class="section-desc" style="margin-bottom:2rem;">
+          Our portfolio spans law firm management, notarial practice, bailiff operations, enterprise content management, and digital banking experiences across Canada and Latin America.
+        </p>
+        <a href="about.html" class="btn-primary">Learn About Us</a>
+      </div>
+      <div class="home-teaser-visual reveal">
+        <div style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.5rem;font-weight:700;">Our Structure</div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:1rem 1.25rem;">
+            <div style="font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;">Parent</div>
+            <div style="font-weight:800;color:#fff;">Constellation Software Inc.</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.5);">TSX: CSU — 800+ businesses globally</div>
           </div>
-          <div class="about-feature">
-            <div class="about-feature-icon">🔗</div>
-            <div class="about-feature-text">
-              <h4 data-i18n="feat_2_title">Integrated Ecosystem</h4>
-              <p data-i18n="feat_2_desc">Our products are designed to work together — sharing data, workflows, and infrastructure across practice management, document management, and client portals.</p>
-            </div>
+          <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:1rem 1.25rem;">
+            <div style="font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;">Operating Group</div>
+            <div style="font-weight:800;color:#fff;">Harris Computer</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.5);">Legal &amp; government software specialist</div>
           </div>
-          <div class="about-feature">
-            <div class="about-feature-icon">📈</div>
-            <div class="about-feature-text">
-              <h4 data-i18n="feat_3_title">Long-Term Partnership</h4>
-              <p data-i18n="feat_3_desc">We don't just sell software — we commit to the long-term success of our clients with continuous product investment, training, and responsive support.</p>
-            </div>
+          <div style="background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.3);border-radius:12px;padding:1rem 1.25rem;">
+            <div style="font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;">Business Unit</div>
+            <div style="font-weight:800;color:#fff;">Synaera</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.5);">9 portfolio companies · Legal tech &amp; DocMgmt</div>
           </div>
         </div>
       </div>
@@ -957,154 +184,53 @@
   </div>
 </section>
 
-<!-- ─── Leadership ───────────────────────────────────────────────── -->
-<section id="leadership" class="section">
+<!-- ─── Section 2: Acquisition Approach ──────────────────────────── -->
+<section class="section" style="background:var(--light);">
   <div class="container">
-    <div class="reveal">
-      <div class="section-label" data-i18n="leadership_label">The Team</div>
-      <h2 class="section-title" data-i18n="leadership_title">Leadership</h2>
-      <div class="divider"></div>
-      <p class="section-desc" data-i18n="leadership_desc">Operators, investors, and domain experts united by a single mission — building the defining platform for legal technology and document management.</p>
-    </div>
-    <div class="leadership-grid">
-
-      <!-- Louis Clément -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#1b5864)"><img src="images/team/louis.jpg" alt="Louis Clément" onerror="this.parentElement.innerHTML='LC'"></div>
-        <div class="leader-name">Louis Clément</div>
-        <div class="leader-title" data-i18n="ltitle_lc">Portfolio Leader</div>
-        <div class="leader-bio" data-i18n="lbio_lc">Leads the Synaera portfolio across legal tech and LATAM markets. BBA Finance from ESG UQAM; previously Portfolio Leader at Harris Computer overseeing legal and Latin American subsidiaries.</div>
-        <a class="leader-linkedin" href="https://ca.linkedin.com/in/louis-cl%C3%A9ment-571a9857/" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
+    <div class="home-teaser reverse">
+      <div class="home-teaser-visual reveal">
+        <div style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.5rem;font-weight:700;">Our Commitment</div>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.85rem;font-weight:800;">&#8734;</div>
+            <div>
+              <div style="font-weight:800;color:#fff;margin-bottom:.2rem;">Permanent Ownership</div>
+              <div style="font-size:.825rem;color:rgba(255,255,255,.6);">We never sell what we acquire. Your product, team, and customers have a permanent home.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.85rem;font-weight:800;">&#10003;</div>
+            <div>
+              <div style="font-weight:800;color:#fff;margin-bottom:.2rem;">Domain Expertise</div>
+              <div style="font-size:.825rem;color:rgba(255,255,255,.6);">Decades of experience in legal tech — we understand your market inside and out.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:.85rem;font-weight:800;">&#128176;</div>
+            <div>
+              <div style="font-weight:800;color:#fff;margin-bottom:.2rem;">Clean Transactions</div>
+              <div style="font-size:.825rem;color:rgba(255,255,255,.6);">No third-party financing. Majority cash at closing. We respond within 24 hours.</div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Pierre Bilodeau -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a7a8c,#2a7a8c)"><img src="images/team/pierre.jpg" alt="Pierre Bilodeau" onerror="this.parentElement.innerHTML='PB'"></div>
-        <div class="leader-name">Pierre Bilodeau</div>
-        <div class="leader-title" data-i18n="ltitle_pb">EVP Legal</div>
-        <div class="leader-bio" data-i18n="lbio_pb">Executive Vice President overseeing the legal practice management vertical. DESS Management from HEC Montréal. Drives strategy for Juris Concept, JurisPro, and AliForm across 6,000+ legal professionals.</div>
-        <a class="leader-linkedin" href="https://www.linkedin.com/in/pierre-bilodeau-21730083/" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
+      <div class="reveal">
+        <div class="section-label">Growth Through Acquisition</div>
+        <h2 class="section-title">Our Acquisition Philosophy</h2>
+        <div class="divider"></div>
+        <p class="section-desc" style="margin-bottom:1.5rem;">
+          We acquire profitable, well-loved vertical software businesses in legal tech and document management with loyal user bases. We hold them permanently — investing continuously in product, people, and infrastructure.
+        </p>
+        <p class="section-desc" style="margin-bottom:2rem;">
+          If you've built something great for the legal ecosystem, we want to talk. Whether you're a founder planning your next chapter or an investor seeking a strategic exit, Synaera is a committed, knowledgeable buyer.
+        </p>
+        <a href="acquisition.html" class="btn-primary">Our Acquisition Approach</a>
       </div>
-
-      <!-- Mhamed Braham -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#1b5864,#2a7a8c)">MB</div>
-        <div class="leader-name">Mhamed Braham</div>
-        <div class="leader-title" data-i18n="ltitle_mb">EVP Documents</div>
-        <div class="leader-bio" data-i18n="lbio_mb">MBA, PMP. Leads the enterprise content and document management vertical. 17+ years in ECM and compliance technology. Oversees Constellio's product operations and intelligence roadmap.</div>
-        <a class="leader-linkedin" href="https://ca.linkedin.com/in/mhamed-braham" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Mark Bonnell -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#0a2a1e,#145c3a)"><img src="images/team/mark.jpg" alt="Mark Bonnell" onerror="this.parentElement.innerHTML='MB'"></div>
-        <div class="leader-name">Mark Bonnell</div>
-        <div class="leader-title" data-i18n="ltitle_mbu">EVP LATAM</div>
-        <div class="leader-bio" data-i18n="lbio_mbu">Leads Synaera's Latin American expansion strategy, managing partnerships, product distribution, and M&A activity across LATAM markets for the legal tech and document management verticals.</div>
-        <a class="leader-linkedin" href="https://www.linkedin.com/in/markbonnell/" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Anne-Frédérique Boulet -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#1a0a2a,#5a1a8a)"><img src="images/team/anne.jpg" alt="Anne-Frédérique Boulet" onerror="this.parentElement.innerHTML='AB'"></div>
-        <div class="leader-name">Anne-Frédérique Boulet</div>
-        <div class="leader-title" data-i18n="ltitle_ab">Director, Operations</div>
-        <div class="leader-bio" data-i18n="lbio_ab">Oversees operational delivery across the legal software portfolio. Progressed from project management to service leadership at Juris Concept, bringing deep process and client success expertise.</div>
-        <a class="leader-linkedin" href="https://ca.linkedin.com/in/afbouletafb" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Jean Alexandre Goulet -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#0a1a2a,#1a4a6e)"><img src="images/team/jean.jpg" alt="Jean Alexandre Goulet" onerror="this.parentElement.innerHTML='JG'"></div>
-        <div class="leader-name">Jean Alexandre Goulet</div>
-        <div class="leader-title" data-i18n="ltitle_jag">Director, Sales</div>
-        <div class="leader-bio" data-i18n="lbio_jag">Drives revenue growth and go-to-market strategy across the portfolio. Brings hands-on experience in legal software sales cycles, client acquisition, and account development for Quebec's legal market.</div>
-        <a class="leader-linkedin" href="https://www.linkedin.com/in/jean-alexandre-goulet/" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Carl Bellavance -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#1b5864)">CB</div>
-        <div class="leader-name">Carl Bellavance</div>
-        <div class="leader-title" data-i18n="ltitle_cb">Director, IT & Technology</div>
-        <div class="leader-bio" data-i18n="lbio_cb">AWS Certified Cloud Practitioner. Leads cloud infrastructure strategy, security, and IT architecture across the portfolio. Brings deep expertise in network engineering and cloud migration from Juris Concept.</div>
-        <a class="leader-linkedin" href="https://ca.linkedin.com/in/carl-bellavance" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Xenia Mihalachi -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#2a1a0a,#7a4a10)"><img src="images/team/xenia.jpg" alt="Xenia Mihalachi" onerror="this.parentElement.innerHTML='XM'"></div>
-        <div class="leader-name">Xenia Mihalachi</div>
-        <div class="leader-title" data-i18n="ltitle_xm">Financial Analyst</div>
-        <div class="leader-bio" data-i18n="lbio_xm">CFA. M&A Manager with deep expertise in financial modelling, deal evaluation, and portfolio company integration. Brings rigorous buy-side discipline to Synaera's acquisition pipeline.</div>
-        <a class="leader-linkedin" href="https://ca.linkedin.com/in/xenia-mihalachi-cfa-152635181" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Darren Cox -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#012c36,#2a7a8c)"><img src="images/team/darren.jpg" alt="Darren Cox" onerror="this.parentElement.innerHTML='DC'"></div>
-        <div class="leader-name">Darren Cox</div>
-        <div class="leader-title" data-i18n="ltitle_dc">Director, Corporate Development</div>
-        <div class="leader-bio" data-i18n="lbio_dc">Veteran M&A operator in legal technology software. Brings extensive experience identifying, evaluating, and closing software acquisitions — with a track record spanning North American legal tech transactions across the Constellation Software ecosystem.</div>
-        <a class="leader-linkedin" href="https://www.linkedin.com/in/darren-cox-a44273a7/" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Rachael Swain -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#1a0a0a,#7a2020)"><img src="images/team/rachael.jpg" alt="Rachael Swain" onerror="this.parentElement.innerHTML='RS'"></div>
-        <div class="leader-name">Rachael Swain</div>
-        <div class="leader-title" data-i18n="ltitle_rs">Corporate Development</div>
-        <div class="leader-bio" data-i18n="lbio_rs">Supports Synaera's acquisition pipeline and portfolio growth initiatives. Focuses on sourcing, evaluating, and executing transactions in the legal tech and document management software space.</div>
-        <a class="leader-linkedin" href="https://www.linkedin.com/in/rachaelswain/" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
-      <!-- Santiago Berríos Vigneaux -->
-      <div class="leader-card reveal">
-        <div class="leader-avatar" style="background:linear-gradient(135deg,#0a1a0a,#1a5c2a)"><img src="images/team/santiago.jpg" alt="Santiago Berríos Vigneaux" onerror="this.parentElement.innerHTML='SB'"></div>
-        <div class="leader-name">Santiago Berríos Vigneaux</div>
-        <div class="leader-title" data-i18n="ltitle_sb">Corporate Development</div>
-        <div class="leader-bio" data-i18n="lbio_sb">Drives Synaera's LATAM-focused corporate development strategy. Identifies acquisition targets, manages regional partnerships, and supports cross-border deal execution across Latin American markets.</div>
-        <a class="leader-linkedin" href="https://cl.linkedin.com/in/santiago-ignacio-berr%C3%ADos-vigneaux-89405a185" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span data-i18n="linkedin_label">LinkedIn</span>
-        </a>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ─── Products ──────────────────────────────────────────────────── -->
+<!-- ─── Section 3: Our Portfolio ──────────────────────────────────── -->
 <section id="products" class="section">
   <div class="container">
     <div class="reveal">
@@ -1118,7 +244,7 @@
     <div class="products-grid">
 
       <div class="product-card reveal">
-        <div class="product-icon">⚖️</div>
+        <div class="product-icon" style="background:#1a3a52"><img src="https://logo.clearbit.com/jurisconcept.ca" alt="JurisConcept" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_1">Law Firm Management</div>
         <div class="product-name">JurisConcept</div>
         <div class="product-desc" data-i18n="pdesc_1">Comprehensive practice management software for law firms. Streamline case management, client files, billing, and compliance — all from a single intuitive platform built for Quebec legal professionals.</div>
@@ -1134,7 +260,7 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-icon">🗄️</div>
+        <div class="product-icon" style="background:#3d2f7a"><img src="https://logo.clearbit.com/constellio.com" alt="Constellio" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_8">Enterprise Content Management</div>
         <div class="product-name">Constellio</div>
         <div class="product-desc" data-i18n="pdesc_8">Enterprise-grade document and content management powered by intelligent search and AI classification. Centralize, find, and govern every document across your organization — at any scale.</div>
@@ -1150,10 +276,10 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-icon">🏦</div>
+        <div class="product-icon" style="background:#c0392b"><img src="https://logo.clearbit.com/modyo.com" alt="Modyo" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_9">Digital Experience Platform</div>
         <div class="product-name">Modyo</div>
-        <div class="product-desc" data-i18n="pdesc_9">A composable frontend platform powering digital transformation for banks and regulated industries. Build omnichannel client portals, self-service tools, and digital origination workflows with microfrontend architecture — trusted by leading financial institutions across Latin America.</div>
+        <div class="product-desc" data-i18n="pdesc_9">A composable frontend platform powering digital transformation for banks and regulated industries. Build omnichannel client portals, self-service tools, and digital origination workflows with microfrontend architecture.</div>
         <div class="product-tags">
           <span class="product-tag" data-i18n="ptag_mo_1">Banking</span>
           <span class="product-tag" data-i18n="ptag_mo_2">Client Portal</span>
@@ -1166,10 +292,10 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-icon">🏢</div>
+        <div class="product-icon" style="background:#00437a"><img src="https://logo.clearbit.com/dexco.com" alt="Dexco" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_4">Legal Practice Management</div>
         <div class="product-name">Dexco</div>
-        <div class="product-desc" data-i18n="pdesc_4">Canadian legal practice management pioneer since 1974. Dexco's AcuminEvolution platform unifies matter management, time tracking, billing, trust accounting, and document management in a single cloud workspace built for Canadian law firms.</div>
+        <div class="product-desc" data-i18n="pdesc_4">Canadian legal practice management pioneer since 1974. Dexco's AcuminEvolution platform unifies matter management, time tracking, billing, trust accounting, and document management in a single cloud workspace.</div>
         <div class="product-tags">
           <span class="product-tag" data-i18n="ptag_ae_1">Matter Management</span>
           <span class="product-tag" data-i18n="ptag_ae_2">Trust Accounting</span>
@@ -1182,7 +308,7 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-icon">📜</div>
+        <div class="product-icon" style="background:#1a3a52"><img src="https://logo.clearbit.com/jurisconcept.ca" alt="JurisPro" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_2">Notarial Practice</div>
         <div class="product-name">JurisPro</div>
         <div class="product-desc" data-i18n="pdesc_2">Web-based, fully centralized study management for notaries. Manage deeds, client records, and workflows from anywhere — designed for the modern notarial office with full regulatory compliance.</div>
@@ -1198,23 +324,7 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-icon">📋</div>
-        <div class="product-cat" data-i18n="pcat_3">Legal Forms</div>
-        <div class="product-name">AliForm</div>
-        <div class="product-desc" data-i18n="pdesc_3">Intelligent legal forms management for law firms and legal departments. Automate document generation, standardize precedents, and reduce manual drafting errors with a smart forms engine.</div>
-        <div class="product-tags">
-          <span class="product-tag" data-i18n="ptag_af_1">Form Automation</span>
-          <span class="product-tag" data-i18n="ptag_af_2">Precedents</span>
-          <span class="product-tag" data-i18n="ptag_af_3">Document Generation</span>
-        </div>
-        <a href="https://jurisconcept.ca/" target="_blank" class="product-link">
-          <span data-i18n="plink_3">Visit jurisconcept.ca</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="product-card reveal">
-        <div class="product-icon">📒</div>
+        <div class="product-icon" style="background:#0b4f70"><img src="https://logo.clearbit.com/procardex.com" alt="ProCardex" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_5">Notary Software</div>
         <div class="product-name">ProCardex</div>
         <div class="product-desc" data-i18n="pdesc_5">The definitive practice management solution for notaries. Trust accounting, payroll, invoicing, SURF integration, and cloud-based access — fully compliant with the Quebec Chamber of Notaries.</div>
@@ -1230,7 +340,7 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-icon">🖊️</div>
+        <div class="product-icon" style="background:#2c3e6b"><img src="https://logo.clearbit.com/pronotaire.com" alt="Pronotaire" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_6">Notarial Operations</div>
         <div class="product-name">Pronotaire</div>
         <div class="product-desc" data-i18n="pdesc_6">All-in-one office management for high-volume notarial practices. Deed management, client database, customizable invoicing, remote signing, and SURF integration — built for productivity at scale.</div>
@@ -1246,7 +356,7 @@
       </div>
 
       <div class="product-card reveal">
-        <div class="product-icon">🏛️</div>
+        <div class="product-icon" style="background:#1a3c5c"><img src="https://logo.clearbit.com/siunik.ca" alt="Siunik" onerror="this.style.display='none'"></div>
         <div class="product-cat" data-i18n="pcat_7">Bailiff Software</div>
         <div class="product-name">Siunik</div>
         <div class="product-desc" data-i18n="pdesc_7">The complete software suite for Quebec bailiffs (huissiers de justice). JuriSoft, JuriWeb, JuriEDI, and JuriCloud modules cover every aspect of bailiff practice — from study management to web portals.</div>
@@ -1261,283 +371,41 @@
         </a>
       </div>
 
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#1a3a52"><img src="https://logo.clearbit.com/jurisconcept.ca" alt="AliForm" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_3">Legal Forms</div>
+        <div class="product-name">AliForm</div>
+        <div class="product-desc" data-i18n="pdesc_3">Intelligent legal forms management for law firms and legal departments. Automate document generation, standardize precedents, and reduce manual drafting errors with a smart forms engine.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_af_1">Form Automation</span>
+          <span class="product-tag" data-i18n="ptag_af_2">Precedents</span>
+          <span class="product-tag" data-i18n="ptag_af_3">Document Generation</span>
+        </div>
+        <a href="https://jurisconcept.ca/" target="_blank" class="product-link">
+          <span data-i18n="plink_3">Visit jurisconcept.ca</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="portfolio.html" class="btn-primary">View Full Portfolio</a>
     </div>
   </div>
 </section>
 
-<!-- ─── Being Acquired ────────────────────────────────────────────── -->
-<section id="acquired" class="section">
-  <div class="container acquired-inner">
-    <div class="acquired-header reveal">
-      <div class="section-label" data-i18n="acq_label">Growth Through Acquisition</div>
-      <h2 class="section-title light" data-i18n="acq_title">Being Acquired by Synaera</h2>
-      <div class="divider" style="margin: 1.25rem auto 1.5rem;"></div>
-      <p class="section-desc light" data-i18n="acq_desc">
-        We acquire, operate, and grow exceptional legal tech and document management software businesses — permanently. If you've built something great for the legal ecosystem, we want to talk.
+<!-- ─── Section 4: Let's Connect ──────────────────────────────────── -->
+<section class="section" style="background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);text-align:center;">
+  <div class="container">
+    <div class="reveal" style="max-width:640px;margin:0 auto;">
+      <div class="section-label" style="color:rgba(255,255,255,.5);justify-content:center;display:flex;">Let's Connect</div>
+      <h2 class="section-title light" style="margin-bottom:1.25rem;">Ready to Start a Conversation?</h2>
+      <p class="section-desc light" style="max-width:520px;margin:0 auto 2.5rem;">
+        Whether you're exploring an acquisition, evaluating a product, or seeking a long-term technology partner — our team is here. We respond within 24 hours.
       </p>
-    </div>
-
-    <div class="acquired-stats reveal">
-      <div class="acq-stat">
-        <div class="num">9+</div>
-        <div class="lbl" data-i18n="acqstat_1">Platforms in Portfolio</div>
-      </div>
-      <div class="acq-stat">
-        <div class="num">25+</div>
-        <div class="lbl" data-i18n="acqstat_2">Years in Legal Tech</div>
-      </div>
-      <div class="acq-stat">
-        <div class="num">100%</div>
-        <div class="lbl" data-i18n="acqstat_3">Commitment to Products</div>
-      </div>
-      <div class="acq-stat">
-        <div class="num">∞</div>
-        <div class="lbl" data-i18n="acqstat_4">Long-Term Hold Strategy</div>
-      </div>
-    </div>
-
-    <div class="acquired-pillars reveal">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <h3 data-i18n="acqpillar_1_title">Acquire</h3>
-        <p data-i18n="acqpillar_1_desc">We seek profitable, well-loved legal tech and document management software businesses with loyal user bases. Vertical SaaS, practice management, ECM, e-signature, compliance tools — we understand your market deeply.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <h3 data-i18n="acqpillar_2_title">Operate</h3>
-        <p data-i18n="acqpillar_2_desc">We provide operational expertise, shared infrastructure, and executive coaching to help acquired businesses grow. We integrate where it creates value, and leave room for what makes each product unique.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <h3 data-i18n="acqpillar_3_title">Grow</h3>
-        <p data-i18n="acqpillar_3_desc">Portfolio companies benefit from cross-sell opportunities, shared R&D, common compliance frameworks, and the credibility of the Synaera brand. Together, we reach clients neither could alone.</p>
-      </div>
-    </div>
-
-    <div class="acquired-reasons reveal">
-      <div class="reasons-col">
-        <h3 data-i18n-html="reasons_col1_title">For Founders &amp; Entrepreneurs <span>Selling your business</span></h3>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_1_1">Permanent Home for Your Product</h4>
-            <p data-i18n="reason_1_1_desc">We don't flip. We hold businesses indefinitely — your product, your team, and your customers are never sold on to a third party.</p>
-          </div>
-        </div>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_1_2">Domain Expertise You Can Trust</h4>
-            <p data-i18n="reason_1_2_desc">Our leadership has spent decades in legal tech. We understand notarial software, bailiff workflows, ECM compliance, and every nuance of your market.</p>
-          </div>
-        </div>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_1_3">Employee &amp; Customer Continuity</h4>
-            <p data-i18n="reason_1_3_desc">We value the teams behind products. Key personnel are retained, supported, and given a career path within a growing group.</p>
-          </div>
-        </div>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_1_4">Clean, Certain Transactions</h4>
-            <p data-i18n="reason_1_4_desc">We close deals. No third-party financing required, no prolonged due diligence, and straightforward deal mechanics with majority cash at closing.</p>
-          </div>
-        </div>
-      </div>
-      <div class="reasons-col">
-        <h3 data-i18n-html="reasons_col2_title">For Investors &amp; PE Firms <span>Portfolio exit</span></h3>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_2_1">Proven Integration Capability</h4>
-            <p data-i18n="reason_2_1_desc">With nine product integrations under our belt, we have a repeatable playbook for absorbing software businesses without disrupting operations.</p>
-          </div>
-        </div>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_2_2">Legal-Vertical Focus Reduces Risk</h4>
-            <p data-i18n="reason_2_2_desc">Our deep focus on legal tech means we assess acquisitions with informed precision — we know which integrations add value and which are better left independent.</p>
-          </div>
-        </div>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_2_3">Rapid Decisions, Confidential Process</h4>
-            <p data-i18n="reason_2_3_desc">Deals are led directly by our principals with full confidentiality. We can provide indicative terms quickly and close on an agreed timeline.</p>
-          </div>
-        </div>
-        <div class="reason-item">
-          <div class="reason-check">✓</div>
-          <div>
-            <h4 data-i18n="reason_2_4">Strategic Synergies with Existing Portfolio</h4>
-            <p data-i18n="reason_2_4_desc">Your portfolio company gains immediate access to our distribution channels, compliance frameworks, and 5,000+ existing legal professional relationships.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="acquired-process reveal">
-      <div class="process-step">
-        <div class="step-num">1</div>
-        <h3 data-i18n="step_1_title">Initial Conversation</h3>
-        <p data-i18n="step_1_desc">A confidential, no-obligation discussion to understand your business, your goals, and whether Synaera is the right fit. We respond within 24 hours.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">2</div>
-        <h3 data-i18n="step_2_title">Due Diligence &amp; Valuation</h3>
-        <p data-i18n="step_2_desc">Focused, efficient diligence by a team that understands legal software inside-out. We ask the right questions and move at your pace.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">3</div>
-        <h3 data-i18n="step_3_title">Close &amp; Integrate</h3>
-        <p data-i18n="step_3_desc">A clean transaction followed by a structured integration plan — preserving what works, enhancing with shared infrastructure, and celebrating day one together.</p>
-      </div>
-    </div>
-
-    <div class="acquired-cta reveal">
-      <h3 data-i18n="acqcta_title">Ready to Explore a Conversation?</h3>
-      <p data-i18n="acqcta_desc">Whether you're actively exploring a sale or simply curious about what a partnership with Synaera could look like, we'd love to hear from you.</p>
-      <div class="cta-flex">
-        <a href="#contact" class="btn-primary" data-i18n="acqcta_btn">Start the Conversation</a>
-        <a href="mailto:acquisitions@synaera.com" class="btn-outline">acquisitions@synaera.com</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Industries ────────────────────────────────────────────────── -->
-<section id="industries" class="section">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label" data-i18n="ind_label">Who We Serve</div>
-      <h2 class="section-title" data-i18n="ind_title">Built for Every Legal Context</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="industries-grid">
-      <div class="industry-card reveal">
-        <div class="industry-icon">⚖️</div>
-        <h3 data-i18n="ind_1">Law Firms</h3>
-        <p data-i18n="ind_1_desc">From solo practitioners to large multi-office firms — practice management, billing, matter tracking, and document assembly.</p>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">📜</div>
-        <h3 data-i18n="ind_2">Notaries</h3>
-        <p data-i18n="ind_2_desc">Purpose-built solutions for Quebec notaries covering deeds, trust accounts, SURF integration, and remote closings.</p>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">🏛️</div>
-        <h3 data-i18n="ind_3">Bailiffs</h3>
-        <p data-i18n="ind_3_desc">Specialized software for huissiers de justice — study management, web portals, EDI, and cloud-based operations.</p>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">🏢</div>
-        <h3 data-i18n="ind_4">Enterprises</h3>
-        <p data-i18n="ind_4_desc">Large organizations managing complex document ecosystems, requiring governance, search, and regulatory compliance at scale.</p>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">🏦</div>
-        <h3 data-i18n="ind_5">Financial Institutions</h3>
-        <p data-i18n="ind_5_desc">Banks, insurance companies, and financial services firms requiring compliant document management and digital client experiences.</p>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">🏥</div>
-        <h3 data-i18n="ind_6">Public Sector</h3>
-        <p data-i18n="ind_6_desc">Government agencies and regulated bodies requiring secure, auditable document repositories and long-term records management.</p>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">🎓</div>
-        <h3 data-i18n="ind_7">Legal Education</h3>
-        <p data-i18n="ind_7_desc">Law schools and professional development programs integrating practice management tools directly into curriculum.</p>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">🌐</div>
-        <h3 data-i18n="ind_8">Legal Tech Startups</h3>
-        <p data-i18n="ind_8_desc">Emerging legal tech companies leveraging Synaera's platform infrastructure, distribution, and domain expertise to accelerate.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Technology ────────────────────────────────────────────────── -->
-<section id="technology" class="section">
-  <div class="container">
-    <div class="tech-grid">
-      <div class="reveal">
-        <div class="section-label" data-i18n="tech_label">Platform &amp; Technology</div>
-        <h2 class="section-title" data-i18n-html="tech_title">Built on a Foundation<br />of Trust</h2>
-        <div class="divider"></div>
-        <p class="section-desc" data-i18n="tech_desc">Our platform investments span cloud infrastructure, AI-powered document intelligence, security, and developer tooling — ensuring every product in our portfolio benefits from shared innovation.</p>
-        <div class="tech-list">
-          <div class="tech-item">
-            <div class="tech-item-icon">☁️</div>
-            <div>
-              <h4 data-i18n="techitem_1">Cloud &amp; On-Premise Deployment</h4>
-              <p data-i18n="techitem_1_desc">Flexible delivery for any compliance requirement or IT policy</p>
-            </div>
-          </div>
-          <div class="tech-item">
-            <div class="tech-item-icon">🤖</div>
-            <div>
-              <h4 data-i18n="techitem_2">AI Document Intelligence</h4>
-              <p data-i18n="techitem_2_desc">Classification, extraction, and search powered by machine learning</p>
-            </div>
-          </div>
-          <div class="tech-item">
-            <div class="tech-item-icon">🔒</div>
-            <div>
-              <h4 data-i18n="techitem_3">Enterprise Security</h4>
-              <p data-i18n="techitem_3_desc">SOC 2-aligned practices, encryption at rest and in transit</p>
-            </div>
-          </div>
-          <div class="tech-item">
-            <div class="tech-item-icon">🔌</div>
-            <div>
-              <h4 data-i18n="techitem_4">Open API Ecosystem</h4>
-              <p data-i18n="techitem_4_desc">REST APIs and webhook integrations for seamless connectivity</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tech-visual reveal">
-        <div class="tech-bar-label" data-i18n="techbar_label">Platform Capability Coverage</div>
-        <div class="tech-bar-row">
-          <div class="tech-bar-name" data-i18n="techbar_1">Practice Management</div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:96%"></div></div>
-          <div class="tech-bar-pct">96%</div>
-        </div>
-        <div class="tech-bar-row">
-          <div class="tech-bar-name" data-i18n="techbar_2">Document Management</div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:98%"></div></div>
-          <div class="tech-bar-pct">98%</div>
-        </div>
-        <div class="tech-bar-row">
-          <div class="tech-bar-name" data-i18n="techbar_3">Compliance Tools</div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:92%"></div></div>
-          <div class="tech-bar-pct">92%</div>
-        </div>
-        <div class="tech-bar-row">
-          <div class="tech-bar-name" data-i18n="techbar_4">Client Portals</div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:88%"></div></div>
-          <div class="tech-bar-pct">88%</div>
-        </div>
-        <div class="tech-bar-row">
-          <div class="tech-bar-name" data-i18n="techbar_5">AI / Automation</div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:82%"></div></div>
-          <div class="tech-bar-pct">82%</div>
-        </div>
-        <div class="tech-bar-row">
-          <div class="tech-bar-name" data-i18n="techbar_6">E-Signature &amp; Remote</div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:90%"></div></div>
-          <div class="tech-bar-pct">90%</div>
-        </div>
-        <div class="tech-bar-row">
-          <div class="tech-bar-name" data-i18n="techbar_7">Integrations &amp; APIs</div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:85%"></div></div>
-          <div class="tech-bar-pct">85%</div>
-        </div>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary">Get in Touch</a>
+        <a href="mailto:info@synaera.ca" class="btn-outline">info@synaera.ca</a>
       </div>
     </div>
   </div>
@@ -1553,7 +421,6 @@
     </div>
     <div class="news-grid">
 
-      <!-- Press Release: Harris acquires Constellio -->
       <div class="news-card reveal">
         <div class="news-card-meta">
           <span class="news-badge press" data-i18n="news_badge_press">Press Release</span>
@@ -1572,7 +439,6 @@
         </div>
       </div>
 
-      <!-- LinkedIn: Louis Clement 5k at LegalWeek -->
       <div class="news-card reveal">
         <div class="news-card-meta">
           <span class="news-badge social">LinkedIn</span>
@@ -1595,752 +461,50 @@
   </div>
 </section>
 
-<!-- ─── Contact ───────────────────────────────────────────────────── -->
-<section id="contact" class="section">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="section-label" data-i18n="contact_label">Get in Touch</div>
-        <h2 class="section-title" data-i18n-html="contact_title">Let's Talk About<br />Your Needs</h2>
-        <div class="divider"></div>
-        <p class="section-desc" data-i18n="contact_desc">Whether you're evaluating a product, exploring a partnership, or considering an acquisition conversation — our team is here to help.</p>
-        <div class="contact-detail">
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div>
-              <h4 data-i18n="citem_1">Headquarters</h4>
-              <p>Quebec, Canada</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">✉️</div>
-            <div>
-              <h4 data-i18n="citem_2">General Inquiries</h4>
-              <p>info@synaera.com</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">🤝</div>
-            <div>
-              <h4 data-i18n="citem_3">Acquisitions</h4>
-              <p>acquisitions@synaera.com</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">💼</div>
-            <div>
-              <h4 data-i18n="citem_4">Partnerships</h4>
-              <p>partners@synaera.com</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-form-box reveal">
-        <form onsubmit="handleForm(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label data-i18n="form_fname">First Name</label>
-              <input type="text" placeholder="Marie" required data-i18n-placeholder="ph_fname" />
-            </div>
-            <div class="form-group">
-              <label data-i18n="form_lname">Last Name</label>
-              <input type="text" placeholder="Tremblay" required data-i18n-placeholder="ph_lname" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label data-i18n="form_email">Email Address</label>
-            <input type="email" placeholder="marie@lawfirm.ca" required data-i18n-placeholder="ph_email" />
-          </div>
-          <div class="form-group">
-            <label data-i18n="form_org">Organization</label>
-            <input type="text" placeholder="Your firm or company" data-i18n-placeholder="ph_org" />
-          </div>
-          <div class="form-group">
-            <label data-i18n="form_subject">Subject</label>
-            <select>
-              <option data-i18n="opt_1">Product Inquiry</option>
-              <option data-i18n="opt_2">Partnership Opportunity</option>
-              <option data-i18n="opt_3">Acquisition Discussion</option>
-              <option data-i18n="opt_4">Technical Support</option>
-              <option data-i18n="opt_5">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label data-i18n="form_msg">Message</label>
-            <textarea placeholder="Tell us how we can help…" data-i18n-placeholder="ph_msg"></textarea>
-          </div>
-          <button type="submit" class="form-submit" data-i18n="form_submit">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── Footer ────────────────────────────────────────────────────── -->
-<footer>
+<footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="logo-light.png" alt="Synaera" style="height:48px;margin-bottom:.75rem;display:block;" />
-        <p data-i18n="footer_desc">The leading group of legal tech and document management software platforms serving the Canadian legal ecosystem.</p>
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><img src="logo-light.png" alt="Synaera" style="height:40px;display:block;" /></a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Empowering legal software companies to grow for the long term.</p>
+        <p style="margin-top:.75rem;font-size:.8rem;color:rgba(255,255,255,.5)">info@synaera.ca</p>
       </div>
       <div class="footer-col">
-        <h4 data-i18n="footer_col1">Products</h4>
+        <div class="footer-col-title" data-i18n="footer_nav_title">Navigation</div>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav_about_simple">About Us</a></li>
+          <li><a href="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+          <li><a href="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_group_title">Our Group</div>
+        <ul>
+          <li><a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a></li>
+          <li><a href="https://www.csisoftware.com/" target="_blank">Constellation Software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_portfolio_title">Portfolio</div>
         <ul>
           <li><a href="https://jurisconcept.ca/" target="_blank">JurisConcept</a></li>
-          <li><a href="https://jurisconcept.ca/en/jurispro/" target="_blank">JurisPro</a></li>
-          <li><a href="https://acuminevolution.ca/" target="_blank">Acumin Evolution</a></li>
-          <li><a href="https://www.procardex.com/" target="_blank">ProCardex</a></li>
-          <li><a href="https://pronotaire.com/en/" target="_blank">Pronotaire</a></li>
-          <li><a href="https://siunik.ca/en/" target="_blank">Siunik</a></li>
-          <li><a href="https://www.constellio.com/en/" target="_blank">Constellio</a></li>
+          <li><a href="https://www.constellio.com/" target="_blank">Constellio</a></li>
           <li><a href="https://www.modyo.com/" target="_blank">Modyo</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer_col2">Company</h4>
-        <ul>
-          <li><a href="#about" data-i18n="footer_about">About Synaera</a></li>
-          <li><a href="#industries" data-i18n="footer_ind">Industries</a></li>
-          <li><a href="#acquired" data-i18n="footer_acquired">Being Acquired</a></li>
-          <li><a href="#contact" data-i18n="footer_contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer_col3">Legal</h4>
-        <ul>
-          <li><a href="#" data-i18n="legal_1">Privacy Policy</a></li>
-          <li><a href="#" data-i18n="legal_2">Terms of Service</a></li>
-          <li><a href="#" data-i18n="legal_3">Cookie Policy</a></li>
-          <li><a href="#" data-i18n="legal_4">Accessibility</a></li>
+          <li><a href="https://dexco.com/" target="_blank">Dexco</a></li>
+          <li><a href="https://acuminevolution.ca/" target="_blank">AcuminEvolution</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span data-i18n="footer_copy">&copy; 2025 Synaera. All rights reserved.</span>
-      <span>Quebec, Canada &nbsp;·&nbsp; <a href="mailto:info@synaera.com">info@synaera.com</a></span>
+      <span>A <a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a> business unit</span>
     </div>
   </div>
 </footer>
 
-<!-- ─── Scripts ───────────────────────────────────────────────────── -->
-<script>
-  // ── Password Gate ───────────────────────────────────────────────
-  const PASS = 'egad';
-  const gate = document.getElementById('gate');
-
-  function tryUnlock(pw) {
-    if (pw.trim().toLowerCase() === PASS) {
-      sessionStorage.setItem('synaera_auth', '1');
-      gate.classList.add('hidden');
-    } else {
-      document.getElementById('gate-error').textContent = window._currentGateError || 'Incorrect access code. Please try again.';
-      document.getElementById('gate-input').value = '';
-      document.getElementById('gate-input').focus();
-    }
-  }
-
-  if (sessionStorage.getItem('synaera_auth') === '1') {
-    gate.classList.add('hidden');
-  }
-
-  document.getElementById('gate-btn').addEventListener('click', () => {
-    tryUnlock(document.getElementById('gate-input').value);
-  });
-  document.getElementById('gate-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') tryUnlock(e.target.value);
-    document.getElementById('gate-error').textContent = '';
-  });
-
-  // ── Sticky Nav ──────────────────────────────────────────────────
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // ── Mobile Menu ─────────────────────────────────────────────────
-  function toggleMenu() {
-    const links = document.querySelector('.nav-links');
-    const isOpen = links.style.display === 'flex';
-    links.style.cssText = isOpen
-      ? ''
-      : 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(1,44,54,.98);padding:1.5rem 5%;gap:1rem;backdrop-filter:blur(16px);';
-  }
-
-  // ── Scroll Reveal ───────────────────────────────────────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ── Form Handler ────────────────────────────────────────────────
-  function handleForm(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = i18n[currentLang].form_success;
-    btn.style.background = '#16A34A';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = i18n[currentLang].form_submit;
-      btn.style.background = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 4000);
-  }
-
-  // ── i18n ────────────────────────────────────────────────────────────
-  let currentLang = localStorage.getItem('synaera_lang') || 'en';
-
-  const i18n = {
-    en: {
-      gate_title: 'Private Preview',
-      gate_desc: 'Enter your access code to continue',
-      gate_placeholder: 'Access code',
-      gate_btn: 'Enter',
-      nav_mission: 'Mission',
-      nav_about: 'About',
-      nav_team: 'Team',
-      nav_products: 'Products',
-      nav_acquired: 'Being Acquired',
-      nav_industries: 'Industries',
-      nav_news: 'News',
-      nav_contact: 'Contact Us',
-      hero_eyebrow: 'Legal Tech & Document Management',
-      hero_title: 'The Intelligence<br />Behind <span class="accent">Modern Legal</span><br />Practice',
-      hero_desc: 'Synaera is a portfolio of industry-leading software solutions purpose-built for legal professionals, notaries, bailiffs, and enterprise organizations. We empower the legal ecosystem with precision technology.',
-      hero_cta_primary: 'Explore Our Solutions',
-      hero_cta_outline: 'Get in Touch',
-      hero_stat_1: 'Product Suites',
-      hero_stat_2: 'Users',
-      hero_stat_3: 'Client Organizations',
-      hero_stat_4: 'Employees',
-      hero_card_1_label: 'Law Firm Management',
-      hero_card_2_label: 'Document Intelligence',
-      hero_card_3_label: 'Compliance & Security',
-      hero_card_1_text: 'End-to-end practice management for lawyers, notaries & bailiffs',
-      hero_card_2_text: 'AI-powered document search, classification & compliance',
-      hero_card_3_text: 'Built to meet the most demanding regulatory requirements',
-      mission_label: 'Our Mission',
-      mission_quote: 'We <em>buy, build, and operate</em> vertical market software companies in legal tech, document management, and financial management — with an ownership horizon measured in <em>decades, not quarters.</em>',
-      pillar_buy: 'Buy',
-      pillar_build: 'Build',
-      pillar_operate: 'Operate',
-      pillar_buy_desc: 'We acquire profitable, well-loved vertical software businesses with loyal user bases and strong domain fit. We move decisively, close with certainty, and hold permanently — no flipping, no fund cycles.',
-      pillar_build_desc: 'We invest continuously in product, people, and infrastructure. Our portfolio companies benefit from shared R&D, a common compliance framework, and the operational depth of a growing group — not just capital.',
-      pillar_operate_desc: 'We are operators first. With deep domain expertise in legal tech and document management, we coach leadership, optimize go-to-market, and unlock cross-portfolio synergies that independents simply can\'t access.',
-      expansion_label: 'Strategic Priorities',
-      expansion_title: 'Where We\'re Growing Next',
-      market_1_title: 'Canadian Depth',
-      market_2_title: 'US Legal Tech Penetration',
-      market_3_title: 'LATAM Acquisitions',
-      market_4_title: 'Document Management Growth',
-      market_1_desc: 'Cementing our position as the definitive software platform for Canadian legal professionals — from solo notaries to national law firms.',
-      market_2_desc: 'Expanding our legal tech portfolio into the US market through targeted acquisitions and partnerships in practice management and document automation.',
-      market_3_desc: 'Actively acquiring legal tech and document management businesses across Latin America — building a regional platform with local expertise and global standards.',
-      market_4_desc: 'Scaling our enterprise content and document intelligence capabilities to serve larger organizations, regulated industries, and cross-border document workflows.',
-      about_label: 'Who We Are',
-      about_title: 'A Group Built for the<br />Legal Ecosystem',
-      about_desc: 'Synaera is the holding group behind nine specialized software platforms serving the full spectrum of the legal and document management landscape. From solo notary practices to large law firms and enterprise document repositories, our portfolio delivers tailored solutions at every scale.',
-      diag_1_lbl: 'Founded',
-      diag_2_lbl: 'Coverage',
-      diag_3_lbl: 'Verticals',
-      diag_4_lbl: 'Delivery',
-      diag_1_val: 'Quebec, Canada',
-      diag_2_val: 'National & Global',
-      diag_3_val: 'Legal, Enterprise',
-      diag_4_val: 'Cloud & On-Premise',
-      feat_1_title: 'Deep Domain Expertise',
-      feat_2_title: 'Integrated Ecosystem',
-      feat_3_title: 'Long-Term Partnership',
-      feat_1_desc: 'Decades of experience building software specifically for Quebec and Canadian legal professionals, with an intimate understanding of regulatory requirements.',
-      feat_2_desc: 'Our products are designed to work together — sharing data, workflows, and infrastructure across practice management, document management, and client portals.',
-      feat_3_desc: 'We don\'t just sell software — we commit to the long-term success of our clients with continuous product investment, training, and responsive support.',
-      leadership_label: 'The Team',
-      leadership_title: 'Leadership',
-      leadership_desc: 'Operators, investors, and domain experts united by a single mission — building the defining platform for legal technology and document management.',
-      linkedin_label: 'LinkedIn',
-      ltitle_lc: 'Portfolio Leader',
-      ltitle_pb: 'EVP Legal',
-      ltitle_mb: 'EVP Documents',
-      ltitle_mbu: 'EVP LATAM',
-      ltitle_xm: 'Financial Analyst',
-      ltitle_ab: 'Director, Operations',
-      ltitle_jag: 'Director, Sales',
-      ltitle_cb: 'Director, IT & Technology',
-      ltitle_dc: 'Director, Corporate Development',
-      ltitle_rs: 'Corporate Development',
-      ltitle_sb: 'Corporate Development',
-      lbio_dc: 'Veteran M&A operator in legal technology software. Brings extensive experience identifying, evaluating, and closing software acquisitions — with a track record spanning North American legal tech transactions across the Constellation Software ecosystem.',
-      lbio_lc: 'Leads the Synaera portfolio across legal tech and LATAM markets. BBA Finance from ESG UQAM; previously Portfolio Leader at Harris Computer overseeing legal and Latin American subsidiaries.',
-      lbio_pb: 'Executive Vice President overseeing the legal practice management vertical. DESS Management from HEC Montréal. Drives strategy for Juris Concept, JurisPro, and AliForm across 6,000+ legal professionals.',
-      lbio_mb: 'MBA, PMP. Leads the enterprise content and document management vertical. 17+ years in ECM and compliance technology. Oversees Constellio\'s product operations and intelligence roadmap.',
-      lbio_mbu: 'Leads Synaera\'s Latin American expansion strategy, managing partnerships, product distribution, and M&A activity across LATAM markets for the legal tech and document management verticals.',
-      lbio_xm: 'CFA. M&A Manager with deep expertise in financial modelling, deal evaluation, and portfolio company integration. Brings rigorous buy-side discipline to Synaera\'s acquisition pipeline.',
-      lbio_ab: 'Oversees operational delivery across the legal software portfolio. Progressed from project management to service leadership at Juris Concept, bringing deep process and client success expertise.',
-      lbio_jag: 'Drives revenue growth and go-to-market strategy across the portfolio. Brings hands-on experience in legal software sales cycles, client acquisition, and account development for Quebec\'s legal market.',
-      lbio_cb: 'AWS Certified Cloud Practitioner. Leads cloud infrastructure strategy, security, and IT architecture across the portfolio. Brings deep expertise in network engineering and cloud migration from Juris Concept.',
-      lbio_rs: 'Supports Synaera\'s acquisition pipeline and portfolio growth initiatives. Focuses on sourcing, evaluating, and executing transactions in the legal tech and document management software space.',
-      lbio_sb: 'Drives Synaera\'s LATAM-focused corporate development strategy. Identifies acquisition targets, manages regional partnerships, and supports cross-border deal execution across Latin American markets.',
-      products_label: 'Our Portfolio',
-      products_title: 'Nine Specialized Platforms',
-      products_desc: 'Purpose-built for every facet of legal and document practice — from notarial deed management to enterprise content intelligence.',
-      pcat_1: 'Law Firm Management',
-      pcat_2: 'Notarial Practice',
-      pcat_3: 'Legal Forms',
-      pcat_4: 'Legal Practice Management',
-      pcat_5: 'Notary Software',
-      pcat_6: 'Notarial Operations',
-      pcat_7: 'Bailiff Software',
-      pcat_8: 'Enterprise Content Management',
-      pcat_9: 'Digital Experience Platform',
-      pdesc_1: 'Comprehensive practice management software for law firms. Streamline case management, client files, billing, and compliance — all from a single intuitive platform built for Quebec legal professionals.',
-      pdesc_2: 'Web-based, fully centralized study management for notaries. Manage deeds, client records, and workflows from anywhere — designed for the modern notarial office with full regulatory compliance.',
-      pdesc_3: 'Intelligent legal forms management for law firms and legal departments. Automate document generation, standardize precedents, and reduce manual drafting errors with a smart forms engine.',
-      pdesc_4: 'Canadian legal practice management pioneer since 1974. Dexco\'s AcuminEvolution platform unifies matter management, time tracking, billing, trust accounting, and document management in a single cloud workspace built for Canadian law firms.',
-      pdesc_5: 'The definitive practice management solution for notaries. Trust accounting, payroll, invoicing, SURF integration, and cloud-based access — fully compliant with the Quebec Chamber of Notaries.',
-      pdesc_6: 'All-in-one office management for high-volume notarial practices. Deed management, client database, customizable invoicing, remote signing, and SURF integration — built for productivity at scale.',
-      pdesc_7: 'The complete software suite for Quebec bailiffs (huissiers de justice). JuriSoft, JuriWeb, JuriEDI, and JuriCloud modules cover every aspect of bailiff practice — from study management to web portals.',
-      pdesc_8: 'Enterprise-grade document and content management powered by intelligent search and AI classification. Centralize, find, and govern every document across your organization — at any scale.',
-      pdesc_9: 'A composable frontend platform powering digital transformation for banks and regulated industries. Build omnichannel client portals, self-service tools, and digital origination workflows with microfrontend architecture — trusted by leading financial institutions across Latin America.',
-      plink_1: 'Visit jurisconcept.ca',
-      plink_2: 'Visit JurisPro',
-      plink_3: 'Visit jurisconcept.ca',
-      plink_4: 'Visit dexco.com',
-      plink_5: 'Visit procardex.com',
-      plink_6: 'Visit pronotaire.com',
-      plink_7: 'Visit siunik.ca',
-      plink_8: 'Visit constellio.com',
-      plink_9: 'Visit modyo.com',
-      ptag_jc_1: 'Case Management', ptag_jc_2: 'Billing', ptag_jc_3: 'Compliance',
-      ptag_jp_1: 'Deed Management', ptag_jp_2: 'Web-Based', ptag_jp_3: 'Notaries',
-      ptag_af_1: 'Form Automation', ptag_af_2: 'Precedents', ptag_af_3: 'Document Generation',
-      ptag_ae_1: 'Matter Management', ptag_ae_2: 'Trust Accounting', ptag_ae_3: 'Cloud',
-      ptag_pc_1: 'Trust Accounting', ptag_pc_2: 'SURF Integration', ptag_pc_3: 'Cloud',
-      ptag_pn_1: 'Remote Signing', ptag_pn_2: 'Deed Workflow', ptag_pn_3: 'Office Management',
-      ptag_si_1: 'Bailiff Practice', ptag_si_2: 'JuriCloud', ptag_si_3: 'Web Portal',
-      ptag_co_1: 'ECM', ptag_co_2: 'AI Search', ptag_co_3: 'Governance',
-      ptag_mo_1: 'Banking', ptag_mo_2: 'Client Portal', ptag_mo_3: 'Microfrontend',
-      acq_label: 'Growth Through Acquisition',
-      acq_title: 'Being Acquired by Synaera',
-      acq_desc: 'We acquire, operate, and grow exceptional legal tech and document management software businesses — permanently. If you\'ve built something great for the legal ecosystem, we want to talk.',
-      acqstat_1: 'Platforms in Portfolio',
-      acqstat_2: 'Years in Legal Tech',
-      acqstat_3: 'Commitment to Products',
-      acqstat_4: 'Long-Term Hold Strategy',
-      acqpillar_1_title: 'Acquire',
-      acqpillar_2_title: 'Operate',
-      acqpillar_3_title: 'Grow',
-      acqpillar_1_desc: 'We seek profitable, well-loved legal tech and document management software businesses with loyal user bases. Vertical SaaS, practice management, ECM, e-signature, compliance tools — we understand your market deeply.',
-      acqpillar_2_desc: 'We provide operational expertise, shared infrastructure, and executive coaching to help acquired businesses grow. We integrate where it creates value, and leave room for what makes each product unique.',
-      acqpillar_3_desc: 'Portfolio companies benefit from cross-sell opportunities, shared R&D, common compliance frameworks, and the credibility of the Synaera brand. Together, we reach clients neither could alone.',
-      reasons_col1_title: 'For Founders &amp; Entrepreneurs <span>Selling your business</span>',
-      reasons_col2_title: 'For Investors &amp; PE Firms <span>Portfolio exit</span>',
-      reason_1_1: 'Permanent Home for Your Product',
-      reason_1_2: 'Domain Expertise You Can Trust',
-      reason_1_3: 'Employee & Customer Continuity',
-      reason_1_4: 'Clean, Certain Transactions',
-      reason_2_1: 'Proven Integration Capability',
-      reason_2_2: 'Legal-Vertical Focus Reduces Risk',
-      reason_2_3: 'Rapid Decisions, Confidential Process',
-      reason_2_4: 'Strategic Synergies with Existing Portfolio',
-      reason_1_1_desc: 'We don\'t flip. We hold businesses indefinitely — your product, your team, and your customers are never sold on to a third party.',
-      reason_1_2_desc: 'Our leadership has spent decades in legal tech. We understand notarial software, bailiff workflows, ECM compliance, and every nuance of your market.',
-      reason_1_3_desc: 'We value the teams behind products. Key personnel are retained, supported, and given a career path within a growing group.',
-      reason_1_4_desc: 'We close deals. No third-party financing required, no prolonged due diligence, and straightforward deal mechanics with majority cash at closing.',
-      reason_2_1_desc: 'With nine product integrations under our belt, we have a repeatable playbook for absorbing software businesses without disrupting operations.',
-      reason_2_2_desc: 'Our deep focus on legal tech means we assess acquisitions with informed precision — we know which integrations add value and which are better left independent.',
-      reason_2_3_desc: 'Deals are led directly by our principals with full confidentiality. We can provide indicative terms quickly and close on an agreed timeline.',
-      reason_2_4_desc: 'Your portfolio company gains immediate access to our distribution channels, compliance frameworks, and 5,000+ existing legal professional relationships.',
-      step_1_title: 'Initial Conversation',
-      step_2_title: 'Due Diligence & Valuation',
-      step_3_title: 'Close & Integrate',
-      step_1_desc: 'A confidential, no-obligation discussion to understand your business, your goals, and whether Synaera is the right fit. We respond within 24 hours.',
-      step_2_desc: 'Focused, efficient diligence by a team that understands legal software inside-out. We ask the right questions and move at your pace.',
-      step_3_desc: 'A clean transaction followed by a structured integration plan — preserving what works, enhancing with shared infrastructure, and celebrating day one together.',
-      acqcta_title: 'Ready to Explore a Conversation?',
-      acqcta_desc: 'Whether you\'re actively exploring a sale or simply curious about what a partnership with Synaera could look like, we\'d love to hear from you.',
-      acqcta_btn: 'Start the Conversation',
-      ind_label: 'Who We Serve',
-      ind_title: 'Built for Every Legal Context',
-      ind_1: 'Law Firms',
-      ind_2: 'Notaries',
-      ind_3: 'Bailiffs',
-      ind_4: 'Enterprises',
-      ind_5: 'Financial Institutions',
-      ind_6: 'Public Sector',
-      ind_7: 'Legal Education',
-      ind_8: 'Legal Tech Startups',
-      ind_1_desc: 'From solo practitioners to large multi-office firms — practice management, billing, matter tracking, and document assembly.',
-      ind_2_desc: 'Purpose-built solutions for Quebec notaries covering deeds, trust accounts, SURF integration, and remote closings.',
-      ind_3_desc: 'Specialized software for huissiers de justice — study management, web portals, EDI, and cloud-based operations.',
-      ind_4_desc: 'Large organizations managing complex document ecosystems, requiring governance, search, and regulatory compliance at scale.',
-      ind_5_desc: 'Banks, insurance companies, and financial services firms requiring compliant document management and digital client experiences.',
-      ind_6_desc: 'Government agencies and regulated bodies requiring secure, auditable document repositories and long-term records management.',
-      ind_7_desc: 'Law schools and professional development programs integrating practice management tools directly into curriculum.',
-      ind_8_desc: 'Emerging legal tech companies leveraging Synaera\'s platform infrastructure, distribution, and domain expertise to accelerate.',
-      tech_label: 'Platform & Technology',
-      tech_title: 'Built on a Foundation<br />of Trust',
-      tech_desc: 'Our platform investments span cloud infrastructure, AI-powered document intelligence, security, and developer tooling — ensuring every product in our portfolio benefits from shared innovation.',
-      techitem_1: 'Cloud & On-Premise Deployment',
-      techitem_2: 'AI Document Intelligence',
-      techitem_3: 'Enterprise Security',
-      techitem_4: 'Open API Ecosystem',
-      techitem_1_desc: 'Flexible delivery for any compliance requirement or IT policy',
-      techitem_2_desc: 'Classification, extraction, and search powered by machine learning',
-      techitem_3_desc: 'SOC 2-aligned practices, encryption at rest and in transit',
-      techitem_4_desc: 'REST APIs and webhook integrations for seamless connectivity',
-      techbar_label: 'Platform Capability Coverage',
-      techbar_1: 'Practice Management',
-      techbar_2: 'Document Management',
-      techbar_3: 'Compliance Tools',
-      techbar_4: 'Client Portals',
-      techbar_5: 'AI / Automation',
-      techbar_6: 'E-Signature & Remote',
-      techbar_7: 'Integrations & APIs',
-      news_label: 'Latest Updates',
-      news_title: 'News &amp; Highlights',
-      news_badge_press: 'Press Release',
-      news1_title: 'Harris Computer Acquires Constellio, Strengthening Its Enterprise Content Management Portfolio',
-      news1_p1: 'Harris Computer, a subsidiary of Constellation Software Inc., has completed the acquisition of Constellio, the leading open-source enterprise search and document management platform trusted by legal, government, and financial institutions across North America and Europe.',
-      news1_p2: 'The acquisition marks a significant milestone for the Synaera portfolio, validating the group\'s investment thesis around niche vertical software with durable competitive advantages. Constellio will continue operating under its existing brand, with its Montréal-based team remaining in place.',
-      news1_quote: '"Constellio has built something truly exceptional — a platform that combines the power of open-source flexibility with enterprise-grade reliability. This acquisition accelerates our ability to deliver intelligent document experiences to the markets we serve."<br /><strong style="font-style:normal; font-size:.8rem; color:var(--muted); display:block; margin-top:.5rem;">— Harris Computer, Acquisition Statement</strong>',
-      news1_footer: 'Official Press Release — Harris Computer / Constellation Software',
-      news2_title: 'Louis Clement Completes 5K at LegalWeek — Running Community Meets Legal Tech',
-      news2_p1: 'Synaera co-founder Louis Clement joined hundreds of legal professionals for the annual LegalWeek 5K charity run in New York City, making time between sessions to lace up and hit the pavement.',
-      news2_p2: 'The post resonated widely across the legal tech community, drawing engagement from founders, operators, and practitioners alike — a reflection of the relationships Synaera has built across the industry.',
-      news2_quote: '"What I love about LegalWeek isn\'t just the panels or the networking — it\'s moments like this morning\'s 5K where you realize the legal tech community is genuinely a community. Grateful for everyone who ran, walked, and cheered. See you all at the finish line next year 🏃‍♂️"<br /><strong style="font-style:normal; font-size:.8rem; color:var(--muted); display:block; margin-top:.5rem;">— Louis Clement on LinkedIn</strong>',
-      news2_footer: 'Louis Clement — View on LinkedIn',
-      contact_label: 'Get in Touch',
-      contact_title: 'Let\'s Talk About<br />Your Needs',
-      contact_desc: 'Whether you\'re evaluating a product, exploring a partnership, or considering an acquisition conversation — our team is here to help.',
-      citem_1: 'Headquarters',
-      citem_2: 'General Inquiries',
-      citem_3: 'Acquisitions',
-      citem_4: 'Partnerships',
-      form_fname: 'First Name',
-      form_lname: 'Last Name',
-      form_email: 'Email Address',
-      form_org: 'Organization',
-      form_subject: 'Subject',
-      form_msg: 'Message',
-      ph_fname: 'Marie',
-      ph_lname: 'Tremblay',
-      ph_email: 'marie@lawfirm.ca',
-      ph_org: 'Your firm or company',
-      ph_msg: 'Tell us how we can help\u2026',
-      opt_1: 'Product Inquiry',
-      opt_2: 'Partnership Opportunity',
-      opt_3: 'Acquisition Discussion',
-      opt_4: 'Technical Support',
-      opt_5: 'Other',
-      form_submit: 'Send Message',
-      form_success: 'Message Sent \u2713',
-      footer_desc: 'The leading group of legal tech and document management software platforms serving the Canadian legal ecosystem.',
-      footer_col1: 'Products',
-      footer_col2: 'Company',
-      footer_col3: 'Legal',
-      footer_about: 'About Synaera',
-      footer_acquired: 'Being Acquired',
-      footer_contact: 'Contact',
-      footer_ind: 'Industries',
-      legal_1: 'Privacy Policy',
-      legal_2: 'Terms of Service',
-      legal_3: 'Cookie Policy',
-      legal_4: 'Accessibility',
-      footer_copy: '\u00a9 2025 Synaera. All rights reserved.',
-      gate_error: 'Incorrect access code. Please try again.',
-    },
-    fr: {
-      gate_title: 'Aper\u00e7u priv\u00e9',
-      gate_desc: 'Entrez votre code d\'acc\u00e8s pour continuer',
-      gate_placeholder: 'Code d\'acc\u00e8s',
-      gate_btn: 'Entrer',
-      nav_mission: 'Mission',
-      nav_about: '\u00c0 propos',
-      nav_team: '\u00c9quipe',
-      nav_products: 'Produits',
-      nav_acquired: '\u00catre acquis',
-      nav_industries: 'Industries',
-      nav_news: 'Actualit\u00e9s',
-      nav_contact: 'Nous contacter',
-      hero_eyebrow: 'Technologie juridique et gestion documentaire',
-      hero_title: 'L\'intelligence<br />au c\u0153ur de la <span class="accent">pratique juridique</span><br />moderne',
-      hero_desc: 'Synaera est un portefeuille de solutions logicielles de premier plan, con\u00e7ues sp\u00e9cifiquement pour les professionnels du droit, notaires, huissiers et organisations d\'entreprise. Nous outillons l\'\u00e9cosyst\u00e8me juridique avec une technologie de pr\u00e9cision.',
-      hero_cta_primary: 'Explorer nos solutions',
-      hero_cta_outline: 'Nous contacter',
-      hero_stat_1: 'Suites logicielles',
-      hero_stat_2: 'Utilisateurs',
-      hero_stat_3: 'Organisations clientes',
-      hero_stat_4: 'Employ\u00e9s',
-      hero_card_1_label: 'Gestion de cabinet',
-      hero_card_2_label: 'Intelligence documentaire',
-      hero_card_3_label: 'Conformit\u00e9 et s\u00e9curit\u00e9',
-      hero_card_1_text: 'Gestion de cabinet de bout en bout pour avocats, notaires et huissiers',
-      hero_card_2_text: 'Recherche documentaire, classification et conformit\u00e9 propuls\u00e9es par l\'IA',
-      hero_card_3_text: 'Con\u00e7u pour r\u00e9pondre aux exigences r\u00e9glementaires les plus strictes',
-      mission_label: 'Notre mission',
-      mission_quote: 'Nous <em>acqu\u00e9rons, d\u00e9veloppons et g\u00e9rons</em> des soci\u00e9t\u00e9s logicielles de march\u00e9s verticaux en technologie juridique, gestion documentaire et gestion financi\u00e8re \u2014 avec un horizon de d\u00e9tention mesur\u00e9 en <em>d\u00e9cennies, non en trimestres.</em>',
-      pillar_buy: 'Acqu\u00e9rir',
-      pillar_build: 'D\u00e9velopper',
-      pillar_operate: 'G\u00e9rer',
-      pillar_buy_desc: 'Nous acqu\u00e9rons des logiciels verticaux rentables et appr\u00e9ci\u00e9s, avec des bases d\'utilisateurs fid\u00e8les et une forte ad\u00e9quation au secteur. Nous agissons avec d\u00e9cision, concluons avec certitude et d\u00e9tenons de fa\u00e7on permanente \u2014 sans reventes, sans cycles de fonds.',
-      pillar_build_desc: 'Nous investissons continuellement dans les produits, les personnes et l\'infrastructure. Nos soci\u00e9t\u00e9s en portefeuille b\u00e9n\u00e9ficient d\'une R&D partag\u00e9e, d\'un cadre de conformit\u00e9 commun et de la profondeur op\u00e9rationnelle d\'un groupe en croissance \u2014 pas seulement de capital.',
-      pillar_operate_desc: 'Nous sommes avant tout des op\u00e9rateurs. Gr\u00e2ce \u00e0 notre expertise approfondie en technologie juridique et en gestion documentaire, nous accompagnons la direction, optimisons la mise en march\u00e9 et g\u00e9n\u00e9rons des synergies inter-portefeuille inaccessibles aux acteurs ind\u00e9pendants.',
-      expansion_label: 'Priorit\u00e9s strat\u00e9giques',
-      expansion_title: 'Nos axes de croissance',
-      market_1_title: 'Ancrage canadien',
-      market_2_title: 'P\u00e9n\u00e9tration du march\u00e9 juridique am\u00e9ricain',
-      market_3_title: 'Acquisitions en Am\u00e9rique latine',
-      market_4_title: 'Croissance en gestion documentaire',
-      market_1_desc: 'Consolider notre position en tant que plateforme logicielle de r\u00e9f\u00e9rence pour les professionnels du droit canadiens \u2014 des notaires ind\u00e9pendants aux grands cabinets nationaux.',
-      market_2_desc: '\u00c9tendre notre portefeuille de technologie juridique sur le march\u00e9 am\u00e9ricain par des acquisitions cibl\u00e9es et des partenariats en gestion de cabinet et en automatisation documentaire.',
-      market_3_desc: 'Acqu\u00e9rir activement des entreprises de technologie juridique et de gestion documentaire en Am\u00e9rique latine \u2014 en b\u00e2tissant une plateforme r\u00e9gionale alliant expertise locale et standards internationaux.',
-      market_4_desc: 'Renforcer nos capacit\u00e9s en gestion de contenu d\'entreprise et en intelligence documentaire pour servir les grandes organisations, les secteurs r\u00e9glement\u00e9s et les flux documentaires transfrontaliers.',
-      about_label: 'Qui nous sommes',
-      about_title: 'Un groupe b\u00e2ti pour<br />l\'\u00e9cosyst\u00e8me juridique',
-      about_desc: 'Synaera est le groupe holding de neuf plateformes logicielles sp\u00e9cialis\u00e9es couvrant l\'ensemble du spectre juridique et de la gestion documentaire. Des \u00e9tudes notariales ind\u00e9pendantes aux grands cabinets d\'avocats et aux d\u00e9p\u00f4ts documentaires d\'entreprise, notre portefeuille offre des solutions adapt\u00e9es \u00e0 chaque \u00e9chelle.',
-      diag_1_lbl: 'Fond\u00e9e',
-      diag_2_lbl: 'Couverture',
-      diag_3_lbl: 'Secteurs',
-      diag_4_lbl: 'D\u00e9ploiement',
-      diag_1_val: 'Qu\u00e9bec, Canada',
-      diag_2_val: 'National et mondial',
-      diag_3_val: 'Juridique, Entreprise',
-      diag_4_val: 'Infonuagique et sur site',
-      feat_1_title: 'Expertise sectorielle approfondie',
-      feat_2_title: '\u00c9cosyst\u00e8me int\u00e9gr\u00e9',
-      feat_3_title: 'Partenariat \u00e0 long terme',
-      feat_1_desc: 'Des d\u00e9cennies d\'exp\u00e9rience dans la cr\u00e9ation de logiciels pour les professionnels du droit qu\u00e9b\u00e9cois et canadiens, avec une connaissance intime des exigences r\u00e9glementaires.',
-      feat_2_desc: 'Nos produits sont con\u00e7us pour fonctionner ensemble \u2014 en partageant donn\u00e9es, flux de travail et infrastructure entre la gestion de cabinet, la gestion documentaire et les portails clients.',
-      feat_3_desc: 'Nous ne vendons pas seulement des logiciels \u2014 nous nous engageons dans la r\u00e9ussite \u00e0 long terme de nos clients gr\u00e2ce \u00e0 un investissement continu, \u00e0 la formation et \u00e0 un support r\u00e9actif.',
-      leadership_label: 'L\'\u00e9quipe',
-      leadership_title: 'Direction',
-      leadership_desc: 'Op\u00e9rateurs, investisseurs et experts du domaine unis par une seule mission \u2014 b\u00e2tir la plateforme de r\u00e9f\u00e9rence en technologie juridique et en gestion documentaire.',
-      linkedin_label: 'LinkedIn',
-      ltitle_lc: 'Chef de portefeuille',
-      ltitle_pb: 'VP Ex\u00e9cutif, Juridique',
-      ltitle_mb: 'VP Ex\u00e9cutif, Documents',
-      ltitle_mbu: 'VP Ex\u00e9cutif, LATAM',
-      ltitle_xm: 'Analyste financi\u00e8re',
-      ltitle_ab: 'Directrice, Op\u00e9rations',
-      ltitle_jag: 'Directeur, Ventes',
-      ltitle_cb: 'Directeur, TI et Technologie',
-      ltitle_dc: 'Directeur, D\u00e9veloppement corporatif',
-      ltitle_rs: 'D\u00e9veloppement corporatif',
-      ltitle_sb: 'D\u00e9veloppement corporatif',
-      lbio_dc: 'Op\u00e9rateur F&A chevronn\u00e9 dans les logiciels de technologie juridique. Apporte une vaste exp\u00e9rience dans l\'identification, l\'\u00e9valuation et la cl\u00f4ture d\'acquisitions logicielles \u2014 avec un bilan couvrant des transactions en technologie juridique nord-am\u00e9ricaine au sein de l\'\u00e9cosyst\u00e8me Constellation Software.',
-      lbio_lc: 'Dirige le portefeuille Synaera en technologie juridique et sur les march\u00e9s LATAM. BBA Finance de l\'ESG UQAM\u00a0; anciennement Chef de portefeuille chez Harris Computer, supervisant les filiales juridiques et latino-am\u00e9ricaines.',
-      lbio_pb: 'Vice-pr\u00e9sident ex\u00e9cutif supervisant le secteur de la gestion de cabinet juridique. DESS Management de HEC Montr\u00e9al. Pilote la strat\u00e9gie pour Juris Concept, JurisPro et AliForm aupr\u00e8s de plus de 6\u00a0000 professionnels du droit.',
-      lbio_mb: 'MBA, PMP. Dirige le secteur de la gestion de contenu d\'entreprise et documentaire. Plus de 17 ans en ECM et en technologie de conformit\u00e9. Supervise les op\u00e9rations produit et la feuille de route de Constellio.',
-      lbio_mbu: 'Dirige la strat\u00e9gie d\'expansion de Synaera en Am\u00e9rique latine, g\u00e9rant les partenariats, la distribution des produits et les activit\u00e9s de F&A dans les march\u00e9s LATAM pour les secteurs juridique et documentaire.',
-      lbio_xm: 'CFA. Gestionnaire F&A avec une expertise approfondie en mod\u00e9lisation financi\u00e8re, \u00e9valuation de transactions et int\u00e9gration de soci\u00e9t\u00e9s en portefeuille. Apporte une rigueur buy-side \u00e0 la cha\u00eene d\'acquisition de Synaera.',
-      lbio_ab: 'Supervise la livraison op\u00e9rationnelle du portefeuille logiciel juridique. A progress\u00e9 de la gestion de projets \u00e0 la direction des services chez Juris Concept, apportant une expertise approfondie en processus et en succ\u00e8s client.',
-      lbio_jag: 'Pilote la croissance des revenus et la strat\u00e9gie de mise en march\u00e9 du portefeuille. Apporte une exp\u00e9rience pratique des cycles de vente de logiciels juridiques, de l\'acquisition de clients et du d\u00e9veloppement de comptes sur le march\u00e9 juridique qu\u00e9b\u00e9cois.',
-      lbio_cb: 'Praticien certifi\u00e9 AWS. Dirige la strat\u00e9gie d\'infrastructure infonuagique, la s\u00e9curit\u00e9 et l\'architecture TI du portefeuille. Apporte une expertise approfondie en ing\u00e9nierie r\u00e9seau et migration vers le nuage, acquise chez Juris Concept.',
-      lbio_rs: 'Soutient la cha\u00eene d\'acquisition et les initiatives de croissance du portefeuille de Synaera. Se concentre sur la recherche, l\'\u00e9valuation et la r\u00e9alisation de transactions dans le domaine des logiciels de technologie juridique et de gestion documentaire.',
-      lbio_sb: 'Pilote la strat\u00e9gie de d\u00e9veloppement corporatif ax\u00e9e sur l\'Am\u00e9rique latine pour Synaera. Identifie des cibles d\'acquisition, g\u00e8re les partenariats r\u00e9gionaux et soutient la r\u00e9alisation de transactions transfrontaliers sur les march\u00e9s latino-am\u00e9ricains.',
-      products_label: 'Notre portefeuille',
-      products_title: 'Neuf plateformes sp\u00e9cialis\u00e9es',
-      products_desc: 'Con\u00e7ues pour chaque facette de la pratique juridique et documentaire \u2014 de la gestion des actes notari\u00e9s \u00e0 l\'intelligence de contenu d\'entreprise.',
-      pcat_1: 'Gestion de cabinet juridique',
-      pcat_2: 'Pratique notariale',
-      pcat_3: 'Formulaires juridiques',
-      pcat_4: 'Gestion de cabinet juridique',
-      pcat_5: 'Logiciel notarial',
-      pcat_6: 'Op\u00e9rations notariales',
-      pcat_7: 'Logiciel pour huissiers',
-      pcat_8: 'Gestion de contenu d\'entreprise',
-      pcat_9: 'Plateforme d\'exp\u00e9rience num\u00e9rique',
-      pdesc_1: 'Logiciel complet de gestion de cabinet pour les firmes d\'avocats. Simplifiez la gestion des dossiers, des clients, de la facturation et de la conformit\u00e9 \u2014 le tout depuis une plateforme intuitive con\u00e7ue pour les juristes qu\u00e9b\u00e9cois.',
-      pdesc_2: 'Gestion d\'\u00e9tude enti\u00e8rement centralis\u00e9e et accessible sur le web pour les notaires. G\u00e9rez actes, dossiers clients et flux de travail de partout \u2014 con\u00e7u pour l\'\u00e9tude notariale moderne avec conformit\u00e9 r\u00e9glementaire compl\u00e8te.',
-      pdesc_3: 'Gestion intelligente des formulaires juridiques pour cabinets d\'avocats et services juridiques. Automatisez la production de documents, standardisez les pr\u00e9c\u00e9dents et r\u00e9duisez les erreurs de r\u00e9daction avec un moteur de formulaires intelligent.',
-      pdesc_4: 'Pionnier de la gestion de cabinets juridiques au Canada depuis 1974. La plateforme AcuminEvolution de Dexco regroupe la gestion des dossiers, le suivi du temps, la facturation, la comptabilit\u00e9 en fid\u00e9icommis et la gestion documentaire dans un espace infonuagique unifi\u00e9 pour les cabinets d\'avocats canadiens.',
-      pdesc_5: 'La solution de gestion de pratique incontournable pour les notaires. Comptabilit\u00e9 en fid\u00e9icommis, paie, facturation, int\u00e9gration SURF et acc\u00e8s infonuagique \u2014 enti\u00e8rement conforme aux exigences de la Chambre des notaires du Qu\u00e9bec.',
-      pdesc_6: 'Gestion de bureau tout-en-un pour les \u00e9tudes notariales \u00e0 fort volume. Gestion des actes, base de donn\u00e9es clients, facturation personnalisable, signature \u00e0 distance et int\u00e9gration SURF \u2014 con\u00e7u pour la productivit\u00e9 \u00e0 grande \u00e9chelle.',
-      pdesc_7: 'La suite logicielle compl\u00e8te pour les huissiers de justice qu\u00e9b\u00e9cois. Les modules JuriSoft, JuriWeb, JuriEDI et JuriCloud couvrent chaque aspect de la pratique \u2014 de la gestion d\'\u00e9tude aux portails web.',
-      pdesc_8: 'Gestion documentaire et de contenu de niveau entreprise, propuls\u00e9e par la recherche intelligente et la classification par IA. Centralisez, retrouvez et gouvernez chaque document dans votre organisation \u2014 \u00e0 toute \u00e9chelle.',
-      pdesc_9: 'Une plateforme frontend composable au c\u0153ur de la transformation num\u00e9rique des banques et des industries r\u00e9glement\u00e9es. Cr\u00e9ez des portails clients omnicanaux, des outils en libre-service et des flux de souscription num\u00e9rique avec une architecture microfrontend \u2014 approuv\u00e9e par les principales institutions financi\u00e8res d\'Am\u00e9rique latine.',
-      plink_1: 'Visiter jurisconcept.ca',
-      plink_2: 'Visiter JurisPro',
-      plink_3: 'Visiter jurisconcept.ca',
-      plink_4: 'Visiter dexco.com',
-      plink_5: 'Visiter procardex.com',
-      plink_6: 'Visiter pronotaire.com',
-      plink_7: 'Visiter siunik.ca',
-      plink_8: 'Visiter constellio.com',
-      plink_9: 'Visiter modyo.com',
-      ptag_jc_1: 'Gestion des dossiers', ptag_jc_2: 'Facturation', ptag_jc_3: 'Conformit\u00e9',
-      ptag_jp_1: 'Gestion des actes', ptag_jp_2: 'Web', ptag_jp_3: 'Notaires',
-      ptag_af_1: 'Automatisation', ptag_af_2: 'Pr\u00e9c\u00e9dents', ptag_af_3: 'G\u00e9n\u00e9ration de documents',
-      ptag_ae_1: 'Gestion des dossiers', ptag_ae_2: 'Comptabilit\u00e9 en fid\u00e9icommis', ptag_ae_3: 'Infonuagique',
-      ptag_pc_1: 'Comptabilit\u00e9 en fid\u00e9icommis', ptag_pc_2: 'Int\u00e9gration SURF', ptag_pc_3: 'Infonuagique',
-      ptag_pn_1: 'Signature \u00e0 distance', ptag_pn_2: 'Flux des actes', ptag_pn_3: 'Gestion de bureau',
-      ptag_si_1: 'Pratique d\'huissier', ptag_si_2: 'JuriCloud', ptag_si_3: 'Portail web',
-      ptag_co_1: 'ECM', ptag_co_2: 'Recherche IA', ptag_co_3: 'Gouvernance',
-      ptag_mo_1: 'Banques', ptag_mo_2: 'Portail client', ptag_mo_3: 'Microfrontend',
-      acq_label: 'Croissance par acquisition',
-      acq_title: '\u00catre acquis par Synaera',
-      acq_desc: 'Nous acqu\u00e9rons, op\u00e9rons et d\u00e9veloppons des entreprises logicielles exceptionnelles en technologie juridique et en gestion documentaire \u2014 de fa\u00e7on permanente. Si vous avez b\u00e2ti quelque chose d\'exceptionnel pour l\'\u00e9cosyst\u00e8me juridique, nous voulons vous parler.',
-      acqstat_1: 'Plateformes en portefeuille',
-      acqstat_2: 'Ans en technologie juridique',
-      acqstat_3: 'Engagement envers les produits',
-      acqstat_4: 'Strat\u00e9gie de d\u00e9tention \u00e0 long terme',
-      acqpillar_1_title: 'Acqu\u00e9rir',
-      acqpillar_2_title: 'Op\u00e9rer',
-      acqpillar_3_title: 'Cro\u00eetre',
-      acqpillar_1_desc: 'Nous recherchons des logiciels verticaux rentables et appr\u00e9ci\u00e9s en technologie juridique et en gestion documentaire, avec des bases d\'utilisateurs fid\u00e8les. SaaS vertical, gestion de cabinet, ECM, signature \u00e9lectronique, outils de conformit\u00e9 \u2014 nous connaissons votre march\u00e9 en profondeur.',
-      acqpillar_2_desc: 'Nous apportons une expertise op\u00e9rationnelle, une infrastructure partag\u00e9e et un accompagnement ex\u00e9cutif pour aider les entreprises acquises \u00e0 cro\u00eetre. Nous int\u00e9grons l\u00e0 o\u00f9 cela cr\u00e9e de la valeur et pr\u00e9servons ce qui rend chaque produit unique.',
-      acqpillar_3_desc: 'Les soci\u00e9t\u00e9s en portefeuille b\u00e9n\u00e9ficient d\'opportunit\u00e9s de ventes crois\u00e9es, d\'une R&D partag\u00e9e, de cadres de conformit\u00e9 communs et de la cr\u00e9dibilit\u00e9 de la marque Synaera. Ensemble, nous atteignons des clients qu\'aucun d\'eux ne pourrait toucher seul.',
-      reasons_col1_title: 'Pour les fondateurs &amp; entrepreneurs <span>Vendre votre entreprise</span>',
-      reasons_col2_title: 'Pour les investisseurs &amp; fonds PE <span>Sortie de portefeuille</span>',
-      reason_1_1: 'Un foyer permanent pour votre produit',
-      reason_1_2: 'Une expertise sectorielle de confiance',
-      reason_1_3: 'Continuit\u00e9 pour les employ\u00e9s et les clients',
-      reason_1_4: 'Des transactions nettes et certaines',
-      reason_2_1: 'Capacit\u00e9 d\'int\u00e9gration \u00e9prouv\u00e9e',
-      reason_2_2: 'La focalisation juridique r\u00e9duit les risques',
-      reason_2_3: 'D\u00e9cisions rapides, processus confidentiel',
-      reason_2_4: 'Synergies strat\u00e9giques avec le portefeuille existant',
-      reason_1_1_desc: 'Nous ne revendons pas. Nous d\u00e9tenons les entreprises ind\u00e9finiment \u2014 votre produit, votre \u00e9quipe et vos clients ne seront jamais c\u00e9d\u00e9s \u00e0 un tiers.',
-      reason_1_2_desc: 'Notre direction a pass\u00e9 des d\u00e9cennies en technologie juridique. Nous comprenons les logiciels notariaux, les flux de travail des huissiers, la conformit\u00e9 ECM et chaque nuance de votre march\u00e9.',
-      reason_1_3_desc: 'Nous valorisons les \u00e9quipes derri\u00e8re les produits. Les membres cl\u00e9s sont retenus, accompagn\u00e9s et dot\u00e9s d\'une trajectoire de carri\u00e8re au sein d\'un groupe en croissance.',
-      reason_1_4_desc: 'Nous concluons les transactions. Aucun financement tiers requis, aucune v\u00e9rification diligente prolong\u00e9e et des modalit\u00e9s simples avec la majorit\u00e9 du paiement en esp\u00e8ces \u00e0 la cl\u00f4ture.',
-      reason_2_1_desc: 'Fort de neuf int\u00e9grations r\u00e9ussies, nous disposons d\'un manuel reproductible pour absorber des entreprises logicielles sans perturber leurs op\u00e9rations.',
-      reason_2_2_desc: 'Notre focalisation sur la technologie juridique nous permet d\'\u00e9valuer les acquisitions avec pr\u00e9cision \u2014 nous savons quelles int\u00e9grations cr\u00e9ent de la valeur et lesquelles sont mieux laiss\u00e9es ind\u00e9pendantes.',
-      reason_2_3_desc: 'Les transactions sont men\u00e9es directement par nos dirigeants, en toute confidentialit\u00e9. Nous pouvons fournir des termes indicatifs rapidement et cl\u00f4turer selon un calendrier convenu.',
-      reason_2_4_desc: 'Votre soci\u00e9t\u00e9 en portefeuille acc\u00e8de imm\u00e9diatement \u00e0 nos canaux de distribution, cadres de conformit\u00e9 et plus de 5\u00a0000 relations existantes avec des professionnels du droit.',
-      step_1_title: 'Premi\u00e8re conversation',
-      step_2_title: 'V\u00e9rification diligente et \u00e9valuation',
-      step_3_title: 'Cl\u00f4ture et int\u00e9gration',
-      step_1_desc: 'Une discussion confidentielle, sans engagement, pour comprendre votre entreprise, vos objectifs et si Synaera est le bon partenaire. Nous r\u00e9pondons dans les 24 heures.',
-      step_2_desc: 'Une v\u00e9rification diligente cibl\u00e9e et efficace par une \u00e9quipe qui comprend les logiciels juridiques de l\'int\u00e9rieur. Nous posons les bonnes questions et avan\u00e7ons \u00e0 votre rythme.',
-      step_3_desc: 'Une transaction nette suivie d\'un plan d\'int\u00e9gration structur\u00e9 \u2014 pr\u00e9servant ce qui fonctionne, enrichissant avec l\'infrastructure partag\u00e9e et c\u00e9l\u00e9brant le premier jour ensemble.',
-      acqcta_title: 'Pr\u00eat \u00e0 explorer une conversation?',
-      acqcta_desc: 'Que vous explorez activement une vente ou que vous soyez simplement curieux de ce qu\'un partenariat avec Synaera pourrait repr\u00e9senter, nous serions ravis de vous entendre.',
-      acqcta_btn: 'D\u00e9marrer la conversation',
-      ind_label: 'Qui nous servons',
-      ind_title: 'Con\u00e7u pour chaque contexte juridique',
-      ind_1: 'Cabinets d\'avocats',
-      ind_2: 'Notaires',
-      ind_3: 'Huissiers de justice',
-      ind_4: 'Entreprises',
-      ind_5: 'Institutions financi\u00e8res',
-      ind_6: 'Secteur public',
-      ind_7: 'Formation juridique',
-      ind_8: 'Startups en technologie juridique',
-      ind_1_desc: 'Des praticiens solo aux grands cabinets multi-bureaux \u2014 gestion de cabinet, facturation, suivi des dossiers et production de documents.',
-      ind_2_desc: 'Solutions con\u00e7ues pour les notaires qu\u00e9b\u00e9cois couvrant les actes, les comptes en fid\u00e9icommis, l\'int\u00e9gration SURF et les cl\u00f4tures \u00e0 distance.',
-      ind_3_desc: 'Logiciels sp\u00e9cialis\u00e9s pour les huissiers de justice \u2014 gestion d\'\u00e9tude, portails web, EDI et op\u00e9rations infonuagiques.',
-      ind_4_desc: 'Grandes organisations g\u00e9rant des \u00e9cosyst\u00e8mes documentaires complexes, n\u00e9cessitant gouvernance, recherche et conformit\u00e9 r\u00e9glementaire \u00e0 grande \u00e9chelle.',
-      ind_5_desc: 'Banques, compagnies d\'assurance et prestataires de services financiers n\u00e9cessitant une gestion documentaire conforme et des exp\u00e9riences clients num\u00e9riques.',
-      ind_6_desc: 'Organismes gouvernementaux et corps r\u00e9glement\u00e9s n\u00e9cessitant des r\u00e9f\u00e9rentiels documentaires s\u00e9curis\u00e9s, auditables et une gestion des archives \u00e0 long terme.',
-      ind_7_desc: 'Facult\u00e9s de droit et programmes de d\u00e9veloppement professionnel int\u00e9grant des outils de gestion de cabinet directement dans les curricula.',
-      ind_8_desc: 'Entreprises \u00e9mergentes en technologie juridique tirant parti de l\'infrastructure, de la distribution et de l\'expertise sectorielle de Synaera pour acc\u00e9l\u00e9rer.',
-      tech_label: 'Plateforme et technologie',
-      tech_title: 'B\u00e2ti sur des fondations<br />de confiance',
-      tech_desc: 'Nos investissements de plateforme couvrent l\'infrastructure infonuagique, l\'intelligence documentaire propuls\u00e9e par l\'IA, la s\u00e9curit\u00e9 et les outils d\u00e9veloppeurs \u2014 garantissant que chaque produit de notre portefeuille b\u00e9n\u00e9ficie d\'une innovation partag\u00e9e.',
-      techitem_1: 'D\u00e9ploiement infonuagique et sur site',
-      techitem_2: 'Intelligence documentaire par IA',
-      techitem_3: 'S\u00e9curit\u00e9 de niveau entreprise',
-      techitem_4: '\u00c9cosyst\u00e8me API ouvert',
-      techitem_1_desc: 'Livraison flexible pour toute exigence de conformit\u00e9 ou politique TI',
-      techitem_2_desc: 'Classification, extraction et recherche aliment\u00e9es par l\'apprentissage automatique',
-      techitem_3_desc: 'Pratiques align\u00e9es SOC 2, chiffrement au repos et en transit',
-      techitem_4_desc: 'API REST et int\u00e9grations par webhook pour une connectivit\u00e9 transparente',
-      techbar_label: 'Couverture des capacit\u00e9s de la plateforme',
-      techbar_1: 'Gestion de cabinet',
-      techbar_2: 'Gestion documentaire',
-      techbar_3: 'Outils de conformit\u00e9',
-      techbar_4: 'Portails clients',
-      techbar_5: 'IA / Automatisation',
-      techbar_6: 'Signature \u00e9lectronique',
-      techbar_7: 'Int\u00e9grations et API',
-      news_label: 'Derni\u00e8res nouvelles',
-      news_title: 'Actualit\u00e9s &amp; points saillants',
-      news_badge_press: 'Communiqu\u00e9 de presse',
-      news1_title: 'Harris Computer acquiert Constellio, renfor\u00e7ant son portefeuille de gestion de contenu d\'entreprise',
-      news1_p1: 'Harris Computer, filiale de Constellation Software Inc., a finalis\u00e9 l\'acquisition de Constellio, la plateforme de recherche et de gestion documentaire d\'entreprise open source de r\u00e9f\u00e9rence, utilis\u00e9e par des institutions juridiques, gouvernementales et financi\u00e8res en Am\u00e9rique du Nord et en Europe.',
-      news1_p2: 'Cette acquisition marque une \u00e9tape significative pour le portefeuille Synaera, validant la th\u00e8se d\'investissement du groupe autour des logiciels verticaux de niche \u00e0 avantages concurrentiels durables. Constellio continuera d\'op\u00e9rer sous sa marque existante, avec son \u00e9quipe montr\u00e9alaise en place.',
-      news1_quote: '\u00ab\u00a0Constellio a b\u00e2ti quelque chose de vraiment exceptionnel \u2014 une plateforme qui combine la puissance de la flexibilit\u00e9 open source avec la fiabilit\u00e9 de niveau entreprise. Cette acquisition acc\u00e9l\u00e8re notre capacit\u00e9 \u00e0 offrir des exp\u00e9riences documentaires intelligentes aux march\u00e9s que nous servons.\u00a0\u00bb<br /><strong style="font-style:normal; font-size:.8rem; color:var(--muted); display:block; margin-top:.5rem;">\u2014 Harris Computer, D\u00e9claration d\'acquisition</strong>',
-      news1_footer: 'Communiqu\u00e9 de presse officiel \u2014 Harris Computer / Constellation Software',
-      news2_title: 'Louis Clement compl\u00e8te un 5\u00a0km au LegalWeek \u2014 la communaut\u00e9 des coureurs rencontre la technologie juridique',
-      news2_p1: 'Louis Clement, co-fondateur de Synaera, a rejoint des centaines de professionnels du droit pour la course caritative annuelle de 5\u00a0km au LegalWeek \u00e0 New York, prenant le temps entre les s\u00e9ances de lacer ses souliers et de battre le pav\u00e9.',
-      news2_p2: 'La publication a largement r\u00e9sonn\u00e9 dans la communaut\u00e9 des technologies juridiques, suscitant l\'engagement de fondateurs, d\'op\u00e9rateurs et de praticiens \u2014 le reflet des relations que Synaera a tiss\u00e9es dans l\'industrie.',
-      news2_quote: '\u00ab\u00a0Ce que j\'aime du LegalWeek, ce ne sont pas seulement les panels ou le r\u00e9seautage \u2014 ce sont des moments comme le 5\u00a0km de ce matin o\u00f9 l\'on r\u00e9alise que la communaut\u00e9 de la technologie juridique est genuinement une communaut\u00e9. Reconnaissant envers tous ceux qui ont couru, march\u00e9 et encourag\u00e9. \u00c0 l\'an prochain \u00e0 la ligne d\'arriv\u00e9e \ud83c\udfc3\u200d\u2642\ufe0f\u00a0\u00bb<br /><strong style="font-style:normal; font-size:.8rem; color:var(--muted); display:block; margin-top:.5rem;">\u2014 Louis Clement sur LinkedIn</strong>',
-      news2_footer: 'Louis Clement \u2014 Voir sur LinkedIn',
-      contact_label: 'Nous joindre',
-      contact_title: 'Parlons de<br />vos besoins',
-      contact_desc: 'Que vous \u00e9valuiez un produit, explorez un partenariat ou envisagiez une conversation d\'acquisition \u2014 notre \u00e9quipe est l\u00e0 pour vous aider.',
-      citem_1: 'Si\u00e8ge social',
-      citem_2: 'Demandes g\u00e9n\u00e9rales',
-      citem_3: 'Acquisitions',
-      citem_4: 'Partenariats',
-      form_fname: 'Pr\u00e9nom',
-      form_lname: 'Nom',
-      form_email: 'Adresse courriel',
-      form_org: 'Organisation',
-      form_subject: 'Sujet',
-      form_msg: 'Message',
-      ph_fname: 'Marie',
-      ph_lname: 'Tremblay',
-      ph_email: 'marie@cabinetjuridique.ca',
-      ph_org: 'Votre cabinet ou entreprise',
-      ph_msg: 'Dites-nous comment nous pouvons vous aider\u2026',
-      opt_1: 'Demande de produit',
-      opt_2: 'Opportunit\u00e9 de partenariat',
-      opt_3: 'Discussion d\'acquisition',
-      opt_4: 'Support technique',
-      opt_5: 'Autre',
-      form_submit: 'Envoyer le message',
-      form_success: 'Message envoy\u00e9 \u2713',
-      footer_desc: 'Le groupe leader de plateformes logicielles en technologie juridique et en gestion documentaire au service de l\'\u00e9cosyst\u00e8me juridique canadien.',
-      footer_col1: 'Produits',
-      footer_col2: 'Entreprise',
-      footer_col3: 'L\u00e9gal',
-      footer_about: '\u00c0 propos de Synaera',
-      footer_acquired: '\u00catre acquis',
-      footer_contact: 'Contact',
-      footer_ind: 'Industries',
-      legal_1: 'Politique de confidentialit\u00e9',
-      legal_2: 'Conditions d\'utilisation',
-      legal_3: 'Politique de cookies',
-      legal_4: 'Accessibilit\u00e9',
-      footer_copy: '\u00a9 2025 Synaera. Tous droits r\u00e9serv\u00e9s.',
-      gate_error: 'Code d\'acc\u00e8s incorrect. Veuillez r\u00e9essayer.',
-    }
-  };
-
-  function setLang(lang) {
-    currentLang = lang;
-    localStorage.setItem('synaera_lang', lang);
-    document.documentElement.lang = lang;
-    // update text nodes
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const val = i18n[lang][el.dataset.i18n];
-      if (val !== undefined) el.textContent = val;
-    });
-    // update html nodes
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const val = i18n[lang][el.dataset.i18nHtml];
-      if (val !== undefined) el.innerHTML = val;
-    });
-    // update placeholders
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const val = i18n[lang][el.dataset.i18nPlaceholder];
-      if (val !== undefined) el.placeholder = val;
-    });
-    // update gate subtitle in .gate-logo
-    const gateSub = document.querySelector('#gate .gate-logo .sub');
-    if (gateSub) gateSub.textContent = lang === 'fr' ? 'Technologie juridique et gestion documentaire' : 'Legal Tech & Document Management';
-    // toggle active buttons
-    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-    document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
-    // update form error message handler
-    window._currentGateError = lang === 'fr' ? i18n.fr.gate_error : i18n.en.gate_error;
-  }
-
-  // Initialize language
-  setLang(currentLang);
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>

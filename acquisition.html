@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Acquisition — Synaera</title>
+  <link rel="icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ─── Navigation ────────────────────────────────────────────────── -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo-light.png" alt="Synaera" height="32" id="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-page="index.html" data-i18n="nav_home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" data-page="about.html" data-i18n="nav_about">About <span class="nav-chevron">&#9660;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html#who">Who We Are</a>
+          <a href="about.html#mission">Our Mission</a>
+          <a href="about.html#values">Our Values</a>
+          <a href="about.html#group">Our Group</a>
+          <a href="about.html#team">Team</a>
+          <div class="divider-line"></div>
+          <a href="https://www.harriscomputer.com/" target="_blank" class="ext-link">Harris Computer</a>
+          <a href="https://www.csisoftware.com/" target="_blank" class="ext-link">Constellation Software</a>
+        </div>
+      </li>
+      <li><a href="acquisition.html" data-page="acquisition.html" class="nav-active" data-i18n="nav_acquisition">Acquisition</a></li>
+      <li><a href="portfolio.html" data-page="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+      <li><a href="contact.html" data-page="contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li class="lang-switcher">
+        <button class="lang-select-btn" onclick="toggleLangMenu(this)">EN <span class="lang-chevron">&#9660;</span></button>
+        <div class="lang-select-menu">
+          <button data-lang="en" onclick="setLang('en')"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+          <button data-lang="fr" onclick="setLang('fr')"><span class="lang-code">FR</span><span class="lang-name">Fran&#231;ais</span></button>
+          <button data-lang="es" onclick="setLang('es')"><span class="lang-code">ES</span><span class="lang-name">Espa&#241;ol</span></button>
+          <button data-lang="pt" onclick="setLang('pt')"><span class="lang-code">PT</span><span class="lang-name">Portugu&#234;s BR</span></button>
+        </div>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── Page Hero ─────────────────────────────────────────────────── -->
+<div class="page-hero" style="padding-top:7rem;">
+  <div class="container">
+    <h1>Our Acquisition Philosophy</h1>
+    <p>Long-term growth. No exits. No disruption.</p>
+  </div>
+</div>
+
+<!-- ─── Philosophy ───────────────────────────────────────────────── -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="section-label" data-i18n="acq_label">Growth Through Acquisition</div>
+        <h2 class="section-title" data-i18n="acq_title">Being Acquired by Synaera</h2>
+        <div class="divider"></div>
+        <p class="section-desc" style="margin-bottom:1.5rem;" data-i18n="acq_desc">
+          We acquire, operate, and grow exceptional legal tech and document management software businesses — permanently. If you've built something great for the legal ecosystem, we want to talk.
+        </p>
+        <p class="section-desc" style="margin-bottom:1.5rem;">We seek businesses with:</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">💰</div>
+            <div class="about-feature-text">
+              <h4>Consistent Profitability</h4>
+              <p>Positive EBITDA with recurring revenue from a loyal, sticky customer base in the legal or document management vertical.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🏆</div>
+            <div class="about-feature-text">
+              <h4>Market Leadership</h4>
+              <p>A differentiated product with strong customer retention and a defensible position within a niche legal or regulated industry segment.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🤝</div>
+            <div class="about-feature-text">
+              <h4>Quality Team</h4>
+              <p>A capable management team committed to the product's long-term success — we invest in people, not just technology.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem;">
+          <span class="product-tag">Vertical SaaS</span>
+          <span class="product-tag">Practice Management</span>
+          <span class="product-tag">ECM / Document</span>
+          <span class="product-tag">E-Signature</span>
+          <span class="product-tag">Compliance Tools</span>
+          <span class="product-tag">Legal AI</span>
+          <span class="product-tag">Court Software</span>
+          <span class="product-tag">Billing &amp; Accounting</span>
+        </div>
+      </div>
+      <div class="about-img-wrap reveal">
+        <div style="padding:2rem;width:100%;">
+          <div style="margin-bottom:2rem;">
+            <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem;font-weight:700;">Our Track Record</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem;text-align:center;">
+                <div style="font-size:2rem;font-weight:900;color:var(--gold);">9+</div>
+                <div style="font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem;" data-i18n="acqstat_1">Platforms in Portfolio</div>
+              </div>
+              <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem;text-align:center;">
+                <div style="font-size:2rem;font-weight:900;color:var(--gold);">25+</div>
+                <div style="font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem;" data-i18n="acqstat_2">Years in Legal Tech</div>
+              </div>
+              <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem;text-align:center;">
+                <div style="font-size:2rem;font-weight:900;color:var(--gold);">100%</div>
+                <div style="font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem;" data-i18n="acqstat_3">Commitment to Products</div>
+              </div>
+              <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem;text-align:center;">
+                <div style="font-size:2rem;font-weight:900;color:var(--gold);">&#8734;</div>
+                <div style="font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem;" data-i18n="acqstat_4">Long-Term Hold Strategy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Why Choose Synaera ─────────────────────────────────────────── -->
+<section class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 3.5rem;">
+      <div class="section-label">Why Synaera</div>
+      <h2 class="section-title">For Founders, Investors &amp; Entrepreneurs</h2>
+      <div class="divider" style="margin-left:auto;margin-right:auto;"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="reveal">
+      <div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(0,0,0,.1);display:flex;align-items:center;gap:.6rem;" data-i18n-html="reasons_col1_title">For Founders &amp; Entrepreneurs <span>Selling your business</span></h3>
+        <div class="reason-item" style="margin-bottom:1.25rem;">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_1_1">Permanent Home for Your Product</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_1_1_desc">We don't flip. We hold businesses indefinitely — your product, your team, and your customers are never sold on to a third party.</p>
+          </div>
+        </div>
+        <div class="reason-item" style="margin-bottom:1.25rem;">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_1_2">Domain Expertise You Can Trust</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_1_2_desc">Our leadership has spent decades in legal tech. We understand notarial software, bailiff workflows, ECM compliance, and every nuance of your market.</p>
+          </div>
+        </div>
+        <div class="reason-item" style="margin-bottom:1.25rem;">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_1_3">Employee &amp; Customer Continuity</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_1_3_desc">We value the teams behind products. Key personnel are retained, supported, and given a career path within a growing group.</p>
+          </div>
+        </div>
+        <div class="reason-item">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_1_4">Clean, Certain Transactions</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_1_4_desc">We close deals. No third-party financing required, no prolonged due diligence, and straightforward deal mechanics with majority cash at closing.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(0,0,0,.1);display:flex;align-items:center;gap:.6rem;" data-i18n-html="reasons_col2_title">For Investors &amp; PE Firms <span>Portfolio exit</span></h3>
+        <div class="reason-item" style="margin-bottom:1.25rem;">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_2_1">Proven Integration Capability</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_2_1_desc">With nine product integrations under our belt, we have a repeatable playbook for absorbing software businesses without disrupting operations.</p>
+          </div>
+        </div>
+        <div class="reason-item" style="margin-bottom:1.25rem;">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_2_2">Legal-Vertical Focus Reduces Risk</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_2_2_desc">Our deep focus on legal tech means we assess acquisitions with informed precision — we know which integrations add value and which are better left independent.</p>
+          </div>
+        </div>
+        <div class="reason-item" style="margin-bottom:1.25rem;">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_2_3">Rapid Decisions, Confidential Process</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_2_3_desc">Deals are led directly by our principals with full confidentiality. We can provide indicative terms quickly and close on an agreed timeline.</p>
+          </div>
+        </div>
+        <div class="reason-item">
+          <div class="reason-check" style="background:rgba(27,88,100,.1);border:1px solid rgba(27,88,100,.2);color:var(--gold);">&#10003;</div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.2rem;" data-i18n="reason_2_4">Strategic Synergies with Existing Portfolio</h4>
+            <p style="font-size:.825rem;color:var(--muted);line-height:1.65;" data-i18n="reason_2_4_desc">Your portfolio company gains immediate access to our distribution channels, compliance frameworks, and 5,000+ existing legal professional relationships.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Acquisition Process ───────────────────────────────────────── -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="reveal" style="max-width:640px;">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Our Acquisition Process</h2>
+      <div class="divider"></div>
+      <p class="section-desc">A structured, respectful, and efficient process from first conversation to close.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Initial Conversation</h4>
+          <p>A confidential, no-obligation discussion to understand your business, your goals, and whether Synaera is the right fit. We respond within 24 hours.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Mutual NDA &amp; Information Exchange</h4>
+          <p>We sign a mutual NDA and exchange basic business information — revenue, customer count, product overview. No lengthy questionnaires at this stage.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Indicative Offer</h4>
+          <p>Based on initial information, we provide a non-binding indicative offer with valuation parameters within 2 weeks of receiving financials.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Due Diligence</h4>
+          <p>Focused, efficient diligence by a team that understands legal software inside-out. We ask the right questions and move at your pace — typically 4–8 weeks.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Definitive Agreement</h4>
+          <p>We draft and negotiate a Purchase &amp; Sale Agreement with straightforward deal mechanics, majority cash at closing, and standard representations.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Close &amp; Welcome</h4>
+          <p>Transaction closes. Your team joins the Synaera family. We celebrate the milestone together and begin a structured integration plan.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <h4>Operational Integration</h4>
+          <p>We integrate shared infrastructure and best practices while preserving what makes your product unique. Management continuity is our priority.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">8</div>
+        <div class="step-body">
+          <h4>Long-Term Partnership</h4>
+          <p>Permanent ownership. Continuous investment in product and people. Your business grows as part of the broader Synaera and Harris Computer ecosystem — indefinitely.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Core Capabilities ─────────────────────────────────────────── -->
+<section class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What We Understand</div>
+      <h2 class="section-title">Core Capabilities</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Deep domain knowledge across every facet of legal technology.</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="icon">⚖️</div>
+        <h4>Legal Practice Management</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">📊</div>
+        <h4>Financial &amp; Trust Accounting</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">⚙️</div>
+        <h4>Document &amp; Content Management</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">🔬</div>
+        <h4>AI &amp; Intelligent Search</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">📅</div>
+        <h4>Compliance &amp; Regulatory Tech</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">📄</div>
+        <h4>E-Signature &amp; Remote Workflows</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Strategic Value ───────────────────────────────────────────── -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What You Gain</div>
+      <h2 class="section-title">Strategic Value for Acquired Companies</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="icon">🔏</div>
+        <h4>Compliance Infrastructure</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">⚡</div>
+        <h4>Operational Efficiency</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">📈</div>
+        <h4>Scalability &amp; Growth</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">🔄</div>
+        <h4>Business Continuity</h4>
+      </div>
+      <div class="cap-card reveal">
+        <div class="icon">🔗</div>
+        <h4>Technology Synergy</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Ideal Profile ─────────────────────────────────────────────── -->
+<section class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Target Profile</div>
+      <h2 class="section-title">Ideal Acquisition Profile</h2>
+      <div class="divider"></div>
+      <p class="section-desc">We're opportunistic but focused. Here's what a typical Synaera acquisition looks like.</p>
+    </div>
+    <div class="profile-cols reveal">
+      <div class="profile-col">
+        <h4>Target Client Types</h4>
+        <div class="profile-tags">
+          <span class="profile-tag">Law Firms</span>
+          <span class="profile-tag">Notarial Practices</span>
+          <span class="profile-tag">Bailiff / Huissier</span>
+          <span class="profile-tag">Courts &amp; Tribunals</span>
+          <span class="profile-tag">Legal Departments</span>
+          <span class="profile-tag">Title Companies</span>
+          <span class="profile-tag">Financial Institutions</span>
+          <span class="profile-tag">Government / Public Sector</span>
+          <span class="profile-tag">Regulated Industries</span>
+        </div>
+      </div>
+      <div class="profile-col">
+        <h4>Target Regions</h4>
+        <div class="profile-tags">
+          <span class="profile-tag">&#127809; Canada</span>
+          <span class="profile-tag">&#127482;&#127480; United States</span>
+          <span class="profile-tag">&#127463;&#127479; Brazil</span>
+          <span class="profile-tag">&#127464;&#127473; Chile</span>
+          <span class="profile-tag">&#127474;&#127485; Mexico</span>
+          <span class="profile-tag">&#127462;&#127479; Argentina</span>
+          <span class="profile-tag">&#127464;&#127476; Colombia</span>
+          <span class="profile-tag">&#127477;&#127466; Peru</span>
+          <span class="profile-tag">LATAM (All Regions)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section class="section" style="background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);text-align:center;">
+  <div class="container">
+    <div class="reveal" style="max-width:640px;margin:0 auto;">
+      <h2 class="section-title light" data-i18n="acqcta_title" style="margin-bottom:1.25rem;">Ready to Explore a Conversation?</h2>
+      <p class="section-desc light" style="max-width:520px;margin:0 auto 2.5rem;" data-i18n="acqcta_desc">Whether you're actively exploring a sale or simply curious about what a partnership with Synaera could look like, we'd love to hear from you.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary" data-i18n="acqcta_btn">Start the Conversation</a>
+        <a href="mailto:acquisitions@synaera.ca" class="btn-outline">acquisitions@synaera.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><img src="logo-light.png" alt="Synaera" style="height:40px;display:block;" /></a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Empowering legal software companies to grow for the long term.</p>
+        <p style="margin-top:.75rem;font-size:.8rem;color:rgba(255,255,255,.5)">info@synaera.ca</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_nav_title">Navigation</div>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav_about_simple">About Us</a></li>
+          <li><a href="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+          <li><a href="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_group_title">Our Group</div>
+        <ul>
+          <li><a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a></li>
+          <li><a href="https://www.csisoftware.com/" target="_blank">Constellation Software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_portfolio_title">Portfolio</div>
+        <ul>
+          <li><a href="https://jurisconcept.ca/" target="_blank">JurisConcept</a></li>
+          <li><a href="https://www.constellio.com/" target="_blank">Constellio</a></li>
+          <li><a href="https://www.modyo.com/" target="_blank">Modyo</a></li>
+          <li><a href="https://dexco.com/" target="_blank">Dexco</a></li>
+          <li><a href="https://acuminevolution.ca/" target="_blank">AcuminEvolution</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">&copy; 2025 Synaera. All rights reserved.</span>
+      <span>A <a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a> business unit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

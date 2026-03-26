@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Portfolio — Synaera</title>
+  <link rel="icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ─── Navigation ────────────────────────────────────────────────── -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo-light.png" alt="Synaera" height="32" id="nav-logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-page="index.html" data-i18n="nav_home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" data-page="about.html" data-i18n="nav_about">About <span class="nav-chevron">&#9660;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html#who">Who We Are</a>
+          <a href="about.html#mission">Our Mission</a>
+          <a href="about.html#values">Our Values</a>
+          <a href="about.html#group">Our Group</a>
+          <a href="about.html#team">Team</a>
+          <div class="divider-line"></div>
+          <a href="https://www.harriscomputer.com/" target="_blank" class="ext-link">Harris Computer</a>
+          <a href="https://www.csisoftware.com/" target="_blank" class="ext-link">Constellation Software</a>
+        </div>
+      </li>
+      <li><a href="acquisition.html" data-page="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+      <li><a href="portfolio.html" data-page="portfolio.html" class="nav-active" data-i18n="nav_portfolio">Portfolio</a></li>
+      <li><a href="contact.html" data-page="contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li class="lang-switcher">
+        <button class="lang-select-btn" onclick="toggleLangMenu(this)">EN <span class="lang-chevron">&#9660;</span></button>
+        <div class="lang-select-menu">
+          <button data-lang="en" onclick="setLang('en')"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+          <button data-lang="fr" onclick="setLang('fr')"><span class="lang-code">FR</span><span class="lang-name">Fran&#231;ais</span></button>
+          <button data-lang="es" onclick="setLang('es')"><span class="lang-code">ES</span><span class="lang-name">Espa&#241;ol</span></button>
+          <button data-lang="pt" onclick="setLang('pt')"><span class="lang-code">PT</span><span class="lang-name">Portugu&#234;s BR</span></button>
+        </div>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── Page Hero ─────────────────────────────────────────────────── -->
+<div class="page-hero" style="padding-top:7rem;">
+  <div class="container">
+    <h1>Our Portfolio</h1>
+    <p>A global network of business units delivering mission-critical software for the legal sector</p>
+  </div>
+</div>
+
+<!-- ─── Portfolio ─────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+
+    <!-- North America -->
+    <div class="region-section reveal">
+      <div class="region-label">North America</div>
+      <div class="portfolio-tiles">
+
+        <a href="https://jurisconcept.ca/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#1a3a52">
+            <img class="tile-logo" src="https://logo.clearbit.com/jurisconcept.ca" alt="JurisConcept" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">JC</span>
+          </div>
+          <div class="tile-name">JurisConcept</div>
+          <div class="tile-desc">Law firm practice management</div>
+        </a>
+
+        <a href="https://jurisconcept.ca/en/jurispro/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#1a3a52">
+            <img class="tile-logo" src="https://logo.clearbit.com/jurisconcept.ca" alt="JurisPro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">JP</span>
+          </div>
+          <div class="tile-name">JurisPro</div>
+          <div class="tile-desc">Notarial study management</div>
+        </a>
+
+        <a href="https://jurisconcept.ca/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#1a3a52">
+            <img class="tile-logo" src="https://logo.clearbit.com/jurisconcept.ca" alt="AliForm" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">AF</span>
+          </div>
+          <div class="tile-name">AliForm</div>
+          <div class="tile-desc">Legal forms automation</div>
+        </a>
+
+        <a href="https://dexco.com/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#00437a">
+            <img class="tile-logo" src="https://logo.clearbit.com/dexco.com" alt="Dexco" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">DX</span>
+          </div>
+          <div class="tile-name">Dexco</div>
+          <div class="tile-desc">Canadian legal practice management since 1974</div>
+        </a>
+
+        <a href="https://acuminevolution.ca/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#00437a">
+            <img class="tile-logo" src="https://logo.clearbit.com/acuminevolution.ca" alt="AcuminEvolution" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">AE</span>
+          </div>
+          <div class="tile-name">AcuminEvolution</div>
+          <div class="tile-desc">All-in-one law firm management platform</div>
+        </a>
+
+        <a href="https://procardex.com/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#0b4f70">
+            <img class="tile-logo" src="https://logo.clearbit.com/procardex.com" alt="ProCardex" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">PC</span>
+          </div>
+          <div class="tile-name">ProCardex</div>
+          <div class="tile-desc">Notary practice management</div>
+        </a>
+
+        <a href="https://pronotaire.com/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#2c3e6b">
+            <img class="tile-logo" src="https://logo.clearbit.com/pronotaire.com" alt="Pronotaire" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">PN</span>
+          </div>
+          <div class="tile-name">Pronotaire</div>
+          <div class="tile-desc">High-volume notarial office management</div>
+        </a>
+
+        <a href="https://siunik.ca/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#1a3c5c">
+            <img class="tile-logo" src="https://logo.clearbit.com/siunik.ca" alt="Siunik" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">SN</span>
+          </div>
+          <div class="tile-name">Siunik</div>
+          <div class="tile-desc">Quebec bailiff software suite</div>
+        </a>
+
+        <a href="https://www.constellio.com/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#3d2f7a">
+            <img class="tile-logo" src="https://logo.clearbit.com/constellio.com" alt="Constellio" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">CO</span>
+          </div>
+          <div class="tile-name">Constellio</div>
+          <div class="tile-desc">Enterprise content management &amp; AI search</div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Latin America -->
+    <div class="region-section reveal">
+      <div class="region-label">Latin America</div>
+      <div class="portfolio-tiles">
+
+        <a href="https://www.modyo.com/" target="_blank" class="portfolio-tile">
+          <div class="tile-logo-wrap" style="background:#c0392b">
+            <img class="tile-logo" src="https://logo.clearbit.com/modyo.com" alt="Modyo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="tile-logo-fallback">MD</span>
+          </div>
+          <div class="tile-name">Modyo</div>
+          <div class="tile-desc">Banking digital experience platform</div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Footer note -->
+    <div class="reveal" style="text-align:center;padding:3rem 0 0;border-top:1px solid rgba(0,0,0,.07);max-width:640px;margin:0 auto;">
+      <p class="section-desc" style="text-align:center;margin:0 auto;">We continue to grow our portfolio with legal technology companies that share our values and long-term vision.</p>
+      <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="acquisition.html" class="btn-primary">Our Acquisition Philosophy</a>
+        <a href="contact.html" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── Product Detail Grid ───────────────────────────────────────── -->
+<section class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="products_label">Our Portfolio</div>
+      <h2 class="section-title">Platform Deep Dive</h2>
+      <div class="divider"></div>
+      <p class="section-desc" data-i18n="products_desc">Purpose-built for every facet of legal and document practice — from notarial deed management to enterprise content intelligence.</p>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#1a3a52"><img src="https://logo.clearbit.com/jurisconcept.ca" alt="JurisConcept" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_1">Law Firm Management</div>
+        <div class="product-name">JurisConcept</div>
+        <div class="product-desc" data-i18n="pdesc_1">Comprehensive practice management software for law firms. Streamline case management, client files, billing, and compliance — all from a single intuitive platform built for Quebec legal professionals.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_jc_1">Case Management</span>
+          <span class="product-tag" data-i18n="ptag_jc_2">Billing</span>
+          <span class="product-tag" data-i18n="ptag_jc_3">Compliance</span>
+        </div>
+        <a href="https://jurisconcept.ca/" target="_blank" class="product-link">
+          <span data-i18n="plink_1">Visit jurisconcept.ca</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#1a3a52"><img src="https://logo.clearbit.com/jurisconcept.ca" alt="JurisPro" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_2">Notarial Practice</div>
+        <div class="product-name">JurisPro</div>
+        <div class="product-desc" data-i18n="pdesc_2">Web-based, fully centralized study management for notaries. Manage deeds, client records, and workflows from anywhere — designed for the modern notarial office with full regulatory compliance.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_jp_1">Deed Management</span>
+          <span class="product-tag" data-i18n="ptag_jp_2">Web-Based</span>
+          <span class="product-tag" data-i18n="ptag_jp_3">Notaries</span>
+        </div>
+        <a href="https://jurisconcept.ca/en/jurispro/" target="_blank" class="product-link">
+          <span data-i18n="plink_2">Visit JurisPro</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#1a3a52"><img src="https://logo.clearbit.com/jurisconcept.ca" alt="AliForm" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_3">Legal Forms</div>
+        <div class="product-name">AliForm</div>
+        <div class="product-desc" data-i18n="pdesc_3">Intelligent legal forms management for law firms and legal departments. Automate document generation, standardize precedents, and reduce manual drafting errors with a smart forms engine.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_af_1">Form Automation</span>
+          <span class="product-tag" data-i18n="ptag_af_2">Precedents</span>
+          <span class="product-tag" data-i18n="ptag_af_3">Document Generation</span>
+        </div>
+        <a href="https://jurisconcept.ca/" target="_blank" class="product-link">
+          <span data-i18n="plink_3">Visit jurisconcept.ca</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#00437a"><img src="https://logo.clearbit.com/dexco.com" alt="Dexco" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_4">Legal Practice Management</div>
+        <div class="product-name">Dexco</div>
+        <div class="product-desc" data-i18n="pdesc_4">Canadian legal practice management pioneer since 1974. Dexco's AcuminEvolution platform unifies matter management, time tracking, billing, trust accounting, and document management in a single cloud workspace built for Canadian law firms.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_ae_1">Matter Management</span>
+          <span class="product-tag" data-i18n="ptag_ae_2">Trust Accounting</span>
+          <span class="product-tag" data-i18n="ptag_ae_3">Cloud</span>
+        </div>
+        <a href="https://dexco.com/" target="_blank" class="product-link">
+          <span data-i18n="plink_4">Visit dexco.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#0b4f70"><img src="https://logo.clearbit.com/procardex.com" alt="ProCardex" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_5">Notary Software</div>
+        <div class="product-name">ProCardex</div>
+        <div class="product-desc" data-i18n="pdesc_5">The definitive practice management solution for notaries. Trust accounting, payroll, invoicing, SURF integration, and cloud-based access — fully compliant with the Quebec Chamber of Notaries.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_pc_1">Trust Accounting</span>
+          <span class="product-tag" data-i18n="ptag_pc_2">SURF Integration</span>
+          <span class="product-tag" data-i18n="ptag_pc_3">Cloud</span>
+        </div>
+        <a href="https://www.procardex.com/" target="_blank" class="product-link">
+          <span data-i18n="plink_5">Visit procardex.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#2c3e6b"><img src="https://logo.clearbit.com/pronotaire.com" alt="Pronotaire" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_6">Notarial Operations</div>
+        <div class="product-name">Pronotaire</div>
+        <div class="product-desc" data-i18n="pdesc_6">All-in-one office management for high-volume notarial practices. Deed management, client database, customizable invoicing, remote signing, and SURF integration — built for productivity at scale.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_pn_1">Remote Signing</span>
+          <span class="product-tag" data-i18n="ptag_pn_2">Deed Workflow</span>
+          <span class="product-tag" data-i18n="ptag_pn_3">Office Management</span>
+        </div>
+        <a href="https://pronotaire.com/en/" target="_blank" class="product-link">
+          <span data-i18n="plink_6">Visit pronotaire.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#1a3c5c"><img src="https://logo.clearbit.com/siunik.ca" alt="Siunik" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_7">Bailiff Software</div>
+        <div class="product-name">Siunik</div>
+        <div class="product-desc" data-i18n="pdesc_7">The complete software suite for Quebec bailiffs (huissiers de justice). JuriSoft, JuriWeb, JuriEDI, and JuriCloud modules cover every aspect of bailiff practice — from study management to web portals.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_si_1">Bailiff Practice</span>
+          <span class="product-tag" data-i18n="ptag_si_2">JuriCloud</span>
+          <span class="product-tag" data-i18n="ptag_si_3">Web Portal</span>
+        </div>
+        <a href="https://siunik.ca/en/" target="_blank" class="product-link">
+          <span data-i18n="plink_7">Visit siunik.ca</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#3d2f7a"><img src="https://logo.clearbit.com/constellio.com" alt="Constellio" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_8">Enterprise Content Management</div>
+        <div class="product-name">Constellio</div>
+        <div class="product-desc" data-i18n="pdesc_8">Enterprise-grade document and content management powered by intelligent search and AI classification. Centralize, find, and govern every document across your organization — at any scale.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_co_1">ECM</span>
+          <span class="product-tag" data-i18n="ptag_co_2">AI Search</span>
+          <span class="product-tag" data-i18n="ptag_co_3">Governance</span>
+        </div>
+        <a href="https://www.constellio.com/en/" target="_blank" class="product-link">
+          <span data-i18n="plink_8">Visit constellio.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon" style="background:#c0392b"><img src="https://logo.clearbit.com/modyo.com" alt="Modyo" onerror="this.style.display='none'"></div>
+        <div class="product-cat" data-i18n="pcat_9">Digital Experience Platform</div>
+        <div class="product-name">Modyo</div>
+        <div class="product-desc" data-i18n="pdesc_9">A composable frontend platform powering digital transformation for banks and regulated industries. Build omnichannel client portals, self-service tools, and digital origination workflows with microfrontend architecture — trusted by leading financial institutions across Latin America.</div>
+        <div class="product-tags">
+          <span class="product-tag" data-i18n="ptag_mo_1">Banking</span>
+          <span class="product-tag" data-i18n="ptag_mo_2">Client Portal</span>
+          <span class="product-tag" data-i18n="ptag_mo_3">Microfrontend</span>
+        </div>
+        <a href="https://www.modyo.com/" target="_blank" class="product-link">
+          <span data-i18n="plink_9">Visit modyo.com</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><img src="logo-light.png" alt="Synaera" style="height:40px;display:block;" /></a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Empowering legal software companies to grow for the long term.</p>
+        <p style="margin-top:.75rem;font-size:.8rem;color:rgba(255,255,255,.5)">info@synaera.ca</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_nav_title">Navigation</div>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav_about_simple">About Us</a></li>
+          <li><a href="acquisition.html" data-i18n="nav_acquisition">Acquisition</a></li>
+          <li><a href="portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_group_title">Our Group</div>
+        <ul>
+          <li><a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a></li>
+          <li><a href="https://www.csisoftware.com/" target="_blank">Constellation Software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title" data-i18n="footer_portfolio_title">Portfolio</div>
+        <ul>
+          <li><a href="https://jurisconcept.ca/" target="_blank">JurisConcept</a></li>
+          <li><a href="https://www.constellio.com/" target="_blank">Constellio</a></li>
+          <li><a href="https://www.modyo.com/" target="_blank">Modyo</a></li>
+          <li><a href="https://dexco.com/" target="_blank">Dexco</a></li>
+          <li><a href="https://acuminevolution.ca/" target="_blank">AcuminEvolution</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">&copy; 2025 Synaera. All rights reserved.</span>
+      <span>A <a href="https://www.harriscomputer.com/" target="_blank">Harris Computer</a> business unit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
